@@ -19,6 +19,8 @@ Feature: HU_002_Ingesta de la tabla tc-company-registration en Landing
         | Country_ISO is not NA                            |
         | Country_ISO is not null                          |
 
+      @Manual
+      @Manual:Passed
       Scenario: Volumetría y metadatado correcta
         When Se aplica la comparación de Volumetria y metadatado de la tabla "tc-company-registration"
         Then La comparacion es correcta

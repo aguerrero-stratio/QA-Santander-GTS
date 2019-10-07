@@ -22,6 +22,7 @@ public class PreparacionStepDefinition {
 
     @And("^La autentificacion con la plataforma es correcta$")
     public void laAutentificacionConLaPlataformaEsCorrecta() {
+
         preparacionEntornoSteps.autentificacionCorrecta();
     }
 
@@ -31,4 +32,32 @@ public class PreparacionStepDefinition {
 
     }
 
+    @When("^El workflow con nombre \"([^\"]*)\" se ejecuta$")
+    public void elWorkflowConNombreSeEjecuta(String arg0) {
+
+        preparacionEntornoSteps.sendRequestToEndPoint("workflowExecutions/" + arg0);
+
+    }
+
+    @When("^Se aplica la QR \"([^\"]*)\"$")
+    public void seAplicaLaQR(String QR) {
+
+        preparacionEntornoSteps.validateQR(QR);
+
+    }
+
+
+    @Then("^El resultado del workflow \"([^\"]*)\" es \"([^\"]*)\"$")
+    public void elResultadoDelWorkflowEs(String id, String estado) {
+
+        preparacionEntornoSteps.validateWorkflowExecution(id,estado);
+
+    }
+
+    @Then("^La QR \"([^\"]*)\" funciona correctamente$")
+    public void laQRFuncionaCorrectamente(String id){
+
+        preparacionEntornoSteps.validateQualityRule(id);
+
+    }
 }

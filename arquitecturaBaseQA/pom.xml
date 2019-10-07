@@ -144,9 +144,9 @@
                         <!--suppress UnresolvedMavenProperty -->
                         <baseURI>${baseURI}</baseURI>
                         <!--suppress UnresolvedMavenProperty -->
-                        <userSparta>${userSparta}</userSparta>
+                        <userTicket>${userTicket}</userTicket>
                         <!--suppress UnresolvedMavenProperty -->
-                        <passSparta>${passSparta}</passSparta>
+                        <devopsTicket>${devopsTicket}</devopsTicket>
                     </systemPropertyVariables>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>

@@ -18,6 +18,8 @@ Feature: HU_003_Ingesta de la tabla tp_interests_country en Landing
         | ISO is not null        |
         | Tracked_At is not null |
 
+      @Manual
+      @Manual:Passed
       Scenario: Volumetría y metadatado correcta
         When Se aplica la comparación de Volumetria y metadatado de la tabla "tp_interests_country"
         Then La comparacion es correcta

@@ -8,6 +8,5 @@ Feature: HU_001_Preparacion entorno de pruebas QA
     When Realizamos llamadas a "<endpoint>"
 
     Examples:
-      |endpoint                       |
-      |paramList/environment         |
-      |workflowExecutions            |
+      |endpoint  |
+      |appStatus |

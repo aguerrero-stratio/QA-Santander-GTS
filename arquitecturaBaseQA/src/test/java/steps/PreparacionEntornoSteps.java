@@ -1,7 +1,6 @@
 package steps;
 
 import au.com.bytecode.opencsv.CSVReader;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import net.thucydides.core.annotations.Step;
@@ -17,12 +16,13 @@ public class PreparacionEntornoSteps {
 
     private Response res = null; //Response
     private String baseURI = System.getProperty("baseURI");
-    private String userSparta = System.getProperty("userSparta");
-    private String passSparta = System.getProperty("passSparta");
+    private String userSparta = System.getProperty("userTicket");
+    private String devopsTicket = System.getProperty("devopsTicket");
     private ValidatableResponse validatableResponse = null;
     public static final char SEPARATOR = ',';
     public static final char QUOTE = '"';
 
+    /*
     // Ejecución script para obtener el usuario y el mesosphere_id necesario para conectarnos a la API de Sparta
     Process p = Runtime.getRuntime().exec("python3 src/test/resources/scripts/sso.py --url "+ baseURI + "#/ --user "+ userSparta +" --password "+ passSparta);
 
@@ -40,6 +40,7 @@ public class PreparacionEntornoSteps {
 
     public PreparacionEntornoSteps() throws IOException {
     }
+*/
 
     /**
      * checkStatusSparta
@@ -47,7 +48,7 @@ public class PreparacionEntornoSteps {
     @Step
     public void checkStatusSparta (){
 
-        res = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + "#");
+        res = given().relaxedHTTPSValidation().header("Cookie",userSparta).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + "#");
 
         int statusCode = res.getStatusCode();
 
@@ -66,8 +67,7 @@ public class PreparacionEntornoSteps {
     @Step
     public void autentificacionCorrecta(){
 
-        System.out.println(user);
-        System.out.println(mesosphere);
+        System.out.println(userSparta);
 
     }
 
@@ -77,15 +77,53 @@ public class PreparacionEntornoSteps {
     @Step
     public void sendRequestToEndPoint(String endPoint){
 
-        res = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + endPoint);
+        res = given().relaxedHTTPSValidation().header("Cookie",userSparta).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + endPoint);
 
         int statusCode = res.getStatusCode();
 
         Assert.assertEquals("Correct status code returner",statusCode , 200);
 
+    }
+
+
+    /**
+     * validateWorkflowExecution
+     */
+    @Step
+    public void validateWorkflowExecution(String id, String estado){
+
+        res = given().relaxedHTTPSValidation().header("Cookie",userSparta).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + "workflowExecutions/" +id);
+
+        res.getBody().asString().contains(estado);
+
+        res.getBody().asString().contains("Workflow correctly finished in Marathon API");
+
 
     }
 
+    @Step
+    public void validateQR(String endPoint){
+
+        res = given().relaxedHTTPSValidation().header("Cookie",userSparta).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + "qualityRuleResults/" + endPoint);
+
+        int statusCode = res.getStatusCode();
+
+        Assert.assertEquals("Correct status code returner",statusCode , 200);
+
+    }
+
+    /**
+     * validateQualityRule
+     */
+    @Step
+    public void validateQualityRule(String id){
+
+        res = given().relaxedHTTPSValidation().header("Cookie",userSparta).header("Content-Type","application/x-www-form-urlencoded").when().get(baseURI + "qualityRuleResults/" +id);
+
+        res.getBody().asString().contains("true");
+
+
+    }
 
     /**
      * fileExists

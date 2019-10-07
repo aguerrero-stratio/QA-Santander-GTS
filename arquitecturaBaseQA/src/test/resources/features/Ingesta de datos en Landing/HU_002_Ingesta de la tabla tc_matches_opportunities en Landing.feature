@@ -25,6 +25,8 @@ Feature: HU_002_Ingesta de la tabla tc_matches_opportunities en Landing
         | Granted in 0/1                       |
         | Rejected in 0/1                      |
 
+      @Manual
+      @Manual:Passed
       Scenario: Volumetría y metadatado correcta
         When Se aplica la comparación de Volumetria y metadatado de la tabla "tc_matches_opportunities"
         Then La comparacion es correcta
