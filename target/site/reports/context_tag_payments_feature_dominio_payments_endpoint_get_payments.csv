@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Dominio Payments endpoint GET Payments","Endpoint GET payment respuesta correcta","SUCCESS","2020-02-05T10:10:04.544523+01:00[Europe/Madrid]","0.0","5.85"
+"Dominio Payments endpoint GET Payments","Endpoint GET payment con criterio de busqueda User account_id","ERROR","2020-02-05T10:10:12.326994+01:00[Europe/Madrid]","0.0","1.52"
+"Dominio Payments endpoint GET Payments","Endpoint GET payment con criterio de busqueda PaymentID","ERROR","2020-02-05T10:10:13.862143+01:00[Europe/Madrid]","0.0","4.27"

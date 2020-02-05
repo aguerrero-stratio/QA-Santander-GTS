@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Dominio Payments endpoint GET Payments" skipped="0" tests="1" time="3.0" timestamp="2020-02-05 10:34:48"><testcase name="Endpoint GET payment con criterio de busqueda PaymentID"><error message="Expected an int but was 47.74 at line 1 column 289 path $.paymentsList[0].paymentAmount.amount" type="java.lang.NumberFormatException">Expected an int but was 47.74 at line 1 column 289 path $.paymentsList[0].paymentAmount.amount</error><system-err>Expected an int but was 47.74 at line 1 column 289 path $.paymentsList[0].paymentAmount.amount
+com.google.gson.stream.JsonReader.nextInt(JsonReader.java:1204)
+com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+com.google.gson.Gson.fromJson(Gson.java:922)
+com.google.gson.Gson.fromJson(Gson.java:887)
+com.google.gson.Gson.fromJson(Gson.java:836)
+com.google.gson.Gson.fromJson(Gson.java:808)
+io.restassured.internal.path.json.mapping.JsonPathGsonObjectDeserializer.deserialize(JsonPathGsonObjectDeserializer.groovy:39)
+io.restassured.internal.mapping.GsonMapper.deserialize(GsonMapper.groovy:39)
+io.restassured.internal.mapping.ObjectMapping.parseWithGson(ObjectMapping.groovy:196)
+io.restassured.internal.mapping.ObjectMapping.deserializeWithObjectMapper(ObjectMapping.groovy:94)
+io.restassured.internal.mapping.ObjectMapping.deserialize(ObjectMapping.groovy:53)
+io.restassured.internal.RestAssuredResponseOptionsGroovyImpl.as(RestAssuredResponseOptionsGroovyImpl.groovy:226)
+io.restassured.internal.RestAssuredResponseOptionsImpl.as(RestAssuredResponseOptionsImpl.java:170)
+stepsDefinition.MyStepdefs_Payments.nosDevuelveLaRespuestaConElCriterioDeBusquedaPaymentID(MyStepdefs_Payments.java:101)
+cucumber.runner.Runner.runPickle(Runner.java:80)
+</system-err></testcase></testsuite>
