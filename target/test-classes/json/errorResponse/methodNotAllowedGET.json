@@ -1,0 +1,5 @@
+{
+  "code": "405",
+  "title": "Method Not Allowed",
+  "description": "Request method 'GET' not supported"
+}
