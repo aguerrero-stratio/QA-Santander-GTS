@@ -1,10 +1,18 @@
 package utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.JsonSerializer;
 import com.ibm.msg.client.jms.internal.JmsProducerImpl;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.header.internals.RecordHeader;
 import org.junit.Test;
 import schemas.Accounts;
 import schemas.AccountsList;
@@ -14,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Properties;
 import javax.jms.*;
 import static junit.framework.TestCase.fail;
 
@@ -169,6 +178,26 @@ public class Utils_Payments {
         session.close();
         connection.close();
     }
+    public static void main(String[] args) throws JsonProcessingException,
+            InterruptedException {
+        Properties props=new Properties();
+        props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
+        props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                JsonSerializer.class.getName());
+        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,JsonSerializer.class.getName());
+
+        KafkaProducer<String, JsonNode> producer=new KafkaProducer<String, JsonNode>(props);
+        String json = "{ \"f1\" : \"v1\" } ";
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(json);
+        ProducerRecord<String,JsonNode> record =new ProducerRecord<String,
+                JsonNode>("test topic", jsonNode);
+        record.headers().add(new RecordHeader("key","value1".getBytes()));
+        producer.send(record);
+        Thread.sleep(10000);
+    }
+
+
 
 
 
