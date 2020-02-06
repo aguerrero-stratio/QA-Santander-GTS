@@ -100,7 +100,7 @@ public class Utils_Payments {
         String str108 = null;
         String str121_1 = null;
         String baseMT103 = null;
-        int numMT103 = 5000;
+        int numMT103 = 1;
 
         for (int i = 0; i <=numMT103;i++){
 
@@ -127,6 +127,8 @@ public class Utils_Payments {
             System.out.println(baseMT103);
 
             producerMQ(baseMT103);
+
+
 
         }
 
@@ -196,9 +198,5 @@ public class Utils_Payments {
         producer.send(record);
         Thread.sleep(10000);
     }
-
-
-
-
 
 }
