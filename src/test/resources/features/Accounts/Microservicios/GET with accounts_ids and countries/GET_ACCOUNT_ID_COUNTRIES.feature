@@ -104,3 +104,220 @@ Feature: GET_ACCOUNT_ID_COUNTRIES
             }
 
             Scenario: Busqueda de una cuenta no existente en un pais
+              When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+              Then El endpoint devuelve un listado vacio al no encontrar resultados que cumplan con los criterios de busqueda de accounts_id y countries
+              {
+              "accountsList": []
+              }
+              And El formato de la respuesta es el correcto
+
+              Scenario: Busqueda de una cuenta no existente en varios paises
+                When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                Then El endpoint devuelve un listado vacio al no encontrar resultados que cumplan con los criterios de busqueda de accounts_id y countries
+                  {
+                  "accountsList": []
+                  }
+                And El formato de la respuesta es el correcto
+
+                Scenario: Busqueda de una cuenta por pais
+                  When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                  Then El endpoint devuelve en un listado los resultados de la busqueda que cumplan con los parametros account_ids y countries
+                      {
+                      "accountsList": [
+                      {
+                      "accountId": "string",
+                      "alias": "string",
+                      "amountAvailableBalance": 0,
+                      "amountMainBalance": 0,
+                      "amountOverdraftLimit": 0,
+                      "amountPendingBalance": 0,
+                      "amountWithHoldingBalance": 0,
+                      "bic": "string",
+                      "bicDescription": "string",
+                      "corporateName": "string",
+                      "country": "string",
+                      "currencyCodeAvailableBalance": "string",
+                      "currencyCodeMainBalance": "string",
+                      "currencyCodeOverdraftLimit": "string",
+                      "currencyCodePendingBalance": "string",
+                      "currencyCodeWithHoldingBalance": "string",
+                      "description": "string",
+                      "displayNumber": "string",
+                      "isSwift": true,
+                      "lastTransactionDate": "string",
+                      "lastUpdateAvailableBalance": "string",
+                      "lastUpdateMainBalance": "string",
+                      "lastUpdateOverdraftLimit": "string",
+                      "lastUpdatePendingBalance": "string",
+                      "lastUpdateSwiftPayment": "string",
+                      "lastUpdateWithHoldingBalance": "string",
+                      "status": "string",
+                      "subsidiaryName": "string",
+                      "type": "string"
+                      }
+                      ]
+                      }
+
+                  Scenario: Busqueda de varias cuentas por pais
+                    When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                    Then El endpoint devuelve en un listado los resultados de la busqueda que cumplan con los parametros account_ids y countries
+                  {
+                  "accountsList": [
+                  {
+                  "accountId": "string",
+                  "alias": "string",
+                  "amountAvailableBalance": 0,
+                  "amountMainBalance": 0,
+                  "amountOverdraftLimit": 0,
+                  "amountPendingBalance": 0,
+                  "amountWithHoldingBalance": 0,
+                  "bic": "string",
+                  "bicDescription": "string",
+                  "corporateName": "string",
+                  "country": "string",
+                  "currencyCodeAvailableBalance": "string",
+                  "currencyCodeMainBalance": "string",
+                  "currencyCodeOverdraftLimit": "string",
+                  "currencyCodePendingBalance": "string",
+                  "currencyCodeWithHoldingBalance": "string",
+                  "description": "string",
+                  "displayNumber": "string",
+                  "isSwift": true,
+                  "lastTransactionDate": "string",
+                  "lastUpdateAvailableBalance": "string",
+                  "lastUpdateMainBalance": "string",
+                  "lastUpdateOverdraftLimit": "string",
+                  "lastUpdatePendingBalance": "string",
+                  "lastUpdateSwiftPayment": "string",
+                  "lastUpdateWithHoldingBalance": "string",
+                  "status": "string",
+                  "subsidiaryName": "string",
+                  "type": "string"
+                  },    {
+                  "accountId": "string",
+                  "alias": "string",
+                  "amountAvailableBalance": 0,
+                  "amountMainBalance": 0,
+                  "amountOverdraftLimit": 0,
+                  "amountPendingBalance": 0,
+                  "amountWithHoldingBalance": 0,
+                  "bic": "string",
+                  "bicDescription": "string",
+                  "corporateName": "string",
+                  "country": "string",
+                  "currencyCodeAvailableBalance": "string",
+                  "currencyCodeMainBalance": "string",
+                  "currencyCodeOverdraftLimit": "string",
+                  "currencyCodePendingBalance": "string",
+                  "currencyCodeWithHoldingBalance": "string",
+                  "description": "string",
+                  "displayNumber": "string",
+                  "isSwift": true,
+                  "lastTransactionDate": "string",
+                  "lastUpdateAvailableBalance": "string",
+                  "lastUpdateMainBalance": "string",
+                  "lastUpdateOverdraftLimit": "string",
+                  "lastUpdatePendingBalance": "string",
+                  "lastUpdateSwiftPayment": "string",
+                  "lastUpdateWithHoldingBalance": "string",
+                  "status": "string",
+                  "subsidiaryName": "string",
+                  "type": "string"
+                  }
+                  ]
+                  }
+
+
+                  Scenario: Busqueda de varias cuentas en varios paises
+                    When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                    Then El endpoint devuelve en un listado los resultados de la busqueda que cumplan con los parametros account_ids y countries
+
+                      {
+                      "accountsList": [
+                      {
+                      "accountId": "string",
+                      "alias": "string",
+                      "amountAvailableBalance": 0,
+                      "amountMainBalance": 0,
+                      "amountOverdraftLimit": 0,
+                      "amountPendingBalance": 0,
+                      "amountWithHoldingBalance": 0,
+                      "bic": "string",
+                      "bicDescription": "string",
+                      "corporateName": "string",
+                      "country": "string",
+                      "currencyCodeAvailableBalance": "string",
+                      "currencyCodeMainBalance": "string",
+                      "currencyCodeOverdraftLimit": "string",
+                      "currencyCodePendingBalance": "string",
+                      "currencyCodeWithHoldingBalance": "string",
+                      "description": "string",
+                      "displayNumber": "string",
+                      "isSwift": true,
+                      "lastTransactionDate": "string",
+                      "lastUpdateAvailableBalance": "string",
+                      "lastUpdateMainBalance": "string",
+                      "lastUpdateOverdraftLimit": "string",
+                      "lastUpdatePendingBalance": "string",
+                      "lastUpdateSwiftPayment": "string",
+                      "lastUpdateWithHoldingBalance": "string",
+                      "status": "string",
+                      "subsidiaryName": "string",
+                      "type": "string"
+                      },    {
+                      "accountId": "string",
+                      "alias": "string",
+                      "amountAvailableBalance": 0,
+                      "amountMainBalance": 0,
+                      "amountOverdraftLimit": 0,
+                      "amountPendingBalance": 0,
+                      "amountWithHoldingBalance": 0,
+                      "bic": "string",
+                      "bicDescription": "string",
+                      "corporateName": "string",
+                      "country": "string",
+                      "currencyCodeAvailableBalance": "string",
+                      "currencyCodeMainBalance": "string",
+                      "currencyCodeOverdraftLimit": "string",
+                      "currencyCodePendingBalance": "string",
+                      "currencyCodeWithHoldingBalance": "string",
+                      "description": "string",
+                      "displayNumber": "string",
+                      "isSwift": true,
+                      "lastTransactionDate": "string",
+                      "lastUpdateAvailableBalance": "string",
+                      "lastUpdateMainBalance": "string",
+                      "lastUpdateOverdraftLimit": "string",
+                      "lastUpdatePendingBalance": "string",
+                      "lastUpdateSwiftPayment": "string",
+                      "lastUpdateWithHoldingBalance": "string",
+                      "status": "string",
+                      "subsidiaryName": "string",
+                      "type": "string"
+                      }
+                      ]
+                      }
+
+                    Scenario: Busqueda de varias cuentas no existentes en un pais
+                      When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                      Then El endpoint devuelve en un listado los resultados de la busqueda que cumplan con los parametros account_ids y countries
+                          {
+                          "accountsList": []
+                          }
+
+                      Scenario: Busqueda de varias cuentas no existentes en varios paises
+                        When Se realiza una llamada GET al endpoint ACCOUNTS con los parametros account_ids y countries
+                        Then El endpoint devuelve en un listado los resultados de la busqueda que cumplan con los parametros account_ids y countries
+                            {
+                            "accountsList": []
+                            }
+
+                        Scenario: Busqueda en ruta no permitida - 403 - Forbidden
+                          When Se realiza una llamada GET al endpoint ACCOUNTS sobre una ruta no permitida con los parametros accounts_ids y countries coherentes.
+                          Then El endpoint devuelve el mensaje 403 'Forbidden' con el siguiente esquema.
+
+                              {
+                              "code": 403,
+                              "title": "Forbidden",
+                              "description": "string"
+                              }

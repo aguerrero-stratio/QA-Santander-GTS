@@ -5,23 +5,12 @@ Feature: GET_ACCOUNT
 
   Scenario: Bad Request
     When Hago una llamada al endpoint ACCOUNTS con método GET con ID de Usuario 'XX' que no existe en BBDD
-    Then El endpoint me devuelve respuesta de error 400 'Bad request' con el siguiente esquema
-
-              {
-              "code": "string",
-              "title": "string",
-              "description": "string"
-              }
+    Then El endpoint me devuelve respuesta de error "/errorResponse/badRequest.json"
 
     Scenario: Forbidden
       When Hago una llamada al endpoint ACCOUNTS a través de rutas que correspondan a directorios del sistema de ficheros
-      Then El endpoint me devuelve respuesta de error 403 'Forbidden' con el siguiente esquema
+      Then El endpoint me devuelve respuesta de error "errorResponse/forbidden.json"
 
-              {
-              "code": "string",
-              "title": "string",
-              "description": "string"
-              }
 
       Scenario: Method not allowed
         When Hago una llamada al endpoint ACCOUNTS con método distinto a GET con ID de Usuario 'XX' que existe o no en BBDD
