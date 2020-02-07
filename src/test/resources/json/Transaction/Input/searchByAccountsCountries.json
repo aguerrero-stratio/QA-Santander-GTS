@@ -1,0 +1,12 @@
+{
+  "accountsCountriesList": [
+    {
+      "accountId": "1",
+      "country": "ES"
+    },
+    {
+      "accountId": "2",
+      "country": "ES"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "documents": {
+    "totalRegistersFound": 3,
+    "retrieved": 3
+  },
+  "transactionsListResponse": [
+    {
+      "displayNumber": null,
+      "accountId": "1",
+      "alias": "htmi0cJeGj",
+      "country": "ES",
+      "agent": "05oQwhCvRP",
+      "transactionsDataList": [
+        {
+          "transactionDetails": {
+            "transactionId": "1",
+            "creationDate": "2019-03-05T00:05:01.123Z",
+            "processedDate": "2019-03-05T00:05:01.123Z",
+            "accountingDate": "2019-03-05T00:05:01.123Z",
+            "description": "yru8A45e5h",
+            "transactionType": "gQl3ZKio7G",
+            "transactionCategory": "4k_wLCYvw2",
+            "transactionConsolidated": true,
+            "transactionAmount": 301638490114,
+            "transactionAmountCurrency": "je3FQhMeIu",
+            "transactionBalanceAmount": 427269298752,
+            "transactionBalanceAmountCurrency": "u_rXGWAH6m",
+            "references": {
+              "transactionBatchReference": "v0GoK8uEvW",
+              "transactionClientReference": "wKQjG9cv5J",
+              "transactionInternalReference": "fzmT_CxdfT"
+            },
+            "operation": {
+              "swiftCode": "pOsgRRckQf",
+              "localOperation": {
+                "localTransactionCode": "m1Msm3lMs1",
+                "localTransactionDescription": "bHZsewOJhE",
+                "additionalInformation": "Pm3ZE4IQGM"
+              },
+              "customerOperation": {
+                "customerAdditionalInformation": "wd8MRr5bre",
+                "customerTransactionCode": "ciWIVoqciz",
+                "customerTransactionDescription": "UYXRoYk4YD"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "displayNumber": null,
+      "accountId": "2",
+      "alias": "htmi0cJeGj",
+      "country": "ES",
+      "agent": "05oQwhCvRP",
+      "transactionsDataList": [
+        {
+          "transactionDetails": {
+            "transactionId": "2",
+            "creationDate": "2019-03-05T00:05:01.123Z",
+            "processedDate": "2019-03-05T00:05:01.123Z",
+            "accountingDate": "2019-03-05T00:05:01.123Z",
+            "description": "yru8A45e5h",
+            "transactionType": "gQl3ZKio7G",
+            "transactionCategory": "4k_wLCYvw2",
+            "transactionConsolidated": true,
+            "transactionAmount": 301638490114,
+            "transactionAmountCurrency": "je3FQhMeIu",
+            "transactionBalanceAmount": 427269298752,
+            "transactionBalanceAmountCurrency": "u_rXGWAH6m",
+            "references": {
+              "transactionBatchReference": "v0GoK8uEvW",
+              "transactionClientReference": "wKQjG9cv5J",
+              "transactionInternalReference": "fzmT_CxdfT"
+            },
+            "operation": {
+              "swiftCode": "pOsgRRckQf",
+              "localOperation": {
+                "localTransactionCode": "m1Msm3lMs1",
+                "localTransactionDescription": "bHZsewOJhE",
+                "additionalInformation": "Pm3ZE4IQGM"
+              },
+              "customerOperation": {
+                "customerAdditionalInformation": "wd8MRr5bre",
+                "customerTransactionCode": "ciWIVoqciz",
+                "customerTransactionDescription": "UYXRoYk4YD"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "displayNumber": null,
+      "accountId": "3",
+      "alias": "htmi0cJeGj",
+      "country": "EN",
+      "agent": "05oQwhCvRP",
+      "transactionsDataList": [
+        {
+          "transactionDetails": {
+            "transactionId": "3",
+            "creationDate": "2019-03-05T00:05:01.123Z",
+            "processedDate": "2019-03-06T00:05:01.123Z",
+            "accountingDate": "2019-03-05T00:05:01.123Z",
+            "description": "yru8A45e5h",
+            "transactionType": "gQl3ZKio7G",
+            "transactionCategory": "4k_wLCYvw2",
+            "transactionConsolidated": true,
+            "transactionAmount": 301638490114,
+            "transactionAmountCurrency": "je3FQhMeIu",
+            "transactionBalanceAmount": 427269298752,
+            "transactionBalanceAmountCurrency": "u_rXGWAH6m",
+            "references": {
+              "transactionBatchReference": "v0GoK8uEvW",
+              "transactionClientReference": "wKQjG9cv5J",
+              "transactionInternalReference": "fzmT_CxdfT"
+            },
+            "operation": {
+              "swiftCode": "pOsgRRckQf",
+              "localOperation": {
+                "localTransactionCode": "m1Msm3lMs1",
+                "localTransactionDescription": "bHZsewOJhE",
+                "additionalInformation": "Pm3ZE4IQGM"
+              },
+              "customerOperation": {
+                "customerAdditionalInformation": "wd8MRr5bre",
+                "customerTransactionCode": "ciWIVoqciz",
+                "customerTransactionDescription": "UYXRoYk4YD"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
