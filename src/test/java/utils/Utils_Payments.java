@@ -102,16 +102,35 @@ public class Utils_Payments {
         String baseMT103 = null;
         int numMT103 = 1;
 
-        for (int i = 0; i <=numMT103;i++){
+        for (int i = 0; i <numMT103;i++){
 
             str108 = RandomString.getAlphaNumericString(15);
             str121_1 = RandomString.getAlphaNumericString(8);
-            baseMT103 = "{1:F21BSCHESM0AXXX4744772372}{4:{177:1910041138}{451:1}{405:H51}{108:E" + str108 + "}}{1:F01BSCHESM0AXXX4744772372}{2:I103BBVAESMMXXXXN}{3:{103:EBA}{113:NNNN}{108:E" + str108 +"}{111:001}{121:" + str121_1 + "-ac3c-462a-bd47-8a7ec5194b62}}{4:\n" +
+        /*    baseMT103 = "{1:F21BSCHESM0AXXX4744772372}{4:{177:1910041138}{451:1}{405:H51}{108:E" + str108 + "}}{1:F01BSCHESM0AXXX4744772372}{2:I103BBVAESMMXXXXN}{3:{103:EBA}{113:NNNN}{108:E" + str108 +"}{111:001}{121:" + str121_1 + "-ac3c-462a-bd47-8a7ec5194b62}}{4:\n" +
                     ":20:0075185601006235\n" +
                     ":23B:CRED\n" +
                     ":32A:191004EUR555,\n" +
                     ":33B:EUR555,\n" +
                     ":50K:/ES470075862235569000054\n" +
+                    "MERCADONA ES\n" +
+                    "ES S   B98308174\n" +
+                    ":57A:BBVAESMMXXX\n" +
+                    ":59:/01821234815678901234\n" +
+                    "CITICB\n" +
+                    "Madrid\n" +
+                    "Madrid,ES\n" +
+                    ":70:0061C17JSB041019\n" +
+                    ":71A:SHA\n" +
+                    ":72:/REC/\n" +
+                    "-}{5:{CHK:0296343B8E59}{TNG:}}";
+*/
+
+            baseMT103 = "{1:F21BSCHESM0AXXX4744772372}{4:{177:1910041138}{451:1}{405:H51}{108:E" + str108 + "}}{1:F01BSCHESM0AXXX4744772372}{2:I103BBVAESMMXXXXN}{3:{103:EBA}{113:NNNN}{108:E" + str108 +"}{111:001}{121:test}}{4:\n" +
+                    ":20:0075185601006235\n" +
+                    ":23B:CRED\n" +
+                    ":32A:191004EUR555,\n" +
+                    ":33B:EUR555,\n" +
+                    ":50K:/QA470075862235569000054\n" +
                     "MERCADONA ES\n" +
                     "ES S   B98308174\n" +
                     ":57A:BBVAESMMXXX\n" +

@@ -1,0 +1,116 @@
+{
+  "paymentsList": [
+    {
+      "paymentId": "d23742b8-1741-4ee6-a6a1-4d3fe2498f59",
+      "transactionStatus": {
+        "status": "ACSP",
+        "reason": "G000"
+      },
+      "statusDate": null,
+      "cancellationStatus": {
+        "transactionCancellationStatus": null
+      },
+      "issueDate": "2019-10-04T10:41",
+      "valueDate": "2019-10-04",
+      "paymentAmount": {
+        "amount": 1500,
+        "currency": "EUR"
+      },
+      "originatorData": {
+        "accountId": "ES8500490072052610475299",
+        "agent": null,
+        "agentName": "S.E. AUTOMAZIONE S.R.L",
+        "agentCountry": null,
+        "agentLocation": "AV ERREKALDE DE 58\n20269 ABALTZISKETA\nES S A81887507"
+      },
+      "beneficiaryData": {
+        "beneficiaryName": "PRUEBA",
+        "creditorCreditAccount": {
+          "idType": "001",
+          "accountId": "12345"
+        },
+        "agent": null,
+        "agentName": "PRUEBA",
+        "agentCountry": null,
+        "agentLocation": "PRUB\nJKN\nFR"
+      },
+      "paymentTrackerDetailResponse": null
+    },
+    {
+      "paymentId": "5dbe94f2-8bc7-4fa6-b944-9e69c4105142",
+      "transactionStatus": {
+        "status": "ACSP",
+        "reason": "G000"
+      },
+      "statusDate": null,
+      "cancellationStatus": {
+        "transactionCancellationStatus": null
+      },
+      "issueDate": "2019-10-04T10:35",
+      "valueDate": "2019-10-04",
+      "paymentAmount": {
+        "amount": 5000,
+        "currency": "EUR"
+      },
+      "originatorData": {
+        "accountId": "ES8500490072052610475299",
+        "agent": null,
+        "agentName": "S.E. AUTOMAZIONE S.R.L",
+        "agentCountry": null,
+        "agentLocation": "AV ERREKALDE DE 58\n20269 ABALTZISKETA\nES S A81887507"
+      },
+      "beneficiaryData": {
+        "beneficiaryName": "PRUEBA SALDO",
+        "creditorCreditAccount": {
+          "idType": "001",
+          "accountId": "12345"
+        },
+        "agent": null,
+        "agentName": "PRUEBA SALDO",
+        "agentCountry": null,
+        "agentLocation": "PSA\nSA\nFRANCIA"
+      },
+      "paymentTrackerDetailResponse": null
+    },
+    {
+      "paymentId": "77562a66-4ca1-4c72-a22b-748de3fe5dc9",
+      "transactionStatus": {
+        "status": "ACSP",
+        "reason": "G000"
+      },
+      "statusDate": null,
+      "cancellationStatus": {
+        "transactionCancellationStatus": null
+      },
+      "issueDate": "2019-10-04T10:09",
+      "valueDate": "2019-10-04",
+      "paymentAmount": {
+        "amount": 530000,
+        "currency": "EUR"
+      },
+      "originatorData": {
+        "accountId": "ES8500490072052610475299",
+        "agent": null,
+        "agentName": "S.E. AUTOMAZIONE S.R.L",
+        "agentCountry": null,
+        "agentLocation": "AV ERREKALDE DE 58\n20269 ABALTZISKETA\nES S A81887507"
+      },
+      "beneficiaryData": {
+        "beneficiaryName": "PRUEBA",
+        "creditorCreditAccount": {
+          "idType": "001",
+          "accountId": "12345"
+        },
+        "agent": null,
+        "agentName": "PRUEBA",
+        "agentCountry": null,
+        "agentLocation": "PRUEB\nFR\nFRANCIA"
+      },
+      "paymentTrackerDetailResponse": null
+    }
+  ],
+  "documents": {
+    "totalRegistersFound": "3",
+    "retrieved": "3"
+  }
+}
