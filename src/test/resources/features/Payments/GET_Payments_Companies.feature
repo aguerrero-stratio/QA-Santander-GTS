@@ -1,21 +1,21 @@
 @Manual
-Feature: POST_Payments_Companies
+Feature: GET_Payments_Companies
 
-  Como usuario quiero tener en el dominio de Payments un endpoint que me permita dar de alta empresas con el servicio de Pain002 para poder generar el fichero .xml del mismo
+  Como usuario quiero tener en el dominio de Payments un endpoint que me permita consultar las empresas con el servicio de Pain002 para poder generar el fichero .xml del mismo
 
   Background:
     Given El dominio de "Payments" esta levantado
 
-  Scenario Outline: Casuisticas de creación de empresas
+  Scenario Outline: Casuisticas de consulta de empresas
 
-  Como usuario quiero realizar satisfactoriamente distintas creaciones de empresas para validar que el servicio se activa
+  Como usuario quiero realizar satisfactoriamente distintas consultas de empresas para validar que el servicio muestra la información correctamente
 
-    When Se realiza un request "POST" con el parametro "<jsonInputBody>"
+    When Se realiza un request "GET" con el parametro "<jsonInputBody>"
     Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
     Examples:
-      | jsonInputBody                                               | jsonOutputBody                                                  |
-      | Payments/Input/POST_Payments_Company/newCompanyPain002.json | Payments/Output/Post_Payments_Company/newCompanyPain002.json    |
-      | Payments/Input/POST_Payments_Company/newCompanyPain002.json | Payments/Output/Post_Payments_Company/companyAlreadyExist.json  |
+      | jsonInputBody | jsonOutputBody                                                         |
+      | Test1         | Payments/Output/GET_Payments_Company/companyWithoutAccountPain002.json |
+      | Test3         | Payments/Output/GET_Payments_Company/companyNoExist.json               |
 
 
   Scenario: Busqueda de empresa
