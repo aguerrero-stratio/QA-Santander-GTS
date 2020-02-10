@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
-public class MyStepdefs_Onboarding {
+public class MyStepdefsOnboarding {
 
 
     @Given("^La banca local envia el archivo \"([^\"]*)\" a la ruta NFS \"([^\"]*)\" y lo recogemos con el workflow \"([^\"]*)\"$")

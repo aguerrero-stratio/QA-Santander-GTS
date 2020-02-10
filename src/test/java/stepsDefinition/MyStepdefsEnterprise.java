@@ -5,7 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class MyStepdefs_Enterprise {
+public class MyStepdefsEnterprise {
 
     private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradeenterprises/enterprises/";
 

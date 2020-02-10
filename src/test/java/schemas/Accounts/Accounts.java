@@ -1,4 +1,4 @@
-package schemas;
+package schemas.Accounts;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

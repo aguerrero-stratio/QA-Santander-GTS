@@ -1,19 +1,17 @@
 
-package schemas;
+package schemas.Payments;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class BeneficiaryData {
 
-    @SerializedName("beneficiaryName")
+public class OriginatorData {
+
+    @SerializedName("accountId")
     @Expose
-    private String beneficiaryName;
-    @SerializedName("creditorCreditAccount")
-    @Expose
-    private CreditorCreditAccount creditorCreditAccount;
+    private String accountId;
     @SerializedName("agent")
     @Expose
     private Object agent;
@@ -27,20 +25,12 @@ public class BeneficiaryData {
     @Expose
     private String agentLocation;
 
-    public String getBeneficiaryName() {
-        return beneficiaryName;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setBeneficiaryName(String beneficiaryName) {
-        this.beneficiaryName = beneficiaryName;
-    }
-
-    public CreditorCreditAccount getCreditorCreditAccount() {
-        return creditorCreditAccount;
-    }
-
-    public void setCreditorCreditAccount(CreditorCreditAccount creditorCreditAccount) {
-        this.creditorCreditAccount = creditorCreditAccount;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public Object getAgent() {
@@ -77,7 +67,7 @@ public class BeneficiaryData {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(agent).append(beneficiaryName).append(creditorCreditAccount).append(agentName).append(agentCountry).append(agentLocation).toHashCode();
+        return new HashCodeBuilder().append(accountId).append(agentName).append(agent).append(agentCountry).append(agentLocation).toHashCode();
     }
 
     @Override
@@ -85,11 +75,11 @@ public class BeneficiaryData {
         if (other == this) {
             return true;
         }
-        if ((other instanceof BeneficiaryData) == false) {
+        if ((other instanceof OriginatorData) == false) {
             return false;
         }
-        BeneficiaryData rhs = ((BeneficiaryData) other);
-        return new EqualsBuilder().append(agent, rhs.agent).append(beneficiaryName, rhs.beneficiaryName).append(creditorCreditAccount, rhs.creditorCreditAccount).append(agentName, rhs.agentName).append(agentCountry, rhs.agentCountry).append(agentLocation, rhs.agentLocation).isEquals();
+        OriginatorData rhs = ((OriginatorData) other);
+        return new EqualsBuilder().append(accountId, rhs.accountId).append(agentName, rhs.agentName).append(agent, rhs.agent).append(agentCountry, rhs.agentCountry).append(agentLocation, rhs.agentLocation).isEquals();
     }
 
 }

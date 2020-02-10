@@ -1,22 +1,20 @@
 package stepsDefinition;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.restassured.response.Response;
 import org.junit.Assert;
-import utils.Utils_Sparta;
+import utils.UtilsSparta;
 
 
-public class MyStepdefs_Sparta {
+public class MyStepdefsSparta {
 
     private String output1 = null;
     private String output2 = null;
     //String param = System.getProperty("my_parameter1");
     //private String baseURI = param;
 
-    public MyStepdefs_Sparta() {
+    public MyStepdefsSparta() {
     }
 
     @Then("^Comparamos ambos y el resultado coincide$")
@@ -29,7 +27,7 @@ public class MyStepdefs_Sparta {
     @Given("^Ejecutamos el workflow \"([^\"]*)\"$")
     public void ejecutamosElWorkflow(String idWorkflow) throws InterruptedException {
 
-        Utils_Sparta.executeWorkflow(idWorkflow);
+        UtilsSparta.executeWorkflow(idWorkflow);
 
     }
 
@@ -41,7 +39,7 @@ public class MyStepdefs_Sparta {
                 "  \"query\": \"CREATE EXTERNAL TABLE " + tablaCrossdata + " STORED AS PARQUET LOCATION '" + rutaParquet + "'\"\n" +
                 "}";
 
-        Utils_Sparta.createCrossDataTable(requestBody);
+        UtilsSparta.createCrossDataTable(requestBody);
 
 
     }
@@ -53,7 +51,7 @@ public class MyStepdefs_Sparta {
                 "  \"query\": \"SELECT * FROM " + tablaCrossdata + "\"\n" +
                 "}";
 
-        output1 = Utils_Sparta.createCrossDataTable(requestBody);
+        output1 = UtilsSparta.createCrossDataTable(requestBody);
 
         System.out.println(output1);
 
@@ -66,7 +64,7 @@ public class MyStepdefs_Sparta {
                 "  \"query\": \"SELECT * FROM " + tablaCrossdata + "\"\n" +
                 "}";
 
-        output2 = Utils_Sparta.createCrossDataTable(requestBody);
+        output2 = UtilsSparta.createCrossDataTable(requestBody);
 
         System.out.println(output2);
 
@@ -75,7 +73,7 @@ public class MyStepdefs_Sparta {
     @Given("^Ejecutamos el workflow \"([^\"]*)\" con parametro NAME \"([^\"]*)\" y VALUE \"([^\"]*)\"$")
     public void ejecutamosElWorkflowConParametroNAMEYVALUE(String idWorkflow, String name, String value) throws InterruptedException {
 
-        Utils_Sparta.executeWorkflowWithParameters(idWorkflow,name,value);
+        UtilsSparta.executeWorkflowWithParameters(idWorkflow,name,value);
 
 
     }

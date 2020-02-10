@@ -4,7 +4,7 @@ Feature: POST_Search transactions
   Como usuario final quiero poder consultar las transacciones para poder conocer los movimientos realizados en mis cuentas bancarias
 
   Background:
-    Given El dominio de "Transaction" esta levantado
+    Given El dominio de "transaction" esta levantado
 
   Scenario Outline: Casuisticas de busquedas de transacciones
     When Realizamos una peticion "POST" al endpoint Transaction con el body "/Transaction/Input/<jsonInputBody>"

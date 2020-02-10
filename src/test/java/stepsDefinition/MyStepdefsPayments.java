@@ -9,9 +9,9 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
-import schemas.Payments;
-import schemas.PaymentsList;
-import utils.Utils_Payments;
+import schemas.Payments.Payments;
+import schemas.Payments.PaymentsList;
+import utils.UtilsPayments;
 
 
 import java.io.FileNotFoundException;
@@ -19,14 +19,14 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class MyStepdefs_Payments {
+public class MyStepdefsPayments {
 
     private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradepayments";
     private Response response = null;
     private ResponseBody responseBody = null;
     private RequestSpecification request = null;
 
-    public MyStepdefs_Payments() throws IOException {
+    public MyStepdefsPayments() throws IOException {
     }
 
 
@@ -39,7 +39,7 @@ public class MyStepdefs_Payments {
 
         response = request.get();
 
-        Utils_Payments.compareUserAccount("user.json",response);
+        UtilsPayments.compareUserAccount("user.json",response);
 
 
     }
@@ -69,15 +69,12 @@ public class MyStepdefs_Payments {
 
         Assert.assertEquals(statusCode,200);
 
-
-
-
     }
 
     @Then("^Nos devuelve la respuesta correcta$")
     public void nosDevuelveLaRespuestaCorrecta() throws FileNotFoundException {
 
-        Utils_Payments.comparePayments("payments.json",response);
+        UtilsPayments.comparePayments("payments.json",response);
 
     }
 

@@ -7,13 +7,11 @@ import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.simple.parser.ParseException;
-import org.junit.Assert;
-
-import java.io.IOException;
+import utils.UtilsCommon;
+import utils.UtilsTransactions;
 
 
-public class MyStepdefs_Transaction {
+public class MyStepdefsTransaction {
 
     private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradetransactions/";
     private RequestSpecification request = RestAssured.given()
@@ -21,27 +19,28 @@ public class MyStepdefs_Transaction {
                     "X-B3-SpanId","123","X-B3-TraceId","123");
     private Response response = null;
 
-    public MyStepdefs_Transaction(){
+    public MyStepdefsTransaction(){
     }
 
-    @Given("^El dominio de Transaction esta levantado$")
-    public void elDominioDeTransactionEstaLevantado() throws IOException, ParseException {
-        response = request.get(baseURI + "transactions/accounts/search");
-        int statusCode = response.getStatusCode();
+    @Given("^El dominio de \"([^\"]*)\" esta levantado$")
+    public void elDominioDeEstaLevantado(String Domain){
 
-        Assert.assertEquals(statusCode,200);
+        UtilsCommon.serviceIsUp(Domain);
+
     }
 
     @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Transaction con el body \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointTransactionConElBody(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
+
+
     }
 
     @Then("^Nos devuelve la respuesta \"([^\"]*)\"$")
     public void nosDevuelveLaRespuesta(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
+        UtilsTransactions.compareTransaction(arg0,response);
+
     }
 
 }

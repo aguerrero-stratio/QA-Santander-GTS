@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 import static net.serenitybdd.rest.RestRequests.given;
 
-public class Utils_Sparta {
+public class UtilsSparta {
 
     // Ejecución script para obtener el usuario y el mesosphere_id necesario para conectarnos a la API de Sparta
     static Process p;
@@ -49,7 +49,7 @@ public class Utils_Sparta {
     private Response res;
     private static Response resQuery;
 
-    public Utils_Sparta() throws IOException {
+    public UtilsSparta() throws IOException {
     }
 
 
