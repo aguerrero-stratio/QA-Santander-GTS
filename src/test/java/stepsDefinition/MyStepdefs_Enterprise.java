@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 
 public class MyStepdefs_Enterprise {
 
-    private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradeenterprises/enterprises/XXX";
+    private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradeenterprises/enterprises/";
 
     @Given("^El dominio de \"([^\"]*)\" esta levantado$")
     public void elDominioDeEstaLevantado(String arg0) throws Throwable {
