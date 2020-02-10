@@ -5,21 +5,15 @@ Feature: RAW_Accounts
   Background:
     Given Sparta esta operativo
 
-    Scenario Outline: Ejecución del workflow 'ot-ac-rw-accounts' con gobierno del dato
+    Scenario: Ejecución del workflow 'ot-ac-rw-accounts' con gobierno del dato
     El workflow recoge los datos de la tabla de Postgres 'onetradeaccounts.account', castea las columnas esperadas,
     añade el TS y vuelva los datos a la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts_accounts'
 
       When Se ejecuta el workflow con Id "06012f6d-577c-46e3-b1fb-5c6d50f09abf"
-      And  Se aplican las reglas de calidad "<qrName>"
+      And  Se aplican las reglas de calidad "OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001/OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001/OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001" y el resultado es "OK"
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-ac-rw-accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts_accounts"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-ac-rw-accounts" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-ac-rw-accounts"
-      And  Se comprueba que el resultado de las QR es 'OK'
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-ac-rw-accounts"
-      Examples:
-        | qrName                                                          |
-        | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                 |
-        | OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001 |
-        | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001           |
 
 
       @Manual
@@ -64,7 +58,7 @@ Feature: RAW_Accounts
         | OT.RF.Accounts_Company_Member.role_id.PR.B.Completeness.PT.001           |
 
 
-  @Manual
+    @Manual
     Scenario Outline: Ejecución del workflow 'ot-ac-rw-company-member' con gobierno del dato negativo
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 

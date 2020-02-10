@@ -2,6 +2,9 @@ package utils;
 
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+import org.junit.Assert;
+import org.junit.runner.Request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +19,7 @@ public class UtilsSparta {
 
     static {
         try {
-            p = Runtime.getRuntime().exec("python3 /home/jmtaborda/Documentos/Workspace/spartaAutomatedTest/src/test/resources/scripts/sso.py --url https://gts-sparta.sgcto-int.stratio.com/gts-sparta/#/ --user sparta --password stratio");
+            p = Runtime.getRuntime().exec("python3 /home/jmtaborda/Documentos/Workspace/QA-Santander-GTS/src/test/resources/scripts/sso.py --url https://gts-sparta.sgcto-int.stratio.com/gts-sparta/#/ --user sparta --password stratio");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,7 +50,10 @@ public class UtilsSparta {
     private static String baseURI = "https://gts-sparta.sgcto-int.stratio.com:443/gts-sparta";
     private ValidatableResponse validatableResponse = null;
     private Response res;
-    private static Response resQuery;
+    //******************************************************//
+    private static Request request = null;
+    private static Response response = null;
+    private static RequestSpecification httpRequest = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when();
 
     public UtilsSparta() throws IOException {
     }
@@ -57,39 +63,64 @@ public class UtilsSparta {
 
         boolean fin = false;
 
-        resQuery = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().post(baseURI + "/workflows/run/" + idWorkflow);
+        response = httpRequest.post(baseURI + "/workflows/run/" + idWorkflow);
 
-
-        String idExecution = resQuery.getBody().asString().replaceAll("\"","");
+        String idExecution = response.getBody().asString().replaceAll("\"","");
 
         System.out.println(idExecution);
 
-
         while (!fin){
 
-            resQueryExecution = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().get(baseURI + "/workflowExecutions/" + idExecution);
+            response = httpRequest.get(baseURI + "/workflowExecutions/" + idExecution);
 
-            String status = resQueryExecution.getBody().asString();
+            String status = response.getBody().asString();
 
             if (status.contains("Finished")){
                 fin = true;
             }
             Thread.sleep(10000);
         }
+    }
 
+
+    public static void createCrossDataTable(String tableName, String hdfsPath){
+
+        //SQL Statements for create dataTable
+        String sqlCreate = "{\\n  \\\"query\\\": \\\"CREATE EXTERNAL TABLE "+ tableName + " STORED AS PARQUET LOCATION \\'" + hdfsPath + "\\'\\\"\\n}";
+
+        //Create table
+        response = httpRequest.body(sqlCreate).post(baseURI + "/crossdata/queries");
+
+        //VALIDAR LA RESPUESTA
+        String outputTable = response.getBody().asString();
 
     }
 
 
-    public static String createCrossDataTable(String sqlStatement){
+    public static String searchCrossDataTable(String tableName){
 
-        resQuery = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().body(sqlStatement).post(baseURI + "/crossdata/queries");
+        //SQL Statements for search dataTable
+        String sqlSearch = "{\\n  \\\"query\\\": \\\"SELECT FROM * " + tableName + "\\\"\\n}";
 
-        String output1 = resQuery.getBody().asString();
+        //Search table
+        response = httpRequest.body(sqlSearch).post(baseURI + "/crossdata/queries");
 
-        return output1;
+        //Save the response
+        String outputTable = response.getBody().asString();
+
+        return outputTable;
     }
 
+    public static void deleteCrossDataTable(String tableName){
+        //SQL Statements for create dataTable
+        String sqlCreate = "{\\n  \\\"query\\\": \\\"DROP TABLE "+ tableName + "\\'\\\"\\n}";
+
+        //Create table
+        response = httpRequest.body(sqlCreate).post(baseURI + "/crossdata/queries");
+
+        //VALIDAR LA RESPUESTA
+        String outputTable = response.getBody().asString();
+    }
 
 
     public static void executeWorkflowWithParameters(String idWorkflow, String name, String value) throws InterruptedException {
@@ -106,7 +137,7 @@ public class UtilsSparta {
                 "  ]\n" +
                 "}";
 
-        resQuery = given().relaxedHTTPSValidation()
+        response = given().relaxedHTTPSValidation()
                 .body(post)
                 .header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when()
                 //.param("WorkflowExecutionVariables",post)
@@ -114,7 +145,7 @@ public class UtilsSparta {
                 .post(baseURI + "/workflows/runWithVariables");
 
 
-        String idExecution = resQuery.getBody().asString().replaceAll("\"","");
+        String idExecution = response.getBody().asString().replaceAll("\"","");
 
         System.out.println(idExecution);
 
@@ -131,4 +162,21 @@ public class UtilsSparta {
             Thread.sleep(10000);
         }
     }
+
+    public static void spartaServiceUp(){
+
+        String baseURI = "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus";
+
+        response = httpRequest.get(baseURI);
+
+        // Get the status code from the Response.
+        // We should get a status code of 200.
+        int statusCode = response.getStatusCode();
+
+        // Assert that correct status code is returned.
+        Assert.assertEquals("Correct status code returned",  200 /*expected value*/, statusCode /*actual value*/);
+
+    }
+
+
 }
