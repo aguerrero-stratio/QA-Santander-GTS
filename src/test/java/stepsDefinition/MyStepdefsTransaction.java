@@ -32,8 +32,6 @@ public class MyStepdefsTransaction {
     @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Transaction con el body \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointTransactionConElBody(String arg0, String arg1) throws Throwable {
 
-
-
     }
 
     @Then("^Nos devuelve la respuesta \"([^\"]*)\"$")
