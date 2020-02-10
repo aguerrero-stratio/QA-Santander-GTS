@@ -7,7 +7,7 @@ Feature: POST_Search transactions
     Given El dominio de "Transaction" esta levantado
 
   Scenario Outline: Casuisticas de busquedas de transacciones
-    When Realizamos una peticion al endpoint "POST" Transaction con el body "/Transaction/Input/<jsonInputBody>"
+    When Realizamos una peticion "POST" al endpoint Transaction con el body "/Transaction/Input/<jsonInputBody>"
     Then Nos devuelve la respuesta "/Transaction/Output/<jsonOutputBody>"
   Examples:
     | jsonInputBody                    | jsonOutputBody                 |
