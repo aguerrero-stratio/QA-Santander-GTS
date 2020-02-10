@@ -32,7 +32,7 @@ public class MyStepdefs_Transaction {
         Assert.assertEquals(statusCode,200);
     }
 
-    @When("^Realizamos una peticion al endpoint \"([^\"]*)\" Transaction con el body \"([^\"]*)\"$")
+    @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Transaction con el body \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointTransactionConElBody(String arg0, String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
@@ -43,4 +43,5 @@ public class MyStepdefs_Transaction {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
 }
