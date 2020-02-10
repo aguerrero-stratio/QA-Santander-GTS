@@ -4,7 +4,7 @@ Feature: GET_Search user accounts
   Como usuario quiero tener en el dominio de Accounts un endpoint para realizar la consulta de las Cuentas asociadas a un Usuario mediante el parámetros de 'User global id' para poder ver el detalle de las mismas
 
   Background:
-    Given El dominio de "Accounts" esta levantado
+    Given El dominio de "accounts" esta levantado
 
     Scenario Outline: Casuisticas de busqueda de cuentas de usuarios
 
