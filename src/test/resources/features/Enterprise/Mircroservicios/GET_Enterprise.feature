@@ -11,6 +11,7 @@ Feature: GET_Enterprise
   Examples:
     | companyGlobalId   | jsonOutputBody      |
     | XXX               | oneEnterprise.json  |
+    | 1                 | noneEnterprise.json  |
 
   Scenario Outline: Control de errores
 
