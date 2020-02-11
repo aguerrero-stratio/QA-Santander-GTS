@@ -30,11 +30,11 @@ Feature: POST_Search transactions
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
     When Se realiza una request erronea "<errorRequest>"
-    Then El servicio nos devuelve la respuesta erronea "<errorResponse>"
+    Then El servicio nos devuelve la respuesta "<errorResponse>" con informacion del error
     Examples:
       | errorRequest       | errorResponse                        |
       | Bad Request        | /errorResponse/badRequest.json       |
       | Unauthorized       | /errorResponse/unauthorized.json     |
       | Forbidden          | /errorResponse/forbidden.json        |
       | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | Method not allowed | /errorResponse/methodNotAllowed.json |

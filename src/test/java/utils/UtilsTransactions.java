@@ -14,6 +14,8 @@ import static org.junit.Assert.assertEquals;
 
 public class UtilsTransactions {
 
+    public static Response response = null;
+
     public static void compareTransaction(String pathInput, Response jsonOutput) throws FileNotFoundException {
 
         String path = "src/test/resources/json/" + pathInput;
@@ -27,6 +29,9 @@ public class UtilsTransactions {
 
     }
 
-
+    public static void searchTransactions(String httpMethod, String httpBody) {
+        response = UtilsCommon.executeRequest(httpMethod, httpBody,"/accounts/search", "transactions");
+        assertEquals("Correct status code returned",  200, response.getStatusCode());
+    }
 
 }
