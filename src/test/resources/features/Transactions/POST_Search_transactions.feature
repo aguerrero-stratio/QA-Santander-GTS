@@ -7,16 +7,8 @@ Feature: POST_Search transactions
     Given El dominio de "transactions" esta levantado
 
   Scenario Outline: Casuisticas de busquedas de transacciones
-<<<<<<< HEAD
-
-    Como usuario quiero realizar distintas casuísticas del endpoint para que me devuelva la respuesta esperada
-
-    When Realizamos una peticion "POST" al endpoint Transaction con el body "/Transaction/Input/<jsonInputBody>"
-    Then Nos devuelve la respuesta "/Transaction/Output/<jsonOutputBody>"
-=======
     When Realizamos una peticion "POST" al endpoint Transaction con el body "Transaction/Input/<jsonInputBody>"
     Then El endpoint Transacion nos devuelve la respuesta "Transaction/Output/<jsonOutputBody>"
->>>>>>> 20992a285081851b25cd3bb384137508ec0bf8fc
   Examples:
      | jsonInputBody                    | jsonOutputBody                 |
      | noneTransactions.json            | noneTransactions.json          |
@@ -37,19 +29,8 @@ Feature: POST_Search transactions
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-<<<<<<< HEAD
-    When Se realiza un request erronea "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
-    Examples:
-      | errorRequest       | errorResponse         |
-      | Bad Request        | badRequest.json       |
-      | Unauthorized       | unauthorized.json     |
-      | Forbidden          | forbidden.json        |
-      | Not found          | notFound.json         |
-      | Method nor allowed | methodNotAllowed.json |
-=======
     When Se realiza una request erronea "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>" con informacion del error
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>" con informacion del error
     Examples:
       | errorRequest       | errorResponse                        |
       | Bad Request        | /errorResponse/badRequest.json       |
@@ -57,4 +38,3 @@ Feature: POST_Search transactions
       | Forbidden          | /errorResponse/forbidden.json        |
       | Not found          | /errorResponse/notFound.json         |
       | Method not allowed | /errorResponse/methodNotAllowed.json |
->>>>>>> 20992a285081851b25cd3bb384137508ec0bf8fc
