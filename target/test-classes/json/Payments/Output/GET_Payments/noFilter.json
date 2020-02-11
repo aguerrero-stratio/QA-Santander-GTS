@@ -1,5 +1,0 @@
-{
-  "code": "400",
-  "title": "Bad Request",
-  "description": "request need at least one search param"
-}

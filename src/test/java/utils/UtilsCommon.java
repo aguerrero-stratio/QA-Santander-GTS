@@ -6,22 +6,18 @@ import io.restassured.specification.RequestSpecification;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.Request;
 
 import javax.jms.*;
+import java.io.File;
 
 public class UtilsCommon {
 
-    private static Request request = null;
-    private static Response response = null;
-    private static RequestSpecification httpRequest = RestAssured.given();
+    private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation();
+    private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
 
+    public static void serviceIsUp (String domain){
 
-    public static  void  serviceIsUp (String Domain){
-
-        String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade"+ Domain + "/swagger-ui.html#/";
-
-        response = httpRequest.get(baseURI);
+        Response response = httpRequest.get(baseURI + domain + "/swagger-ui.html#/");
 
         // Get the status code from the Response.
         // We should get a status code of 200.
@@ -114,5 +110,26 @@ public class UtilsCommon {
         connection.close();
     }
 
+    public static Response executeRequest(String requestMethod, String httpBody, String endPoint, String domain) {
+        httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
+                "X-B3-SpanId","123","X-B3-TraceId","123",
+                "accept", "*/*", "Content-Type", "application/json");
+        String URI = baseURI + domain + "/" + domain + endPoint;
+        String httpBodyFilePath = "src/test/resources/json/" + httpBody;
+        File requestBody = new File(httpBodyFilePath);
+        httpRequest.body(requestBody);
+        Response response;
+        switch (requestMethod) {
+            case "POST":
+                response = httpRequest.post(URI);
+                break;
+            case "GET":
+                response = httpRequest.get(URI);
+                break;
+            default:
+                throw new RuntimeException("Invalid request method " + requestMethod);
+        }
+        return response;
+    }
 
 }

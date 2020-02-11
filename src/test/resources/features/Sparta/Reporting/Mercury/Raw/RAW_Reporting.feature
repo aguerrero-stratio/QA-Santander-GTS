@@ -6,8 +6,7 @@ Feature: RAW_Mercury
   Background:
     Given Sparta en estado operativo
 
-
-  Scenario : Ejecución del workflow 'rp-mr-ru-unformatted' sin gobierno del dato
+  Scenario: Ejecución del workflow 'rp-mr-ru-unformatted' sin gobierno del dato
 
   El workflow recoge los ficheros de un origen y los copia a una carpeta destino RAW-unformatted para su posterior formateo
 
