@@ -29,13 +29,13 @@ public class TransactionDetails {
     private References references;
     @SerializedName("transactionAmount")
     @Expose
-    private Integer transactionAmount;
+    private Long transactionAmount;
     @SerializedName("transactionAmountCurrency")
     @Expose
     private String transactionAmountCurrency;
     @SerializedName("transactionBalanceAmount")
     @Expose
-    private Integer transactionBalanceAmount;
+    private Long transactionBalanceAmount;
     @SerializedName("transactionBalanceAmountCurrency")
     @Expose
     private String transactionBalanceAmountCurrency;
@@ -100,11 +100,11 @@ public class TransactionDetails {
         this.references = references;
     }
 
-    public Integer getTransactionAmount() {
+    public Long getTransactionAmount() {
         return transactionAmount;
     }
 
-    public void setTransactionAmount(Integer transactionAmount) {
+    public void setTransactionAmount(Long transactionAmount) {
         this.transactionAmount = transactionAmount;
     }
 
@@ -116,11 +116,11 @@ public class TransactionDetails {
         this.transactionAmountCurrency = transactionAmountCurrency;
     }
 
-    public Integer getTransactionBalanceAmount() {
+    public Long getTransactionBalanceAmount() {
         return transactionBalanceAmount;
     }
 
-    public void setTransactionBalanceAmount(Integer transactionBalanceAmount) {
+    public void setTransactionBalanceAmount(Long transactionBalanceAmount) {
         this.transactionBalanceAmount = transactionBalanceAmount;
     }
 

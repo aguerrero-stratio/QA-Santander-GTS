@@ -4,33 +4,40 @@ Feature: POST_Search transactions
   Como usuario final quiero poder consultar las transacciones para poder conocer los movimientos realizados en mis cuentas bancarias
 
   Background:
-    Given El dominio de "transaction" esta levantado
+    Given El dominio de "transactions" esta levantado
 
   Scenario Outline: Casuisticas de busquedas de transacciones
+<<<<<<< HEAD
 
     Como usuario quiero realizar distintas casuísticas del endpoint para que me devuelva la respuesta esperada
 
     When Realizamos una peticion "POST" al endpoint Transaction con el body "/Transaction/Input/<jsonInputBody>"
     Then Nos devuelve la respuesta "/Transaction/Output/<jsonOutputBody>"
+=======
+    When Realizamos una peticion "POST" al endpoint Transaction con el body "Transaction/Input/<jsonInputBody>"
+    Then El endpoint Transacion nos devuelve la respuesta "Transaction/Output/<jsonOutputBody>"
+>>>>>>> 20992a285081851b25cd3bb384137508ec0bf8fc
   Examples:
-    | jsonInputBody                    | jsonOutputBody                 |
-    | noneTransactions.json            | noneTransactions.json          |
-    | oneTransaction.json              | oneTransaction.json            |
-    | searchByAccountsCountries.json   | searchByAccountsCountries.json |
-    | searchByAllFields.json           | searchByAllFields.json         |
-    | searchByAmountCurrencies.json    | searchByAmountCurrencies.json  |
-    | searchByAmountTypes.json         | searchByAmountTypes.json       |
-    | searchByClientReference.json     | searchByClientReference.json   |
-    | searchByDescription.json         | searchByDescription.json       |
-    | searchBySwiftCodes.json          | searchBySwiftCodes.json        |
-    | searchFromToAmount.json          | searchFromToAmount.json        |
-    | searchFromToDate.json            | searchFromToDate.json          |
-    | someTransactions.json            | someTransactions.json          |
+     | jsonInputBody                    | jsonOutputBody                 |
+     | noneTransactions.json            | noneTransactions.json          |
+     | oneTransaction.json              | oneTransaction.json            |
+     | searchByAccountsCountries.json   | searchByAccountsCountries.json |
+     | searchByAllFields.json           | searchByAllFields.json         |
+     | searchByAmountCurrencies.json    | searchByAmountCurrencies.json  |
+     | searchByAmountTypes.json         | searchByAmountTypes.json       |
+     | searchByClientReference.json     | searchByClientReference.json   |
+     | searchByDescription.json         | searchByDescription.json       |
+     | searchBySwiftCodes.json          | searchBySwiftCodes.json        |
+     | searchFromToAmount.json          | searchFromToAmount.json        |
+     | searchFromToDate.json            | searchFromToDate.json          |
+     | someTransactions.json            | someTransactions.json          |
 
+  @Ignore
   Scenario Outline: Control de errores
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
+<<<<<<< HEAD
     When Se realiza un request erronea "<errorRequest>"
     Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
@@ -40,3 +47,14 @@ Feature: POST_Search transactions
       | Forbidden          | forbidden.json        |
       | Not found          | notFound.json         |
       | Method nor allowed | methodNotAllowed.json |
+=======
+    When Se realiza una request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "<errorResponse>" con informacion del error
+    Examples:
+      | errorRequest       | errorResponse                        |
+      | Bad Request        | /errorResponse/badRequest.json       |
+      | Unauthorized       | /errorResponse/unauthorized.json     |
+      | Forbidden          | /errorResponse/forbidden.json        |
+      | Not found          | /errorResponse/notFound.json         |
+      | Method not allowed | /errorResponse/methodNotAllowed.json |
+>>>>>>> 20992a285081851b25cd3bb384137508ec0bf8fc
