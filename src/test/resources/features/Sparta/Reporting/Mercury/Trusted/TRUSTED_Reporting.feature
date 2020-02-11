@@ -6,7 +6,7 @@ Feature: TRUSTED_Mercury
   Background:
     Given Sparta en estado operativo
 
-  Scenario : Ejecución del workflow 'rp-mr-tt-transaction' sin gobierno del dato
+  Scenario: Ejecución del workflow 'rp-mr-tt-transaction' sin gobierno del dato
 
   El workflow recoge los datos almacenados en RAW formatted, los castea en campos correctos y los progresa al area de TRUSTED
 
