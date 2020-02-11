@@ -11,11 +11,11 @@ Feature: GET_Payments_Companies
   Como usuario quiero realizar satisfactoriamente distintas consultas de empresas para validar que el servicio muestra la información correctamente
 
     When Se realiza un request "GET" con el parametro "<jsonInputBody>"
-    Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
+    Then El servicio nos devuelve la respuesta "Payments/Output/GET_Payments_Company/<jsonOutputBody>"
     Examples:
-      | jsonInputBody | jsonOutputBody                                                         |
-      | Test1         | Payments/Output/GET_Payments_Company/companyWithoutAccountPain002.json |
-      | Test3         | Payments/Output/GET_Payments_Company/companyNoExist.json               |
+      | jsonInputBody | jsonOutputBody                    |
+      | Test1         | companyWithoutAccountPain002.json |
+      | Test3         | companyNoExist.json               |
 
 
   Scenario: Busqueda de empresa
@@ -27,12 +27,12 @@ Feature: GET_Payments_Companies
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "GET" "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>"
+    When Se realiza un request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       | errorResponse         |
+      | Bad Request        | badRequest.json       |
+      | Unauthorized       | unauthorized.json     |
+      | Forbidden          | forbidden.json        |
+      | Not found          | notFound.json         |
+      | Method nor allowed | methodNotAllowed.json |

@@ -11,14 +11,14 @@ Feature: GET_Payments
   Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
     When Se realiza un request "GET" con el parametro "<paymentFilter>"
-    Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
+    Then El servicio nos devuelve la respuesta "/Payments/Output/GET_Payments/<jsonOutputBody>"
     Examples:
       | paymentFilter                                                | jsonOutputBody                                 |
-      | account_id,ES8500490072052610475299                          | /Payments/Output/GET_Payments/accountId.json   |
-      | paymentId,d23742b8-1741-4ee6-a6a1-4d3fe2498f59               | /Payments/Output/GET_Payments/paymentId.json   |
-      | searchText,d23742b8-1741-4ee6-a6a1-4d3fe2498f59,currency,EUR | /Payments/Output/GET_Payments/paymentId.json   |
-      | searchText, 123123123                                        | /Payments/Output/GET_Payments/noResults.json   |
-      |                                                              | /Payments/Output/GET_Payments/noFilter.json    |
+      | account_id,ES8500490072052610475299                          | accountId.json   |
+      | paymentId,d23742b8-1741-4ee6-a6a1-4d3fe2498f59               | paymentId.json   |
+      | searchText,d23742b8-1741-4ee6-a6a1-4d3fe2498f59,currency,EUR | paymentId.json   |
+      | searchText, 123123123                                        | noResults.json   |
+      |                                                              | noFilter.json    |
 
   Scenario: Búsqueda aleatoria de pagos
     When Se realiza una request aleatoria de "10" busquedas
@@ -28,14 +28,14 @@ Feature: GET_Payments
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "GET" "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>"
+    When Se realiza un request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       | errorResponse         |
+      | Bad Request        | badRequest.json       |
+      | Unauthorized       | unauthorized.json     |
+      | Forbidden          | forbidden.json        |
+      | Not found          | notFound.json         |
+      | Method nor allowed | methodNotAllowed.json |
 
 

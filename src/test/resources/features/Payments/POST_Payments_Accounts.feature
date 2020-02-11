@@ -1,4 +1,4 @@
-Feature: PATCH_Payments_Company
+Feature: POST_Accounts
 
 
   Scenario Outline: Control de errores

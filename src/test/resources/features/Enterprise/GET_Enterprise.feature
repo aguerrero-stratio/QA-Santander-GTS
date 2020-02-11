@@ -6,6 +6,9 @@ Feature: GET_Enterprise
     Given El dominio de "Enterpise" esta levantado
 
   Scenario Outline: Casuisticas de busquedas de empresas
+
+    Como usuario quiero realizar distintas casuísticas del endpoint para que me devuelva la respuesta esperada
+
     When Realizamos una peticion "GET" al endpoint Enterprise con "<companyGlobalId>"
     Then Nos devuelve la respuesta "/Enterprise/Output/<jsonOutputBody>"
   Examples:
@@ -17,12 +20,12 @@ Feature: GET_Enterprise
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>"
+    When Se realiza un request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       | errorResponse         |
+      | Bad Request        | badRequest.json       |
+      | Unauthorized       | unauthorized.json     |
+      | Forbidden          | forbidden.json        |
+      | Not found          | notFound.json         |
+      | Method nor allowed | methodNotAllowed.json |

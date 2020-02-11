@@ -11,24 +11,24 @@ Feature: GET_Payments Pain 002
   Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
     When Se realiza un request "GET" con el parametro "<accountId>"
-    Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
+    Then El servicio nos devuelve la respuesta "/Payments/Output/GET_Payments_Pain002/<jsonOutputBody>"
     Examples:
-      | accountId                | jsonOutputBody                                                  |
-      | ES8500490072052610475299 | /Payments/Output/GET_Payments_Pain002/correctPain002.json       |
-      | ES8500490072052610475290 | /Payments/Output/GET_Payments_Pain002/incorrectAccountId.json   |
+      | accountId                | jsonOutputBody            |
+      | ES8500490072052610475299 | correctPain002.json       |
+      | ES8500490072052610475290 | incorrectAccountId.json   |
 
   Scenario Outline: Control de errores
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "GET" "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>"
+    When Se realiza un request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       | errorResponse         |
+      | Bad Request        | badRequest.json       |
+      | Unauthorized       | unauthorized.json     |
+      | Forbidden          | forbidden.json        |
+      | Not found          | notFound.json         |
+      | Method nor allowed | methodNotAllowed.json |
 
 

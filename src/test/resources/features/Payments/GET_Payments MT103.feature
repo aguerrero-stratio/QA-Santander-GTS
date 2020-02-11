@@ -11,11 +11,11 @@ Feature: GET_Payments MT103
   Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
     When Se realiza un request "GET" con el parametro "<paymentId>"
-    Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
+    Then El servicio nos devuelve la respuesta "/Payments/Output/GET_Payments_MT103/<jsonOutputBody>"
     Examples:
-      | paymentId                               | jsonOutputBody                                            |
-      | 00L1DjW4-ac3c-462a-bd47-8a7ec5194b62    | /Payments/Output/GET_Payments_MT103/paymentIdValid.json   |
-      | 12300L1DjW4-ac3c-462a-bd47-8a7ec5194b62 | /Payments/Output/GET_Payments_MT103/paymentIdInvalid.json |
+      | paymentId                               | jsonOutputBody        |
+      | 00L1DjW4-ac3c-462a-bd47-8a7ec5194b62    | paymentIdValid.json   |
+      | 12300L1DjW4-ac3c-462a-bd47-8a7ec5194b62 | paymentIdInvalid.json |
 
 
   Scenario: Ingesta de MT103 y validacion posterior
@@ -29,16 +29,16 @@ Feature: GET_Payments MT103
 
   Scenario Outline: Control de errores
 
-    Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
+  Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "GET" "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "<errorResponse>"
+    When Se realiza un request erronea "<errorRequest>"
+    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       | errorResponse         |
+      | Bad Request        | badRequest.json       |
+      | Unauthorized       | unauthorized.json     |
+      | Forbidden          | forbidden.json        |
+      | Not found          | notFound.json         |
+      | Method nor allowed | methodNotAllowed.json |
 
 

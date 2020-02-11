@@ -1,0 +1,162 @@
+{
+  "transactionStatus": {
+    "status": "ACCC",
+    "reason": null
+  },
+  "cancellationStatus": {
+    "transactionCancellationStatus": null
+  },
+  "initiationTime": null,
+  "completionTime": null,
+  "lastUpdateTime": null,
+  "PaymentEventsResponse": [
+    {
+      "networkReference": "20191115ADCBAEA0AXXX2576018281",
+      "messageNameIdentification": "103",
+      "businessService": "001",
+      "trackerEventType": "CTPT",
+      "valid": true,
+      "invalidityReason": null,
+      "invalidityDescription": null,
+      "instructionIdentification": "5000000074236838",
+      "releatedReference": null,
+      "caseIdentification": null,
+      "originalInstructionIdentification": null,
+      "assignmentIdentification": null,
+      "resolvedCaseIdentification": null,
+      "underlyingCancellationDetails": {
+        "cancellationRequestDetails": {
+          "cancellationReasonInformation": null,
+          "indemnityAgreement": null
+        },
+        "cancellationResponseDetails": {
+          "investigationExecutionStatus": null,
+          "investigationExecutionStatusReason": {
+            "rejected": null,
+            "pending": null
+          }
+        },
+        "cancellationRequestTrackingStatus": null
+      },
+      "forwardedToAgent": null,
+      "fundsAvailableDate": null,
+      "fromAgent": "BSCHESMAXXX",
+      "toAgent": "IRVTUS30XXX",
+      "originatorAgent": null,
+      "serialParties": {
+        "debtorAgent": "ADCBAEA0XXX",
+        "instructingReimbursementAgent": null,
+        "creditorAgent": "LOYDGB2LXXX"
+      },
+      "coverParties": {
+        "debtor": null,
+        "debtorAgent": null,
+        "intermediaryAgent1": null,
+        "creditorAgent": null,
+        "creditor": null
+      },
+      "senderAcknowledgementReceipt": "2020-02-05T15:46:29Z",
+      "receivedDate": "2020-02-05T15:46:41Z",
+      "instructedAmount": {
+        "currency": "USD",
+        "amount": 480
+      },
+      "confirmedAmount": {
+        "currency": null,
+        "amount": null
+      },
+      "interbankSettlementAmount": {
+        "currency": "USD",
+        "amount": 480
+      },
+      "interbankSettlementDate": "2020-02-05T15:46:36.036Z",
+      "chargerBearer": null,
+      "chargeAmount": {
+        "currency": null,
+        "amount": null
+      },
+      "foreignExchangeDetails": {
+        "sourceCurrency": null,
+        "targetCurrency": null,
+        "exchangeRate": null
+      },
+      "updatePayment": null,
+      "duplicateMessageReference": null,
+      "copiedBusinessService": null
+    },
+    {
+      "networkReference": "20191115ADCBAEA0AXXX2576018281",
+      "messageNameIdentification": "103",
+      "businessService": "001",
+      "trackerEventType": "CTPT",
+      "valid": true,
+      "invalidityReason": null,
+      "invalidityDescription": null,
+      "instructionIdentification": "5000000074236838",
+      "releatedReference": null,
+      "caseIdentification": null,
+      "originalInstructionIdentification": null,
+      "assignmentIdentification": null,
+      "resolvedCaseIdentification": null,
+      "underlyingCancellationDetails": {
+        "cancellationRequestDetails": {
+          "cancellationReasonInformation": null,
+          "indemnityAgreement": null
+        },
+        "cancellationResponseDetails": {
+          "investigationExecutionStatus": null,
+          "investigationExecutionStatusReason": {
+            "rejected": null,
+            "pending": null
+          }
+        },
+        "cancellationRequestTrackingStatus": null
+      },
+      "forwardedToAgent": null,
+      "fundsAvailableDate": null,
+      "fromAgent": null,
+      "toAgent": null,
+      "originatorAgent": null,
+      "serialParties": {
+        "debtorAgent": "ADCBAEA0XXX",
+        "instructingReimbursementAgent": null,
+        "creditorAgent": "LOYDGB2LXXX"
+      },
+      "coverParties": {
+        "debtor": null,
+        "debtorAgent": null,
+        "intermediaryAgent1": null,
+        "creditorAgent": null,
+        "creditor": null
+      },
+      "senderAcknowledgementReceipt": "2020-02-06T15:46:29Z",
+      "receivedDate": "2020-02-06T15:46:41Z",
+      "instructedAmount": {
+        "currency": "USD",
+        "amount": 480
+      },
+      "confirmedAmount": {
+        "currency": null,
+        "amount": null
+      },
+      "interbankSettlementAmount": {
+        "currency": "USD",
+        "amount": 480
+      },
+      "interbankSettlementDate": "2020-02-05T15:46:36.036Z",
+      "chargerBearer": null,
+      "chargeAmount": {
+        "currency": null,
+        "amount": null
+      },
+      "foreignExchangeDetails": {
+        "sourceCurrency": null,
+        "targetCurrency": null,
+        "exchangeRate": null
+      },
+      "updatePayment": null,
+      "duplicateMessageReference": null,
+      "copiedBusinessService": null
+    }
+  ]
+}

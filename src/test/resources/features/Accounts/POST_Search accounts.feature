@@ -10,27 +10,27 @@ Feature: POST_Search accounts
 
       Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
-      When Se realiza un request "POST" con el body "<jsonInputBody>"
-      Then El servicio nos devuelve la respuesta "<jsonOutputBody>"
+      When Se realiza un request "POST" con el body "/Accounts/Input/POST_Search_accounts/<jsonInputBody>"
+      Then El servicio nos devuelve la respuesta "/Accounts/Output/POST_Search_accounts/<jsonOutputBody>"
       Examples:
-        | jsonInputBody                                                   | jsonOutputBody                                                   |
-        | /Accounts/Input/POST_Search_accounts/oneExistingAccount.json    | /Accounts/Output/POST_Search_accounts/oneExistingAccount.json    |
-        | /Accounts/Input/POST_Search_accounts/someExistingAccounts.json  | /Accounts/Output/POST_Search_accounts/someExistingAccounts.json  |
-        | /Accounts/Input/POST_Search_accounts/oneNoExistingAccount.json  | /Accounts/Output/POST_Search_accounts/oneNoExistingAccount.json  |
-        | /Accounts/Input/POST_Search_accounts/someNoExistingAccount.json | /Accounts/Output/POST_Search_accounts/someNoExistingAccount.json |
+        | jsonInputBody              | jsonOutputBody             |
+        | oneExistingAccount.json    | oneExistingAccount.json    |
+        | someExistingAccounts.json  | someExistingAccounts.json  |
+        | oneNoExistingAccount.json  | oneNoExistingAccount.json  |
+        | someNoExistingAccount.json | someNoExistingAccount.json |
 
-      Scenario Outline: Control de errores
+    Scenario Outline: Control de errores
 
-        Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
+    Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-        When Se realiza un request erronea "<errorRequest>"
-        Then El servicio nos devuelve la respuesta "<errorResponse>"
-        Examples:
-          | errorRequest       | errorResponse                        |
-          | Bad Request        | /errorResponse/badRequest.json       |
-          | Unauthorized       | /errorResponse/unauthorized.json     |
-          | Forbidden          | /errorResponse/forbidden.json        |
-          | Not found          | /errorResponse/notFound.json         |
-          | Method nor allowed | /errorResponse/methodNotAllowed.json |
+      When Se realiza un request erronea "<errorRequest>"
+      Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>"
+      Examples:
+        | errorRequest       | errorResponse         |
+        | Bad Request        | badRequest.json       |
+        | Unauthorized       | unauthorized.json     |
+        | Forbidden          | forbidden.json        |
+        | Not found          | notFound.json         |
+        | Method nor allowed | methodNotAllowed.json |
 
 
