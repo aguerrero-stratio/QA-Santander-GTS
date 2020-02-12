@@ -24,17 +24,14 @@ Feature: POST_Search transactions
      | searchFromToDate.json            | searchFromToDate.json          |
      | someTransactions.json            | someTransactions.json          |
 
-  @Ignore
+  @ErrorRequest
   Scenario Outline: Control de errores
 
   Como usuario quiero validar el control de errores del endpoint para validar el desarrollo del mismo
 
-    When Se realiza una request erronea "<errorRequest>"
-    Then El servicio nos devuelve la respuesta "/errorResponse/<errorResponse>" con informacion del error
+    When Se realiza una peticion "POST" erronea "<errorRequest>" al dominio "transactions" con el endpoint "/accounts/search"
+    Then El servicio nos devuelve la respuesta con informacion del error correspondiente a "<errorRequest>"
     Examples:
-      | errorRequest       | errorResponse                        |
-      | Bad Request        | /errorResponse/badRequest.json       |
-      | Unauthorized       | /errorResponse/unauthorized.json     |
-      | Forbidden          | /errorResponse/forbidden.json        |
-      | Not found          | /errorResponse/notFound.json         |
-      | Method not allowed | /errorResponse/methodNotAllowed.json |
+      | errorRequest       |
+      | Bad Request        |
+      | Method Not Allowed |

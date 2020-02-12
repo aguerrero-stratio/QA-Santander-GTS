@@ -9,9 +9,9 @@ public class MyStepdefsCommon {
     }
 
     @Given("^El dominio de \"([^\"]*)\" esta levantado$")
-    public void elDominioDeEstaLevantado(String Domain){
+    public void elDominioDeEstaLevantado(String domain){
 
-        UtilsCommon.serviceIsUp(Domain);
+        UtilsCommon.serviceIsUp(domain);
 
     }
 
