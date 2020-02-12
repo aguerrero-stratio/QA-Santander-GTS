@@ -4,7 +4,7 @@ Feature: TRUSTED_Transactions
   que no cumplen con los formatos establecidos.
 
   Background:
-    Given Sparta esta operativo
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
 
     Scenario: Ejecución del workflow 'ot-tr-tt-transaction-company-account' sin gobierno del dato
 
@@ -37,4 +37,3 @@ Feature: TRUSTED_Transactions
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-tr-tt-transaction"
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-tr-tt-transaction_transaction_amount_currency_refusals"
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-tr-tt-transaction_transaction_balance_amount_currency_refusals"
-

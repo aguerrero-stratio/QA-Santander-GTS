@@ -3,7 +3,7 @@ Feature: TRUSTED_Accounts
   Como usuario quiero ejecutar los flujos de Sparta pertenecientes al dominio de Accounts, en el área de TRUSTED y gobernando los datos para poder promociarlos al área de ONEVIEW
 
   Background:
-    Given Sparta esta operativo
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
 
     Scenario: Ejecución del workflow 'ot-ac-tt-accounts' sin gobierno del dato
 

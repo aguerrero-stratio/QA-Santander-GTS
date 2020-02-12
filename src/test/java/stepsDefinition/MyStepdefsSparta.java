@@ -1,12 +1,16 @@
 package stepsDefinition;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import utils.UtilsSparta;
+
+import java.util.List;
 
 
 public class MyStepdefsSparta {
@@ -18,20 +22,18 @@ public class MyStepdefsSparta {
 
     }
 
-    @Given("^Sparta esta operativo$")
-    public void spartaEstaOperativo() {
+    @Given("^Sparta operativo en la url \"([^\"]*)\"$")
+    public void spartaEstaOperativo(String url) {
 
         //Request to /appStatus to verify the service up
-        UtilsSparta.spartaServiceUp();
+        UtilsSparta.spartaServiceUp(url);
 
     }
 
     @When("^Se ejecuta el workflow con Id \"([^\"]*)\"$")
     public void seEjecutaElWorkflowConId(String idWorkflow) throws InterruptedException {
-
         //Execute workflow without parameters
         UtilsSparta.executeWorkflow(idWorkflow);
-
     }
 
     @Then("^Se crea en XDATA la tabla \"([^\"]*)\" con el hdfs-output del workflow \"([^\"]*)\"$")
@@ -39,10 +41,10 @@ public class MyStepdefsSparta {
         UtilsSparta.createCrossDataTable(tableName,hdfsPath);
     }
 
-    @And("^Se aplican las reglas de calidad \"([^\"]*)\" y el resultado es \"([^\"]*)\"$")
-    public void seAplicanLasReglasDeCalidadYElResultadoEs(String idQR, String resultQR) throws Throwable {
+    @And("^Se aplican las reglas de calidad \"([^\"]*)\" con resultado \"([^\"]*)\"$")
+    public void seAplicanLasReglasDeCalidadYElResultadoEs(String idQR, String resultQR) {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        UtilsSparta.checkWorkflowQualityrules(idQR,resultQR);
     }
 
     @And("^Se comprueba que el resultado obtenido \"([^\"]*)\" coincide con el resultado esperado en XDATA \"([^\"]*)\"$")
@@ -52,7 +54,7 @@ public class MyStepdefsSparta {
 
         String expected = UtilsSparta.searchCrossDataTable(tableNameExpected);
 
-        Assert.assertTrue(actual== expected);
+        Assert.assertTrue(actual == expected);
 
     }
 
@@ -61,5 +63,48 @@ public class MyStepdefsSparta {
 
         UtilsSparta.deleteCrossDataTable(tableName);
 
+    }
+
+    @Then("^Se aplican las siguientes reglas de calidad con resultado$")
+    public void seAplicanLasSiguientesReglasDeCalidadConResultado(@NotNull DataTable Qrules) {
+        List<String> listOfQR = Qrules.asList(String.class);
+        System.out.println("Resultado - " + listOfQR.get(0));
+        System.out.println("Name - " + listOfQR.get(1));
+    }
+
+    @Then("^Se recogen los ficheros de la carpeta origen \"([^\"]*)\"$")
+    public void seRecogenLosFicherosDeLaCarpetaOrigen(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^Se copian a una carpeta destino \"([^\"]*)\"$")
+    public void seCopianAUnaCarpetaDestino(String arg0) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^Se comprueba que todos los ficheros de la \"([^\"]*)\" han sido copiados en el destino \"([^\"]*)\"$")
+    public void seCompruebaQueTodosLosFicherosDeLaHanSidoCopiadosEnElDestino(String arg0, String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^Se comprueba el \"([^\"]*)\" del ultimo resultado almacenado en la tabla de XDATA \"([^\"]*)\"$")
+    public void seCompruebaElDelUltimoResultadoAlmacenadoEnLaTablaDeXDATA(String arg0, String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^Se crea en XDATA la tabla \"([^\"]*)\" con la ruta hdfs \"([^\"]*)\"$")
+    public void seCreaEnXDATALaTablaConLaRutaHdfs(String arg0, String arg1) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^Se ejecuta el workflow con Id \"([^\"]*)\" seleccionando como input las tablas:$")
+    public void seEjecutaElWorkflowConIdSeleccionandoComoInputLasTablas(String idWorkflow, DataTable Ltables) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }
