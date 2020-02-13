@@ -132,6 +132,5 @@ public class MyStepdefsPayments {
     public void seRealizaUnRequestAlEndpointPaymentsConElParametro(String arg0, String arg1){
 
 
-
     }
 }

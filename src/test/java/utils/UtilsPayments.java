@@ -55,9 +55,9 @@ public class UtilsPayments {
         }
     }
 
-    public static void searchPayments(String httpMethod, String httpBody, String filters) {
+    public static void searchPayments(String httpMethod, String parameters, String filters) {
 
-        response = UtilsCommon.executeRequest(httpMethod, httpBody,"&pageNumber=0&pageSize=1000", "payments");
+        response = UtilsCommon.executeRequestWithParameters(httpMethod, parameters + "&pageNumber=0&pageSize=1000","", "payments");
 
         assertEquals("Correct status code returned",  200, response.getStatusCode());
     }

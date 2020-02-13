@@ -112,7 +112,7 @@ public class UtilsCommon {
         connection.close();
     }
 
-    public static Response executeRequest(String requestMethod, String httpBodyFile, String endPoint, String domain) {
+    public static Response executeRequestWithBody(String requestMethod, String httpBodyFile, String endPoint, String domain) {
         setHttpRequestHeaders();
         setHttpRequestBody(httpBodyFile);
         String URI = baseURI + domain + "/" + domain + endPoint;
@@ -129,6 +129,24 @@ public class UtilsCommon {
         }
         return response;
     }
+
+    public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
+        setHttpRequestHeaders();
+        String URI = baseURI + domain + "/" + domain + endPoint + parameters;
+        Response response;
+        switch (requestMethod) {
+            case "POST":
+                response = httpRequest.post(URI);
+                break;
+            case "GET":
+                response = httpRequest.get(URI);
+                break;
+            default:
+                throw new RuntimeException("Invalid request method " + requestMethod);
+        }
+        return response;
+    }
+
 
     private static void setHttpRequestHeaders() {
         httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
