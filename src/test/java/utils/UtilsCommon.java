@@ -12,7 +12,9 @@ import java.io.File;
 
 public class UtilsCommon {
 
-    private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation();
+
+    private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
+
     private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
 
     public static void serviceIsUp (String domain){

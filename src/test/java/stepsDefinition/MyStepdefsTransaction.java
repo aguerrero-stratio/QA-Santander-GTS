@@ -1,11 +1,21 @@
 package stepsDefinition;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import utils.UtilsCommon;
 import utils.UtilsTransactions;
 
 
 public class MyStepdefsTransaction {
+
+    @Given("^El dominio de \"([^\"]*)\" esta levantado$")
+    public void elDominioDeEstaLevantado(String Domain){
+
+        UtilsCommon.serviceIsUp(Domain);
+
+    }
+
 
     @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Transaction con el body \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointTransactionConElBody(String httpMethod, String httpBody) {
