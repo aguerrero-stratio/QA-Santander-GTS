@@ -13,6 +13,7 @@ import schemas.MigracionWorkflows.MigracionWorkflow;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 import java.io.File;  // Import the File class
 import java.io.FileWriter;   // Import the FileWriter class
@@ -52,6 +53,7 @@ public class UtilsSparta {
     private static String[] segundoSplit = outputSplit.split("; ");
     private static String mesosphere = segundoSplit[0];
     private static String user = segundoSplit[1];
+    private static String getIdExecutionforQR;
 
     // Variables globales
     private static Response resQueryExecution = null;
@@ -104,6 +106,15 @@ public class UtilsSparta {
         }
 
     }
+    private static String getidExecutionforQR(){
+
+            return getIdExecutionforQR;
+    }
+
+    private static void setidExecutionforQR(String getIdExecutionforQR){
+
+        UtilsSparta.getIdExecutionforQR = getIdExecutionforQR;
+    }
 
     public static void executeWorkflow(String idWorkflow) throws InterruptedException {
 
@@ -115,17 +126,30 @@ public class UtilsSparta {
 
         System.out.println(idExecution);
 
-        while (!fin){
+        setidExecutionforQR(idExecution);
+
+        while (!fin) {
 
             response = httpRequest.get(baseURI + "/workflowExecutions/" + idExecution);
 
             String status = response.getBody().asString();
 
-            if (status.contains("Finished")){
+            if (status.contains("Finished")) {
                 fin = true;
             }
             Thread.sleep(10000);
         }
+    }
+
+    public static void checkWorkflowQualityrules(String qualityRules,String qualityRulesresponse){
+
+        //response = httpRequest.post(baseURI + "/workflows/run/" + idWorkflow);
+
+        //String idExecution = response.getBody().asString().replaceAll("\"","");
+
+        String workflowExecution = getidExecutionforQR();
+
+        //System.out.println(idExecution);
     }
 
 
@@ -209,9 +233,10 @@ public class UtilsSparta {
         }
     }
 
-    public static void spartaServiceUp(){
+    public static void spartaServiceUp(String url){
 
-        String baseURI = "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus";
+        // If the input url is null then use the default baseURI, in the other case use the input baseURI
+        baseURI = Objects.requireNonNullElse(url, "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus");
 
         response = httpRequest.get(baseURI);
 
