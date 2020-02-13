@@ -1,14 +1,22 @@
 package utils;
 
+import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.Request;
+import org.yecht.Data;
+import schemas.MigracionWorkflows.MigracionWorkflow;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import java.io.File;  // Import the File class
+import java.io.FileWriter;   // Import the FileWriter class
+
 
 import static net.serenitybdd.rest.RestRequests.given;
 
@@ -58,6 +66,44 @@ public class UtilsSparta {
     public UtilsSparta() throws IOException {
     }
 
+    @Test
+    public void migracion() throws IOException {
+
+        String [] idWorkflow = {"abadf8fc-af8a-4845-a139-62996acc6746"
+                ,"07957f4c-1a82-4e74-8811-8dc822195319"
+                ,"42202ef4-9cb9-47ab-92ca-7b3c1d045c3f"
+                ,"53c71108-effb-430d-bb08-bf758b2bdee9"};
+
+        downloadWorkflowJson(idWorkflow);
+    }
+
+    public static void downloadWorkflowJson(String[] idWorkflow) throws IOException {
+
+        for (int i= 0; i < idWorkflow.length;i++){
+
+            Response responseMigracion = null;
+
+
+            responseMigracion = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().get("https://gts-sparta.sgcto-int.stratio.com:443/gts-sparta/workflows/download/" + idWorkflow[i]);
+
+            String responseString = responseMigracion.getBody().asString();
+
+            MigracionWorkflow migracionWorkflow = responseMigracion.as(MigracionWorkflow.class, ObjectMapperType.GSON);
+
+
+            File myObj = new File("src/test/resources/files/"+ migracionWorkflow.getName() +".json");
+
+            FileWriter myWriter = new FileWriter("src/test/resources/files/" + migracionWorkflow.getName() + ".json");
+
+            myWriter.write(responseString);
+
+            myWriter.close();
+
+            System.out.println(responseString);
+
+        }
+
+    }
 
     public static void executeWorkflow(String idWorkflow) throws InterruptedException {
 

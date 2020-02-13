@@ -39,7 +39,7 @@ public class UtilsCommon {
 
             str108 = RandomString.getAlphaNumericString(15);
             str121_1 = RandomString.getAlphaNumericString(8);
-            baseMT103 = "{1:F21BSCHESM0AXXX4744772372}{4:{177:1910041138}{451:1}{405:H51}{108:E" + str108 + "}}{1:F01BSCHESM0AXXX4744772372}{2:I103BBVAESMMXXXXN}{3:{103:EBA}{113:NNNN}{108:E" + str108 +"}{111:001}{121:" + str121_1 + "-ac3c-462a-bd47-8a7ec5194b62}}{4:\n" +
+            baseMT103 = "{1:F21BSCHESM0AXXX4744772372}{4:{177:1910041138}{451:1}{405:H51}{108:E" + str108 + "}}{1:F01BSCHESM0AXXX4744772372}{2:I103BBVAESMMXXXXN}{3:{103:EBA}{113:NNNN}{108:E" + str108 +"}{111:001}{121:---" + str121_1 + "-ac3c-462a-bd47-8a7ec5194b62}}{4:\n" +
                     ":20:0075185601006235\n" +
                     ":23B:CRED\n" +
                     ":32A:191004EUR555,\n" +
