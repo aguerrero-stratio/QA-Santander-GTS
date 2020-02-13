@@ -3,7 +3,7 @@ Feature: GET_Enterprise
   Como usuario final quiero poder consultar una empresa para poder conocer los datos de la misma registrados en el sistema
 
   Background:
-    Given El dominio de "Enterpise" esta levantado
+    Given El dominio de enterprises esta levantado
 
   Scenario Outline: Casuisticas de busquedas de empresas
 

@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import utils.UtilsCommon;
 
 public class MyStepdefsEnterprise {
 
@@ -21,4 +22,8 @@ public class MyStepdefsEnterprise {
         throw new PendingException();
     }
 
+    @Given("^El dominio de enterprises esta levantado$")
+    public void elDominioDeEnterprisesEstaLevantado() {
+        UtilsCommon.serviceIsUp("enterprises");
+    }
 }

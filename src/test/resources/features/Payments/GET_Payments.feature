@@ -4,13 +4,13 @@ Feature: GET_Payments
   Como usuario quiero tener en el dominio de Payments un endpoint para realizar la consulta de los Pagos mediante distintos parámetros únicos o anidados (Account_Id, Bic, ...) para poder ver el detalle de los mismos
 
   Background:
-    Given El dominio de "Payments" esta levantado
+    Given El dominio de payments esta levantado
 
   Scenario Outline: Casuisticas de busqueda de Pagos
 
   Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
-    When Se realiza un request "GET" con el parametro "<paymentFilter>"
+    When Se realiza un request "GET" al endpoint payments con el parametro "<paymentFilter>"
     Then El servicio nos devuelve la respuesta "/Payments/Output/GET_Payments/<jsonOutputBody>"
     Examples:
       | paymentFilter                                                | jsonOutputBody                                 |

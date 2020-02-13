@@ -11,9 +11,7 @@ public class MyStepdefsTransaction {
 
     @Given("^El dominio de \"([^\"]*)\" esta levantado$")
     public void elDominioDeEstaLevantado(String Domain){
-
         UtilsCommon.serviceIsUp(Domain);
-
     }
 
 

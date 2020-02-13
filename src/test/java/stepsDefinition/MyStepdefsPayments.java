@@ -1,5 +1,6 @@
 package stepsDefinition;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,6 +12,7 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import schemas.Payments.Payments;
 import schemas.Payments.PaymentsList;
+import utils.UtilsCommon;
 import utils.UtilsPayments;
 
 
@@ -40,22 +42,6 @@ public class MyStepdefsPayments {
         response = request.get();
 
         UtilsPayments.compareUserAccount("user.json",response);
-
-
-    }
-
-
-    @Given("^El dominio de Payment esta levantado$")
-    public void elDominioDePaymentEstaLevantado() throws FileNotFoundException {
-
-        request = RestAssured.given().relaxedHTTPSValidation().headers("X-B3-ParentSpanId","123","X-B3-Sampled","123","X-B3-SpanId","123","X-B3-TraceId","123");
-
-        response = request.get(baseURI + "/payments?pageNumber=0&pageSize=1000&status=ACSP");
-
-        int statusCode = response.getStatusCode();
-
-        Assert.assertEquals(statusCode,200);
-
     }
 
     @When("^Realizamos una petición al endpoint GET Payment$")
@@ -137,4 +123,15 @@ public class MyStepdefsPayments {
 
     }
 
+    @Given("^El dominio de payments esta levantado$")
+    public void elDominioDePaymentsEstaLevantado() {
+        UtilsCommon.serviceIsUp("payments");
+    }
+
+    @When("^Se realiza un request \"([^\"]*)\" al endpoint payments con el parametro \"([^\"]*)\"$")
+    public void seRealizaUnRequestAlEndpointPaymentsConElParametro(String arg0, String arg1){
+
+
+
+    }
 }

@@ -14,12 +14,15 @@ import java.io.FileReader;
 import java.util.List;
 
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
 
 
 public class UtilsPayments {
 
     private static List<AccountsList> itemLists;
     private static List<AccountsList> itemListsFile;
+    public static Response response = null;
+
 
     public static void compareUserAccount(String pathInput, Response jsonOutput) throws FileNotFoundException {
 
@@ -50,6 +53,13 @@ public class UtilsPayments {
             }
 
         }
+    }
+
+    public static void searchPayments(String httpMethod, String httpBody, String filters) {
+
+        response = UtilsCommon.executeRequest(httpMethod, httpBody,"&pageNumber=0&pageSize=1000", "payments");
+
+        assertEquals("Correct status code returned",  200, response.getStatusCode());
     }
 
     public static void comparePayments(String pathInput, Response jsonOutput) throws FileNotFoundException {
