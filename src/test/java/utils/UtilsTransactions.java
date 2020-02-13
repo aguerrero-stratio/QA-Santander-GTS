@@ -17,7 +17,7 @@ public class UtilsTransactions {
     public static Response response = null;
 
     public static void searchTransactions(String httpMethod, String httpBody) {
-        response = UtilsCommon.executeRequest(httpMethod, httpBody,"/accounts/search", "transactions");
+        response = UtilsCommon.executeRequestWithBody(httpMethod, httpBody,"/accounts/search", "transactions");
         assertEquals("Correct status code returned",  200, response.getStatusCode());
     }
 

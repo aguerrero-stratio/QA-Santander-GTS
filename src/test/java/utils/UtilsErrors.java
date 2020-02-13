@@ -24,7 +24,7 @@ public class UtilsErrors {
        String httpBody = getHttpBody(httpErrorMessage);
        String mutatedHttpMethod = mutatesHttpMethod(httpMethod, httpErrorMessage);
 
-       response = UtilsCommon.executeRequest(mutatedHttpMethod, httpBody, endPoint, domain);
+       response = UtilsCommon.executeRequestWithBody(mutatedHttpMethod, httpBody, endPoint, domain);
        Integer expectedStatusCode = getStatusCode(httpErrorMessage).orElseThrow(() ->
                new InvalidArgumentException("Error Request Message Not Found"));
        Integer statusCode = response.getStatusCode();
