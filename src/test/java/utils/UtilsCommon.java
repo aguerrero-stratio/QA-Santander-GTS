@@ -112,14 +112,10 @@ public class UtilsCommon {
         connection.close();
     }
 
-    public static Response executeRequest(String requestMethod, String httpBody, String endPoint, String domain) {
-        httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
-                "X-B3-SpanId","123","X-B3-TraceId","123",
-                "accept", "*/*", "Content-Type", "application/json");
+    public static Response executeRequest(String requestMethod, String httpBodyFile, String endPoint, String domain) {
+        setHttpRequestHeaders();
+        setHttpRequestBody(httpBodyFile);
         String URI = baseURI + domain + "/" + domain + endPoint;
-        String httpBodyFilePath = "src/test/resources/json/" + httpBody;
-        File requestBody = new File(httpBodyFilePath);
-        httpRequest.body(requestBody);
         Response response;
         switch (requestMethod) {
             case "POST":
@@ -132,6 +128,17 @@ public class UtilsCommon {
                 throw new RuntimeException("Invalid request method " + requestMethod);
         }
         return response;
+    }
+
+    private static void setHttpRequestHeaders() {
+        httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
+                "X-B3-SpanId","123","X-B3-TraceId","123",
+                "accept", "*/*", "Content-Type", "application/json");
+    }
+
+    private static void setHttpRequestBody(String httpBodyFile) {
+        File requestBody = new File("src/test/resources/json/" + httpBodyFile);
+        httpRequest.body(requestBody);
     }
 
 }
