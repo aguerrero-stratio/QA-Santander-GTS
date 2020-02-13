@@ -1,6 +1,7 @@
 package utils;
 
 import com.google.gson.Gson;
+import io.restassured.RestAssured;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import schemas.Transactions.Transactions;
@@ -30,7 +31,9 @@ public class UtilsTransactions {
     }
 
     public static void searchTransactions(String httpMethod, String httpBody) {
+
         response = UtilsCommon.executeRequest(httpMethod, httpBody,"/accounts/search", "transactions");
+
         assertEquals("Correct status code returned",  200, response.getStatusCode());
     }
 

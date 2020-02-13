@@ -10,8 +10,8 @@ Feature: POST_Search transactions
 
     Como usuario quiero realizar distintas casuísticas del endpoint para que me devuelva la respuesta esperada
 
-    When Realizamos una peticion "POST" al endpoint Transaction con el body "/Transaction/Input/<jsonInputBody>"
-    Then Nos devuelve la respuesta "/Transaction/Output/<jsonOutputBody>"
+    When Realizamos una peticion "POST" al endpoint Transaction con el body "Transaction/Input/<jsonInputBody>"
+    Then Nos devuelve la respuesta "Transaction/Output/<jsonOutputBody>"
   Examples:
      | jsonInputBody                    | jsonOutputBody                 |
      | noneTransactions.json            | noneTransactions.json          |
