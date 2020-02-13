@@ -1,7 +1,6 @@
 package utils;
 
 import com.google.gson.Gson;
-import io.restassured.RestAssured;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import schemas.Transactions.Transactions;
