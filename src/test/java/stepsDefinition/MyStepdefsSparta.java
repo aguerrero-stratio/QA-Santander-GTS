@@ -107,4 +107,16 @@ public class MyStepdefsSparta {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
+    @Then("^El resultado obtenido se guarda en la BBDD \"([^\"]*)\"$")
+    public void elResultadoObtenidoSeGuardaEnLaBBDD(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^Se comprueba que el resultado almacenado en BBDD \"([^\"]*)\" coincide con el resultado esperado en BBDD \"([^\"]*)\"$")
+    public void seCompruebaQueElResultadoAlmacenadoEnBBDDCoincideConElResultadoEsperadoEnBBDD(String arg0, String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
