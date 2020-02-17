@@ -1,14 +1,14 @@
 {
   "accountsList": [
     {
-      "accountId": "ES47007586223556354AA",
+      "accountId": "ES9300490001563200501404",
       "displayNumber": null,
       "alias": null,
-      "type": "TXT",
+      "type": null,
       "description": null,
       "status": "Active",
       "country": "ES",
-      "agent": null,
+      "agent": "BSCHESM0AXXX",
       "agentDescription": null,
       "corporateName": null,
       "subsidiaryName": null,
