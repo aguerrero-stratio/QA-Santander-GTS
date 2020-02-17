@@ -15,11 +15,21 @@ public class UtilsCommon {
 
     private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
 
-    private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
+    //private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
+
+    public static String getBaseURIEnvironment(){
+        String baseURI = "";
+        if (System.getProperty("Env") == null)
+            baseURI = WebServiceEndPoints.BASE_URI_TEST.getUrl();
+        else if (System.getProperty("Env").equals("Dev"))
+            baseURI = WebServiceEndPoints.BASE_URI_DEV.getUrl();
+
+        return baseURI;
+    }
 
     public static void serviceIsUp (String domain){
 
-        Response response = httpRequest.get(baseURI + domain + "/swagger-ui.html#/");
+        Response response = httpRequest.get(getBaseURIEnvironment() + domain + "/swagger-ui.html#/");
 
         // Get the status code from the Response.
         // We should get a status code of 200.
@@ -115,7 +125,7 @@ public class UtilsCommon {
     public static Response executeRequestWithBody(String requestMethod, String httpBodyFile, String endPoint, String domain) {
         setHttpRequestHeaders();
         setHttpRequestBody(httpBodyFile);
-        String URI = baseURI + domain + "/" + domain + endPoint;
+        String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint;
         Response response;
         switch (requestMethod) {
             case "POST":
@@ -132,7 +142,7 @@ public class UtilsCommon {
 
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
         setHttpRequestHeaders();
-        String URI = baseURI + domain + "/" + domain + endPoint + parameters;
+        String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
         Response response;
         switch (requestMethod) {
             case "POST":
