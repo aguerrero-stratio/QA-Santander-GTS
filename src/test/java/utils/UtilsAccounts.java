@@ -21,7 +21,8 @@ public class UtilsAccounts {
     public static Response response = null;
 
     public static void searchAccounts(String httpMethod, String httpBody) {
-        response = UtilsCommon.executeRequestWithBody(httpMethod, httpBody, "/search", "accounts");
+        response = UtilsCommon.executeRequestWithBody(httpMethod, httpBody, WebServiceEndPoints.SEARCH.getUrl(),
+                WebServiceEndPoints.DOMAIN_ACCOUNTS.getUrl());
         assertEquals("Correct status code returned",  200, response.getStatusCode());
     }
 
@@ -32,7 +33,7 @@ public class UtilsAccounts {
         Accounts expectedAccountsResponse = gson.fromJson(bufferedReader, Accounts.class);
         Accounts accountsResponse = jsonOutput.as(Accounts.class, ObjectMapperType.GSON);
 
-        if (getJsonFileName(pathInput).equals("oneNoExistingAccount.json")) {
+        if (matchNoExistingAccount(pathInput)) {
             compareNoExistingAccounts(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
         } else {
             assertAllAccountsFields(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
@@ -130,10 +131,10 @@ public class UtilsAccounts {
         assertEquals(accountsResponseNullsOnly,expectedAccountsResponseNullsOnly);
     }
 
-    private static String getJsonFileName(String pathInput) {
-        Pattern pattern = Pattern.compile("\\w+.json");
+    private static boolean matchNoExistingAccount(String pathInput) {
+        Pattern pattern = Pattern.compile("NoExisting\\w+.json");
         Matcher matcher = pattern.matcher(pathInput);
-        return matcher.find() ? matcher.group(0) : "";
+        return matcher.find();
     }
 
 }

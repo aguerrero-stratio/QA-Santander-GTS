@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import schemas.Transactions.Transactions;
-import utils.WebServiceEndPoints;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +17,8 @@ public class UtilsTransactions {
     public static Response response = null;
 
     public static void searchTransactions(String httpMethod, String httpBody) {
-        response = UtilsCommon.executeRequestWithBody(httpMethod, httpBody,WebServiceEndPoints.ACCOUNT_SEARCH.getUrl(), WebServiceEndPoints.DOMAIN_TRANSACTION.getUrl());
+        response = UtilsCommon.executeRequestWithBody(httpMethod, httpBody,WebServiceEndPoints.ACCOUNT_SEARCH.getUrl(),
+                WebServiceEndPoints.DOMAIN_TRANSACTION.getUrl());
         assertEquals("Correct status code returned",  200, response.getStatusCode());
     }
 

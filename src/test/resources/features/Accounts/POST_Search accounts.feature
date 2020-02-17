@@ -13,11 +13,11 @@ Feature: POST_Search accounts
       When Se realiza una peticion "POST" al endpoint Accounts con el body "Accounts/Input/POST_Search_accounts/<jsonInputBody>"
       Then El servicio nos devuelve la respuesta "Accounts/Output/POST_Search_accounts/<jsonOutputBody>"
       Examples:
-        | jsonInputBody              | jsonOutputBody             |
-        | oneExistingAccount.json    | oneExistingAccount.json    |
-#        | someExistingAccounts.json  | someExistingAccounts.json  |
-#        | oneNoExistingAccount.json  | oneNoExistingAccount.json  |
-#        | someNoExistingAccount.json | someNoExistingAccount.json |
+        | jsonInputBody               | jsonOutputBody              |
+        | oneExistingAccount.json     | oneExistingAccount.json     |
+        | someExistingAccounts.json   | someExistingAccounts.json   |
+        | oneNoExistingAccount.json   | oneNoExistingAccount.json   |
+        | someNoExistingAccounts.json | someNoExistingAccounts.json |
 
     @Ignore
     Scenario Outline: Control de errores

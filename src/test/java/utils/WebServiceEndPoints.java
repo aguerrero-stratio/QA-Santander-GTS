@@ -20,6 +20,7 @@ public enum WebServiceEndPoints {
 
     ACCOUNT_SEARCH("/accounts/search"),
     GET_USER("/users/1/accounts"),
+    SEARCH("/search"),
 
     //*****************************************************//
     //*** SPARTA ENDPOINTS                            **//

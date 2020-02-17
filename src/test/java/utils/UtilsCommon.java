@@ -15,8 +15,6 @@ public class UtilsCommon {
 
     private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
 
-    //private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
-
     public static String getBaseURIEnvironment(){
         String baseURI = "";
         if (System.getProperty("Env") == null)
