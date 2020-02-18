@@ -1,6 +1,7 @@
 package utils;
 
 import io.restassured.RestAssured;
+import static net.serenitybdd.rest.SerenityRest.rest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -13,7 +14,8 @@ import java.io.File;
 public class UtilsCommon {
 
 
-    private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
+    //private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
+    private static RequestSpecification httpRequest = rest().given().relaxedHTTPSValidation("TLSv1.2");
 
     //private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
 
@@ -143,6 +145,10 @@ public class UtilsCommon {
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
         setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
+        if (domain.equals("enterprises")){
+            URI = getBaseURIEnvironment() + domain  + endPoint + "/" + parameters;
+        }
+
         Response response;
         switch (requestMethod) {
             case "POST":
