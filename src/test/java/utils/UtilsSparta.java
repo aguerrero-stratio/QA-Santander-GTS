@@ -60,7 +60,7 @@ public class UtilsSparta {
 
     // Variables globales
     private static Response resQueryExecution = null;
-    private static String baseURI = "https://gts-sparta.sgcto-int.stratio.com/gts-sparta";
+    private static String baseURI = WebServiceEndPoints.BASE_URI_DEV_SPARTA.getUrl();
     private ValidatableResponse validatableResponse = null;
     private Response res;
     //******************************************************//
@@ -87,7 +87,6 @@ public class UtilsSparta {
         for (String s : idWorkflow) {
 
             Response responseMigracion = null;
-
 
             responseMigracion = given().relaxedHTTPSValidation().header("Cookie", user + "; " + mesosphere).header("Content-Type", "application/json").when().get("https://gts-sparta.sgcto-int.stratio.com:443/gts-sparta/workflows/download/" + s);
 
@@ -123,7 +122,7 @@ public class UtilsSparta {
 
         boolean fin = false;
 
-        response = httpRequest.post(baseURI + "/workflows/run/" + idWorkflow);
+        response = httpRequest.post(baseURI + WebServiceEndPoints.WORKFLOW_RUN.getUrl() + idWorkflow);
 
         String idExecution = response.getBody().asString().replaceAll("\"","");
         setidExecutionforQR(idExecution);
@@ -132,7 +131,7 @@ public class UtilsSparta {
 
         while (!fin) {
 
-            response = httpRequest.get(baseURI + "/workflowExecutions/" + idExecution);
+            response = httpRequest.get(baseURI + WebServiceEndPoints.WORKFLOW_EXECUTION.getUrl() + idExecution);
 
             String status = response.getBody().asString();
 
@@ -249,7 +248,7 @@ public class UtilsSparta {
                 .header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when()
                 //.param("WorkflowExecutionVariables",post)
                 .contentType("application/json")
-                .post(baseURI + "/workflows/runWithVariables");
+                .post(baseURI + WebServiceEndPoints.WORKFLOW_RUNWITHVARIABLES.getUrl());
 
 
         String idExecution = response.getBody().asString().replaceAll("\"","");
@@ -259,7 +258,7 @@ public class UtilsSparta {
 
         while (!fin){
 
-            resQueryExecution = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().get(baseURI + "/workflowExecutions/" + idExecution);
+            resQueryExecution = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().get(baseURI + WebServiceEndPoints.WORKFLOW_EXECUTION.getUrl() + idExecution);
 
             String status = resQueryExecution.getBody().asString();
 
@@ -271,9 +270,8 @@ public class UtilsSparta {
     }
 
     public static void spartaServiceUp(String urlStatusSparta){
+        String baseURI = WebServiceEndPoints.BASE_URI_SPARTA_SWAGGER.getUrl() + WebServiceEndPoints.SPARTA_SWAGGER_STATUS.getUrl();
 
-        // If the input url is null then use the default baseURI, in the other case use the input baseURI
-        urlStatusSparta = Objects.requireNonNullElse(urlStatusSparta, "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/");
 
         response = httpRequest.get(urlStatusSparta);
 
