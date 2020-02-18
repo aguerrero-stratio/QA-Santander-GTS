@@ -9,11 +9,10 @@ import utils.UtilsTransactions;
 
 public class MyStepdefsTransaction {
 
-    @Given("^El dominio de \"([^\"]*)\" esta levantado$")
-    public void elDominioDeEstaLevantado(String Domain){
-        UtilsCommon.serviceIsUp(Domain);
+    @Given("^El dominio de transactions esta levantado$")
+    public void elDominioDeTransactionsEstaLevantado() {
+        UtilsCommon.serviceIsUp("transactions");
     }
-
 
     @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Transaction con el body \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointTransactionConElBody(String httpMethod, String httpBody) {

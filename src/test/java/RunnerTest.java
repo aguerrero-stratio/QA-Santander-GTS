@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
     features = "src/test/resources/features",
-        tags = {"@Transaction"},
+        tags = {"@Transactions,@Accounts,@ErrorRequest"},
         glue = {"stepsDefinition"}
 )
 public class RunnerTest {

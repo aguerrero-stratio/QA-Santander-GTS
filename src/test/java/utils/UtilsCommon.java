@@ -10,14 +10,14 @@ import org.junit.Test;
 
 import javax.jms.*;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UtilsCommon {
 
 
     //private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
     private static RequestSpecification httpRequest = rest().given().relaxedHTTPSValidation("TLSv1.2");
-
-    //private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
 
     public static String getBaseURIEnvironment(){
         String baseURI = "";
@@ -173,6 +173,13 @@ public class UtilsCommon {
     private static void setHttpRequestBody(String httpBodyFile) {
         File requestBody = new File("src/test/resources/json/" + httpBodyFile);
         httpRequest.body(requestBody);
+    }
+
+
+    public static boolean matchNullValues(String pathInput, String nullDescription) {
+        Pattern pattern = Pattern.compile("\\w*" + nullDescription + "\\w*.json");
+        Matcher matcher = pattern.matcher(pathInput);
+        return matcher.find();
     }
 
 }
