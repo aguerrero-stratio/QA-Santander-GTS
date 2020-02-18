@@ -9,8 +9,6 @@ import utils.UtilsEnterprise;
 
 public class MyStepdefsEnterprise {
 
-    private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradeenterprises/enterprises/";
-
     @When("^Realizamos una peticion \"([^\"]*)\" al endpoint Enterprise con \"([^\"]*)\"$")
     public void realizamosUnaPeticionAlEndpointEnterpriseCon(String httpMethod, String httpParameter) throws Throwable {
         UtilsEnterprise.searchEnterpriseByID(httpMethod, httpParameter);
