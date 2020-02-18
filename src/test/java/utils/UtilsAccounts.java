@@ -11,8 +11,6 @@ import java.io.FileReader;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +31,7 @@ public class UtilsAccounts {
         Accounts expectedAccountsResponse = gson.fromJson(bufferedReader, Accounts.class);
         Accounts accountsResponse = jsonOutput.as(Accounts.class, ObjectMapperType.GSON);
 
-        if (matchNoExistingAccount(pathInput)) {
+        if (UtilsCommon.matchNullValues(pathInput, "NoExisting")) {
             compareNoExistingAccounts(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
         } else {
             assertAllAccountsFields(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
@@ -129,12 +127,6 @@ public class UtilsAccounts {
         boolean accountsResponseNullsOnly = accountsResponse.stream().noneMatch(Objects::nonNull);
         boolean expectedAccountsResponseNullsOnly = expectedAccountsResponse.stream().noneMatch(Objects::nonNull);
         assertEquals(accountsResponseNullsOnly,expectedAccountsResponseNullsOnly);
-    }
-
-    private static boolean matchNoExistingAccount(String pathInput) {
-        Pattern pattern = Pattern.compile("NoExisting\\w+.json");
-        Matcher matcher = pattern.matcher(pathInput);
-        return matcher.find();
     }
 
 }

@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import javax.jms.*;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UtilsCommon {
 
@@ -165,6 +167,13 @@ public class UtilsCommon {
     private static void setHttpRequestBody(String httpBodyFile) {
         File requestBody = new File("src/test/resources/json/" + httpBodyFile);
         httpRequest.body(requestBody);
+    }
+
+
+    public static boolean matchNullValues(String pathInput, String nullDescription) {
+        Pattern pattern = Pattern.compile("\\w*" + nullDescription + "\\w*.json");
+        Matcher matcher = pattern.matcher(pathInput);
+        return matcher.find();
     }
 
 }
