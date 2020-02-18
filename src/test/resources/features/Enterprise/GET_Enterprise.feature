@@ -1,3 +1,4 @@
+@Enterprise
 Feature: GET_Enterprise
 
   Como usuario final quiero poder consultar una empresa para poder conocer los datos de la misma registrados en el sistema
@@ -14,7 +15,16 @@ Feature: GET_Enterprise
   Examples:
     | companyGlobalId   | jsonOutputBody      |
     | XXX               | oneEnterprise.json  |
-    | 1                 | noneEnterprise.json  |
+
+  Scenario Outline: Casuisticas de busquedas de empresas erroneo
+
+  Como usuario quiero realizar distintas casuísticas del endpoint para que me devuelva la respuesta esperada
+
+    When Realizamos una peticion "GET" al endpoint Enterprise con "<companyGlobalId>" invalido
+    Then Nos devuelve la respuesta "/Enterprise/Output/<jsonOutputBody>"
+    Examples:
+      | companyGlobalId   | jsonOutputBody      |
+      | 1                 | noneEnterprise.json  |
 
   Scenario Outline: Control de errores
 
