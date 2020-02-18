@@ -15,21 +15,19 @@ Feature: RAW_Mercury
     And  Se copian a una carpeta destino "hdfs://gts-hdfs/gts/data/raw/unformatted/reporting/Mercury/"
     Then Se comprueba que todos los ficheros de la "listadeficheros" han sido copiados en el destino "hdfs://gts-hdfs/gts/data/raw/unformatted/reporting/Mercury/"
 
-
   Scenario: Ejecución del workflow 'rp-mr-rf-product' con gobierno del dato
 
   El workflow procesa los ficheros almacenados en RAW-unformatted para que estos sean formateados,tratados y registrados en el area de  RAW-formatted.
 
     When Se ejecuta el workflow con Id "b3e3916d-078e-462a-9562-89b374244778"
     And  Se aplican las siguientes reglas de calidad con resultado
-      | OK                                                      |
-      | RC.RF.Mercury-Product.index.PR.B.Completness.PT.001     |
-      | RC.RF.Mercury-Product.source_id.PR.B.Completness.MF.001 |
-      | RC.RF.Mercury-Product.source.PR.B.Completness.MF.001    |
-      | RC.RF.Mercury-Product.timed_out.PR.B.Completness.PT.001 |
-      | RC.RF.Mercury-Product.total.PR.B.Completness.PT.001     |
-      | RC.RF.Mercury-Product.ts.PR.B.Completness.PT.001        |
-      | RC.RF.Mercury-Product.uid.PR.B.Completness.PT.001       |
+      | RC.RF.Mercury-Product.index.PR.B.Completness.PT.001     | OK |
+      | RC.RF.Mercury-Product.source_id.PR.B.Completness.MF.001 | OK |
+      | RC.RF.Mercury-Product.source.PR.B.Completness.MF.001    | OK |
+      | RC.RF.Mercury-Product.timed_out.PR.B.Completness.PT.001 | OK |
+      | RC.RF.Mercury-Product.total.PR.B.Completness.PT.001     | OK |
+      | RC.RF.Mercury-Product.ts.PR.B.Completness.PT.001        | OK |
+      | RC.RF.Mercury-Product.uid.PR.B.Completness.PT.001       | OK |
     Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp-mr-rf-product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
     And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp-mr-rf-product" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp-mr-rf-product"
     Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp-mr-rf-product"
@@ -51,14 +49,13 @@ Feature: RAW_Mercury
 
     When Se ejecuta el workflow con Id "b3e3916d-078e-462a-9562-89b374244778"
     Then Se aplican las siguientes reglas de calidad con resultado
-      | KO                                                      |
-      | RC.RF.Mercury-Product.index.PR.B.Completness.PT.001     |
-      | RC.RF.Mercury-Product.source_id.PR.B.Completness.MF.001 |
-      | RC.RF.Mercury-Product.source.PR.B.Completness.MF.001    |
-      | RC.RF.Mercury-Product.timed_out.PR.B.Completness.PT.001 |
-      | RC.RF.Mercury-Product.total.PR.B.Completness.PT.001     |
-      | RC.RF.Mercury-Product.ts.PR.B.Completness.PT.001        |
-      | RC.RF.Mercury-Product.uid.PR.B.Completness.PT.001       |
+      | RC.RF.Mercury-Product.index.PR.B.Completness.PT.001     | KO |
+      | RC.RF.Mercury-Product.source_id.PR.B.Completness.MF.001 | KO |
+      | RC.RF.Mercury-Product.source.PR.B.Completness.MF.001    | KO |
+      | RC.RF.Mercury-Product.timed_out.PR.B.Completness.PT.001 | KO |
+      | RC.RF.Mercury-Product.total.PR.B.Completness.PT.001     | KO |
+      | RC.RF.Mercury-Product.ts.PR.B.Completness.PT.001        | KO |
+      | RC.RF.Mercury-Product.uid.PR.B.Completness.PT.001       | KO |
 
 
   Scenario: Ejecución del workflow 'rp-mr-rw-intralayer' para comprobar si la volumetria es correcta en la capa RAW

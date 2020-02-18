@@ -9,12 +9,43 @@ Feature: RAW_Accounts
     El workflow recoge los datos de la tabla de Postgres 'onetradeaccounts.account', castea las columnas esperadas,
     añade el TS y vuelva los datos a la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts'
 
-      When Se ejecuta el workflow con Id "06012f6d-577c-46e3-b1fb-5c6d50f09abf"
+      #When Se ejecuta el workflow con Id "06012f6d-577c-46e3-b1fb-5c6d50f09abf"
       And  Se aplican las siguientes reglas de calidad con resultado
-        | OK                                                                                        |
-        | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                           |
-        | OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001                           |
-        | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                                     |
+        | OT.RF.Accounts_Accounts.account_country_id.PR.B.Completeness.PT.001                                           | OK |
+        | OT.RF.Accounts_Accounts.account_id.PR.B.Completeness.PT.001                                                   | OK |
+        | OT.RF.Accounts_Accounts.alias.PR.B.Completeness.PT.001                                                        | OK |
+        | OT.RF.Accounts_Accounts.amount_available_balance.PR.B.Completeness.PT.001                                     | OK |
+        | OT.RF.Accounts_Accounts.amount_main_balance.PR.B.Completeness.PT.001                                          | OK |
+        | OT.RF.Accounts_Accounts.amount_overdraft_limit.PR.B.Completeness.PT.001                                       | OK |
+        | OT.RF.Accounts_Accounts.amount_pending_balance.PR.B.Completeness.PT.001                                       | OK |
+        | OT.RF.Accounts_Accounts.amount_withholding_balance.PR.B.Completeness.PT.001                                   | OK |
+        | OT.RF.Accounts_Accounts.bic_description.PR.B.Completeness.PT.001                                              | OK |
+        | OT.RF.Accounts_Accounts.bic.PR.B.Completeness.PT.001                                                          | OK |
+        | OT.RF.Accounts_Accounts.corporate_name.PR.B.Completeness.PT.001                                               | OK |
+        | OT.RF.Accounts_Accounts.country.PR.B.Completeness.PT.00                                                       | OK |
+        | OT.RF.Accounts_Accounts.country.PR.B.Domain.PT.001                                                            | OK |
+        | OT.RF.Accounts_Accounts.currency_code_available_balance.PR.B.Completeness.PT.001                              | OK |
+        | OT.RF.Accounts_Accounts.currency_code_available_balance.PR.B.Domain.PT.001                                    | OK |
+        | OT.RF.Accounts_Accounts.currency_code_main_balance.PR.B.Completeness.PT.001                                   | OK |
+        | OT.RF.Accounts_Accounts.currency_code_overdraft_limit.PR.B.Completeness.PT.001                                | OK |
+        | OT.RF.Accounts_Accounts.currency_code_pending_balance.PR.B.Completeness.PT.001                                | OK |
+        | OT.RF.Accounts_Accounts.currency_code_pending_balance.PR.B.Domain.PT.001                                      | OK |
+        | OT.RF.Accounts_Accounts.currency_code_withholding_balance.PR.B.Completeness.PT.001                            | OK |
+        | OT.RF.Accounts_Accounts.currency_code_withholding_balance.PR.B.Domain.PT.001                                  | OK |
+        | OT.RF.Accounts_Accounts.customer_id.PR.B.Completeness.PT.001                                                  | OK |
+        | OT.RF.Accounts_Accounts.description.PR.B.Completeness.PT.001                                                  | OK |
+        | OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001                                               | OK |
+        | OT.RF.Accounts_Accounts.last_transaction_date.PR.B.Completeness.PT.001                                        | OK |
+        | OT.RF.Accounts_Accounts.last_update_available_balance.PR.B.Completeness.PT.001                                | OK |
+        | OT.RF.Accounts_Accounts.last_update_main_balance.PR.B.Completeness.PT.001                                     | OK |
+        | OT.RF.Accounts_Accounts.last_update_overdraft_limit.PR.B.Completeness.PT.001                                  | OK |
+        | OT.RF.Accounts_Accounts.last_update_pending_balance.PR.B.Completeness.PT.001                                  | OK |
+        | OT.RF.Accounts_Accounts.last_update_swift_payment.PR.B.Completeness.PT.001                                    | OK |
+        | OT.RF.Accounts_Accounts.last_update_withholding_balance.PR.B.Completeness.PT.001                              | OK |
+        | OT.RF.Accounts_Accounts.status.PR.B.Completeness.PT.001                                                       | OK |
+        | OT.RF.Accounts_Accounts.subsidiary_name.PR.B.Completeness.PT.001                                              | OK |
+        | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                                                         | OK |
+        | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                                               | OK |
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-ac-rw-accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-ac-rw-accounts" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-ac-rw-accounts"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-ac-rw-accounts"
@@ -26,10 +57,41 @@ Feature: RAW_Accounts
 
       When Se ejecuta el workflow con Id "06012f6d-577c-46e3-b1fb-5c6d50f09abf"
       Then Se aplican las siguientes reglas de calidad con resultado
-        | KO                                                                                        |
-        | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                           |
-        | OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001                           |
-        | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                                     |
+        | OT.RF.Accounts_Accounts.account_country_id.PR.B.Completeness.PT.001                                           | KO |
+        | OT.RF.Accounts_Accounts.account_id.PR.B.Completeness.PT.001                                                   | KO |
+        | OT.RF.Accounts_Accounts.alias.PR.B.Completeness.PT.001                                                        | KO |
+        | OT.RF.Accounts_Accounts.amount_available_balance.PR.B.Completeness.PT.001                                     | KO |
+        | OT.RF.Accounts_Accounts.amount_main_balance.PR.B.Completeness.PT.001                                          | KO |
+        | OT.RF.Accounts_Accounts.amount_overdraft_limit.PR.B.Completeness.PT.001                                       | KO |
+        | OT.RF.Accounts_Accounts.amount_pending_balance.PR.B.Completeness.PT.001                                       | KO |
+        | OT.RF.Accounts_Accounts.amount_withholding_balance.PR.B.Completeness.PT.001                                   | KO |
+        | OT.RF.Accounts_Accounts.bic_description.PR.B.Completeness.PT.001                                              | KO |
+        | OT.RF.Accounts_Accounts.bic.PR.B.Completeness.PT.001                                                          | KO |
+        | OT.RF.Accounts_Accounts.corporate_name.PR.B.Completeness.PT.001                                               | KO |
+        | OT.RF.Accounts_Accounts.country.PR.B.Completeness.PT.00                                                       | KO |
+        | OT.RF.Accounts_Accounts.country.PR.B.Domain.PT.001                                                            | KO |
+        | OT.RF.Accounts_Accounts.currency_code_available_balance.PR.B.Completeness.PT.001                              | KO |
+        | OT.RF.Accounts_Accounts.currency_code_available_balance.PR.B.Domain.PT.001                                    | KO |
+        | OT.RF.Accounts_Accounts.currency_code_main_balance.PR.B.Completeness.PT.001                                   | KO |
+        | OT.RF.Accounts_Accounts.currency_code_overdraft_limit.PR.B.Completeness.PT.001                                | KO |
+        | OT.RF.Accounts_Accounts.currency_code_pending_balance.PR.B.Completeness.PT.001                                | KO |
+        | OT.RF.Accounts_Accounts.currency_code_pending_balance.PR.B.Domain.PT.001                                      | KO |
+        | OT.RF.Accounts_Accounts.currency_code_withholding_balance.PR.B.Completeness.PT.001                            | KO |
+        | OT.RF.Accounts_Accounts.currency_code_withholding_balance.PR.B.Domain.PT.001                                  | KO |
+        | OT.RF.Accounts_Accounts.customer_id.PR.B.Completeness.PT.001                                                  | KO |
+        | OT.RF.Accounts_Accounts.description.PR.B.Completeness.PT.001                                                  | KO |
+        | OT.RF.Accounts_Accounts.display_number.PR.B.Completeness.PT.001                                               | KO |
+        | OT.RF.Accounts_Accounts.last_transaction_date.PR.B.Completeness.PT.001                                        | KO |
+        | OT.RF.Accounts_Accounts.last_update_available_balance.PR.B.Completeness.PT.001                                | KO |
+        | OT.RF.Accounts_Accounts.last_update_main_balance.PR.B.Completeness.PT.001                                     | KO |
+        | OT.RF.Accounts_Accounts.last_update_overdraft_limit.PR.B.Completeness.PT.001                                  | KO |
+        | OT.RF.Accounts_Accounts.last_update_pending_balance.PR.B.Completeness.PT.001                                  | KO |
+        | OT.RF.Accounts_Accounts.last_update_swift_payment.PR.B.Completeness.PT.001                                    | KO |
+        | OT.RF.Accounts_Accounts.last_update_withholding_balance.PR.B.Completeness.PT.001                              | KO |
+        | OT.RF.Accounts_Accounts.status.PR.B.Completeness.PT.001                                                       | KO |
+        | OT.RF.Accounts_Accounts.subsidiary_name.PR.B.Completeness.PT.001                                              | KO |
+        | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                                                         | KO |
+        | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                                               | KO |
 
 
     Scenario: Ejecución del workflow 'ot-ac-rw-accounts' sin gobierno del dato
@@ -48,10 +110,9 @@ Feature: RAW_Accounts
 
       When Se ejecuta el workflow con Id "6f9ab168-22d4-4b5c-b73f-d531b71ae20b"
       And  Se aplican las siguientes reglas de calidad con resultado
-        | OK                                                                        |
-        | OT.RF.Accounts_Company_Member.company_id.PR.B.Completeness.PT.001         |
-        | OT.RF.Accounts_Company_Member.company_member_id.PR.B.Completeness.PT.001  |
-        | OT.RF.Accounts_Company_Member.role_id.PR.B.Completeness.PT.001            |
+        | OT.RF.Accounts_Company_Member.company_id.PR.B.Completeness.PT.001         | OK |
+        | OT.RF.Accounts_Company_Member.company_member_id.PR.B.Completeness.PT.001  | OK |
+        | OT.RF.Accounts_Company_Member.role_id.PR.B.Completeness.PT.001            | OK |
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-ac-rw-company-member" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_company_member"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-ac-rw-company-member" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-ac-rw-company-member"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-ac-rw-company-member"
@@ -62,10 +123,9 @@ Feature: RAW_Accounts
 
       When Se ejecuta el workflow con Id "6f9ab168-22d4-4b5c-b73f-d531b71ae20b"
       Then Se aplican las siguientes reglas de calidad con resultado
-        | KO                                                                        |
-        | OT.RF.Accounts_Company_Member.company_id.PR.B.Completeness.PT.001         |
-        | OT.RF.Accounts_Company_Member.company_member_id.PR.B.Completeness.PT.001  |
-        | OT.RF.Accounts_Company_Member.role_id.PR.B.Completeness.PT.001            |
+        | OT.RF.Accounts_Company_Member.company_id.PR.B.Completeness.PT.001         | KO |
+        | OT.RF.Accounts_Company_Member.company_member_id.PR.B.Completeness.PT.001  | KO |
+        | OT.RF.Accounts_Company_Member.role_id.PR.B.Completeness.PT.001            | KO |
 
     Scenario: Ejecución del workflow 'ot-ac-rw-company-member-account' con gobierno del dato
     El workflow recoge los datos de la tabla de Postgres 'onetradeaccounts.company_member_account', castea las columnas esperadas,
@@ -73,10 +133,9 @@ Feature: RAW_Accounts
 
       When Se ejecuta el workflow con Id "c687c329-bcf1-441d-94be-20c68bd24e4c"
       And  Se aplican las siguientes reglas de calidad con resultado
-        | OK                                                                                       |
-        | OT.RF.Accounts_Company_Member_Account.account_country_id.PR.B.Completeness.PT.001        |
-        | OT.RF.Accounts_Company_Member_Account.company_member_account_id.PR.B.Completeness.PT.001 |
-        | OT.RF.Accounts_Company_Member_Account.company_member_id.PR.B.Completeness.PT.001         |
+        | OT.RF.Accounts_Company_Member_Account.account_country_id.PR.B.Completeness.PT.001        | OK |
+        | OT.RF.Accounts_Company_Member_Account.company_member_account_id.PR.B.Completeness.PT.001 | OK |
+        | OT.RF.Accounts_Company_Member_Account.company_member_id.PR.B.Completeness.PT.001         | OK |
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-ac-rw-company-member-account" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_company_member_account"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-ac-rw-company-member-account" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-ac-rw-company-member-account"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-ac-rw-company-member-account"
@@ -87,7 +146,6 @@ Feature: RAW_Accounts
 
       When Se ejecuta el workflow con Id "c687c329-bcf1-441d-94be-20c68bd24e4c"
       And  Se aplican las siguientes reglas de calidad con resultado
-        | KO                                                                                       |
-        | OT.RF.Accounts_Company_Member_Account.account_country_id.PR.B.Completeness.PT.001        |
-        | OT.RF.Accounts_Company_Member_Account.company_member_account_id.PR.B.Completeness.PT.001 |
-        | OT.RF.Accounts_Company_Member_Account.company_member_id.PR.B.Completeness.PT.001         |
+        | OT.RF.Accounts_Company_Member_Account.account_country_id.PR.B.Completeness.PT.001        | KO |
+        | OT.RF.Accounts_Company_Member_Account.company_member_account_id.PR.B.Completeness.PT.001 | KO |
+        | OT.RF.Accounts_Company_Member_Account.company_member_id.PR.B.Completeness.PT.001         | KO |
