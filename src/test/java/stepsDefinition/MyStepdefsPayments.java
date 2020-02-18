@@ -14,16 +14,17 @@ import schemas.Payments.Payments;
 import schemas.Payments.PaymentsList;
 import utils.UtilsCommon;
 import utils.UtilsPayments;
-
+import utils.WebServiceEndPoints;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.WatchEvent;
 import java.util.List;
 
 
 public class MyStepdefsPayments {
 
-    private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradepayments";
+    //private String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradepayments";
     private Response response = null;
     private ResponseBody responseBody = null;
     private RequestSpecification request = null;
@@ -36,7 +37,7 @@ public class MyStepdefsPayments {
     public void realizamos_una_petición_al_endpoint_user() throws IOException {
 
 
-        baseURI = "https://gts-kong.sgcto-int.stratio.com/onetradeaccounts/users/1/accounts";
+        String baseURI = utils.UtilsCommon.getBaseURIEnvironment() + WebServiceEndPoints.DOMAIN_ACCOUNTS.getUrl() + WebServiceEndPoints.GET_USER.getUrl();
         request = RestAssured.given().relaxedHTTPSValidation().headers("X-B3-ParentSpanId","123","X-B3-Sampled","123","X-B3-SpanId","123","X-B3-TraceId","123");
 
         response = request.get();
@@ -49,7 +50,7 @@ public class MyStepdefsPayments {
 
         request = RestAssured.given().relaxedHTTPSValidation().headers("X-B3-ParentSpanId","123","X-B3-Sampled","123","X-B3-SpanId","123","X-B3-TraceId","123");
 
-        response = request.get(baseURI + "/payments?pageNumber=0&pageSize=1000&status=ACSP");
+        response = request.get(utils.UtilsCommon.getBaseURIEnvironment() + WebServiceEndPoints.DOMAIN_PAYMENTS.getUrl() + WebServiceEndPoints.GET_PAYMENTS.getUrl());
 
         int statusCode = response.getStatusCode();
 
@@ -69,7 +70,7 @@ public class MyStepdefsPayments {
 
         request = RestAssured.given().relaxedHTTPSValidation().headers("X-B3-ParentSpanId","123","X-B3-Sampled","123","X-B3-SpanId","123","X-B3-TraceId","123");
 
-        response = request.get(baseURI + "/payments?pageNumber=0&pageSize=1000&paymentId=" + arg0);
+        response = request.get(utils.UtilsCommon.getBaseURIEnvironment() + WebServiceEndPoints.DOMAIN_PAYMENTS.getUrl() + WebServiceEndPoints.GET_PAYMENTS_BY_ID.getUrl() + arg0);
 
         int statusCode = response.getStatusCode();
 
@@ -98,7 +99,7 @@ public class MyStepdefsPayments {
 
         request = RestAssured.given().relaxedHTTPSValidation().headers("X-B3-ParentSpanId","123","X-B3-Sampled","123","X-B3-SpanId","123","X-B3-TraceId","123");
 
-        response = request.get(baseURI + "/payments?account_id=" + arg0 + "&pageNumber=0&pageSize=1000");
+        response = request.get(utils.UtilsCommon.getBaseURIEnvironment() + WebServiceEndPoints.DOMAIN_PAYMENTS.getUrl() + WebServiceEndPoints.GET_PAYMENTS_ACCOUNT_ID.getUrl() + arg0 + "&pageNumber=0&pageSize=1000");
 
         int statusCode = response.getStatusCode();
 
