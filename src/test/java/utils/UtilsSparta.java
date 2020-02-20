@@ -35,7 +35,8 @@ public class UtilsSparta {
                     .exec("pwd")
                     .getInputStream())).readLine();
             System.out.println("LOCALPATH: "+ getLocalPath);
-            // Use the localpath to obtain info from mesosphere_server
+
+            // Execute a python script to connect to messos.
             outputScriptCommand = new BufferedReader(new InputStreamReader(Runtime.getRuntime()
                     .exec("python3 "+ getLocalPath +"/src/test/resources/scripts/sso.py --url https://gts-sparta.sgcto-int.stratio.com/gts-sparta/#/ --user sparta --password stratio")
                     .getInputStream())).readLine();

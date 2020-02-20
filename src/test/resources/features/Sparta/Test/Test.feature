@@ -136,14 +136,14 @@ Feature: Test
     And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"
     And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_transaction"
 
-
+@Alex_test
   Scenario: Ejecución del workflow 'rp-mr-tt-intralayer' para comprobar si la volumetria es correcta en la capa TRUSTED
 
   El workflow compara los eventos ultimo y penultimo por producto procesados informando si se produce una discrepancia entre ambas medidas de volumetria RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002
 
-    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_transaction" con la ruta hdfs "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/Transaction"
+    #When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_transaction" con la ruta hdfs "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/Transaction"
     Then Se ejecuta el workflow con Id "a60074cd-4b30-4c3d-9af2-9687979fd147"
-    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
-    Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume"
-    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer"
-    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_transaction"
+    #And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
+    #Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume"
+    #And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer"
+    #And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_transaction"
