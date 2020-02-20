@@ -132,6 +132,6 @@ public class MyStepdefsPayments {
     @When("^Se realiza un request \"([^\"]*)\" al endpoint payments con el parametro \"([^\"]*)\"$")
     public void seRealizaUnRequestAlEndpointPaymentsConElParametro(String arg0, String arg1){
 
-
+            UtilsPayments.hagounapeticionGET(arg0,arg1);
     }
 }

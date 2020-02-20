@@ -16,7 +16,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Objects;
 
 import java.io.File;  // Import the File class
 import java.io.FileWriter;   // Import the FileWriter class
@@ -25,33 +24,29 @@ import java.io.FileWriter;   // Import the FileWriter class
 import static net.serenitybdd.rest.RestRequests.given;
 
 public class UtilsSparta {
-
     // Ejecución script para obtener el usuario y el mesosphere_id necesario para conectarnos a la API de Sparta
-    static Process p;
+    private static String outputScriptCommand;
 
+    //Contructor
     static {
         try {
-            p = Runtime.getRuntime().exec("python3 /home/alejandrosanchez/Documentos/Workspace/QA-Santander-GTS/src/test/resources/scripts/sso.py --url https://gts-sparta.sgcto-int.stratio.com/gts-sparta/#/ --user sparta --password stratio");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static BufferedReader stdInput = new BufferedReader(new
-            InputStreamReader(p.getInputStream()));
-
-    private static String outputScript;
-
-    static {
-        try {
-            outputScript = stdInput.readLine();
+            // Obtain the localpath from the computer
+            String getLocalPath = new BufferedReader(new InputStreamReader(Runtime.getRuntime()
+                    .exec("pwd")
+                    .getInputStream())).readLine();
+            System.out.println("LOCALPATH: "+ getLocalPath);
+            // Use the localpath to obtain info from mesosphere_server
+            outputScriptCommand = new BufferedReader(new InputStreamReader(Runtime.getRuntime()
+                    .exec("python3 "+ getLocalPath +"/src/test/resources/scripts/sso.py --url https://gts-sparta.sgcto-int.stratio.com/gts-sparta/#/ --user sparta --password stratio")
+                    .getInputStream())).readLine();
+            System.out.println("COOKIE: "+ outputScriptCommand);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     // División de la respuesta del script para tener el usuario y el mesosphere_id por separado
-    private static String[] primerSplit = outputScript.split(": ");
+    private static String[] primerSplit = outputScriptCommand.split(": ");
     private static String outputSplit = primerSplit[1];
     private static String[] segundoSplit = outputSplit.split("; ");
     private static String mesosphere = segundoSplit[0];
@@ -127,7 +122,7 @@ public class UtilsSparta {
         String idExecution = response.getBody().asString().replaceAll("\"","");
         setidExecutionforQR(idExecution);
 
-        System.out.println("ID de ejecucion: "+getIdExecutionforQR+" asociado al ID de workflow "+idWorkflow);
+        System.out.println("Obtener el ID de ejecucion: "+getIdExecutionforQR+" asociado al ID de workflow "+idWorkflow);
 
         while (!fin) {
 
@@ -147,6 +142,8 @@ public class UtilsSparta {
 
         //Fit the quality rules and their expected value into Strings Lists
         List<List<String>> listOfQualityRulesFromTest = qualityRules.asLists(String.class);
+
+        System.out.println("Comprobar las QualityRules "+listOfQualityRulesFromTest.toString());
 
         //Get the execution Id from a WorkFlow to check their quality rules
         String idWorkflowExecution = getidExecutionforQR();
@@ -191,41 +188,44 @@ public class UtilsSparta {
 
     public static void createCrossDataTable(String tableName, String hdfsPath){
 
-        //SQL Statements for create dataTable
-        String sqlCreate = "{\\n  \\\"query\\\": \\\"CREATE EXTERNAL TABLE "+ tableName + " STORED AS PARQUET LOCATION \\'" + hdfsPath + "\\'\\\"\\n}";
+        //SQL Statements for create Table
+        String sqlToSend = "{\"query\":\"CREATE TABLE "+tableName+" USING parquet OPTIONS (path = '"+hdfsPath+"',header = TRUE)\"}";
 
-        //Create table
-        response = httpRequest.body(sqlCreate).post(baseURI + "/crossdata/queries");
+        //Create table on XDATA
+        response = httpRequest.body(sqlToSend).post(baseURI + "/crossdata/queries");
 
-        //VALIDAR LA RESPUESTA
-        String outputTable = response.getBody().asString();
-
+        //System.out.println("RESPONSE RECEIVED "+ response.asString());
+        //Check if the table is created correctly.
+        Assert.assertEquals("Is not possible to create the table "+tableName+" review the response received "+response.asString(),200,response.getStatusCode());
     }
 
 
     public static String searchCrossDataTable(String tableName){
 
-        //SQL Statements for search dataTable
-        String sqlSearch = "{\\n  \\\"query\\\": \\\"SELECT FROM * " + tableName + "\\\"\\n}";
+        //Make the SQL Statement to get the data
+        String sqlSelectData = "{\"query\":\"SELECT * FROM "+tableName+"\"}";
 
-        //Search table
-        response = httpRequest.body(sqlSearch).post(baseURI + "/crossdata/queries");
+        //Get the data stored into the table to compare Actual and Expected
+        response = httpRequest.body(sqlSelectData).post(baseURI + "/crossdata/queries");
 
-        //Save the response
+        //Save and return the data obtained.
         String outputTable = response.getBody().asString();
 
         return outputTable;
     }
 
     public static void deleteCrossDataTable(String tableName){
-        //SQL Statements for create dataTable
-        String sqlCreate = "{\\n  \\\"query\\\": \\\"DROP TABLE "+ tableName + "\\'\\\"\\n}";
+
+        //Make the SQL Statement to delete the table.
+        String sqlDeleteTable = "{\"query\":\"DROP TABLE "+tableName+"\"}";
 
         //Create table
-        response = httpRequest.body(sqlCreate).post(baseURI + "/crossdata/queries");
+        response = httpRequest.body(sqlDeleteTable).post(baseURI + "/crossdata/queries");
 
-        //VALIDAR LA RESPUESTA
-        String outputTable = response.getBody().asString();
+        //System.out.println("RESPONSE RECEIVED "+ response.asString());
+        //Check if the table is deleted correctly.
+        Assert.assertEquals("Is not possible to delete the table "+tableName+" review the response received "+response.asString(),200,response.getStatusCode());
+
     }
 
 
@@ -270,8 +270,8 @@ public class UtilsSparta {
     }
 
     public static void spartaServiceUp(String urlStatusSparta){
-        String baseURI = WebServiceEndPoints.BASE_URI_SPARTA_SWAGGER.getUrl() + WebServiceEndPoints.SPARTA_SWAGGER_STATUS.getUrl();
 
+        String baseURI = WebServiceEndPoints.BASE_URI_SPARTA_SWAGGER.getUrl() + WebServiceEndPoints.SPARTA_SWAGGER_STATUS.getUrl();
 
         response = httpRequest.get(urlStatusSparta);
 
@@ -279,10 +279,25 @@ public class UtilsSparta {
         // We should get a status code of 200.
         int statusCode = response.getStatusCode();
 
-        System.out.println("Statuscode: "+statusCode);
+        System.out.println("Obtener el Statuscode del API de SPARTA: "+statusCode);
         // Assert that correct status code is returned.
         Assert.assertEquals("Correct status code returned",  200 /*expected value*/, statusCode /*actual value*/);
 
+    }
+
+
+    public static void checkVolumetricRule(String qrVolumetricName, String tableName) {
+
+        //Make the SQL Statement to search for the last validation value associated to the quality volumetric rule.
+        String sqlSelectValidationValue = "{\"query\":\"SELECT validation FROM "+tableName+" WHERE name =\\\""+qrVolumetricName+"\\\" AND validation_ts=(SELECT MAX(validation_ts) FROM "+tableName+")\"}";
+
+        //Ask for the intormation to the API
+        response = httpRequest.body(sqlSelectValidationValue).post(baseURI + "/crossdata/queries");
+
+        //System.out.println("RESPONSE "+ response.asString());
+
+        //Check if the table value is OK.
+        Assert.assertTrue("The value of validation rule " + qrVolumetricName + " received is " + response.asString(), response.asString().contains("OK"));
     }
 
 

@@ -143,6 +143,9 @@ public class UtilsCommon {
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
         setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
+
+        System.out.println("URI:" + URI);
+
         Response response;
         switch (requestMethod) {
             case "POST":

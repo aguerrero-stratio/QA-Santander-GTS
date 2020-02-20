@@ -5,7 +5,6 @@ Feature: Test
   Background:
     Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
-    @Alex_test
     Scenario: Ejecución del workflow 'ot-ac-rw-accounts' con gobierno del dato
     El workflow recoge los datos de la tabla de Postgres 'onetradeaccounts.account', castea las columnas esperadas,
     añade el TS y vuelva los datos a la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts'
@@ -48,11 +47,11 @@ Feature: Test
         | OT.RF.Accounts_Accounts.subsidiary_name.PR.B.Completeness.PT.001                   | OK |
         | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                              | OK |
         | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                    | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-ac-rw-accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-ac-rw-accounts" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-ac-rw-accounts"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-ac-rw-accounts"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_ac_rw_accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_ac_rw_accounts" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_ac_rw_accounts"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_ac_rw_accounts"
 
-  @Alex_test
+
     Scenario: Ejecución del workflow 'ot-ac-rw-accounts' con gobierno del dato negativo
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 
@@ -94,3 +93,57 @@ Feature: Test
         | OT.RF.Accounts_Accounts.subsidiary_name.PR.B.Completeness.PT.001                   | KO |
         | OT.RF.Accounts_Accounts.type.PR.B.Completeness.PT.001                              | KO |
         | OT.RF.Accounts_Accounts.type.PR.B.Domain.PT.001                                    | KO |
+
+
+  Scenario: Ejecución del workflow 'ot-ac-rw-accounts' con gobierno del dato
+  El workflow recoge los datos de la tabla de Postgres 'onetradeaccounts.account', castea las columnas esperadas,
+  añade el TS y vuelva los datos a la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts/accounts_accounts'
+
+    When Se ejecuta el workflow con Id "06012f6d-577c-46e3-b1fb-5c6d50f09abf"
+    And  Se aplican las siguientes reglas de calidad con resultado
+         | OT.RF.Accounts_Accounts.account_id.PR.B.Completeness.PT.001                        | OK |
+    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_ac_rw_accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts_accounts"
+    Then Se crea en XDATA la tabla "GTS.QA_EXPECTED_ot_ac_rw_accounts" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts_accounts"
+    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_ac_rw_accounts" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_ac_rw_accounts"
+    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_ac_rw_accounts"
+    Then Se borra la tabla de XDATA "GTS.QA_EXPECTED_ot_ac_rw_accounts"
+
+
+  Scenario: Ejecución del workflow 'rp-mr-rw-intralayer' para comprobar si la volumetria es correcta en la capa RAW
+
+  El workflow compara los eventos ultimo y penultimo por producto procesados informando si se produce una discrepancia entre ambas medidas de volumetria RC.R.Mercury_Product.NA.PR.F.Volume.PT.001
+
+    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
+    Then Se ejecuta el workflow con Id "263fe2a9-9a14-4032-ae62-99d70fa1ed50"
+    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
+    Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume"
+    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume"
+    And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"
+
+
+
+  Scenario: Ejecución del workflow 'rp-mr-tt-interlayer' sin gobierno del dato
+
+  El workflow comprueba si hay variacion entre la volumetria RC.T.Mercury_Transaction.NA.PR.B.Volume.PT.001 registrada en RAW es y la progresada a TRUSTED
+  El workflow cuenta los eventos registrados en la ultima carga de RAW con los eventos registrados en el area de TRUSTED calculando si hay variacion o no entre ellos.
+
+    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product" con la ruta hdfs "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
+    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_transaction" con la ruta hdfs "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/Transaction"
+    Then Se ejecuta el workflow con Id "a9c8e5c5-2492-4e06-a272-15f4005147e3"
+    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_interlayer" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/qa/qr_results/reporting/volume/volume"
+    Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.B.Volume.PT.001" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_interlayer"
+    And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_interlayer"
+    And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"
+    And Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_transaction"
+
+
+  Scenario: Ejecución del workflow 'rp-mr-tt-intralayer' para comprobar si la volumetria es correcta en la capa TRUSTED
+
+  El workflow compara los eventos ultimo y penultimo por producto procesados informando si se produce una discrepancia entre ambas medidas de volumetria RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002
+
+    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_transaction" con la ruta hdfs "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/Transaction"
+    Then Se ejecuta el workflow con Id "a60074cd-4b30-4c3d-9af2-9687979fd147"
+    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
+    Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer_volume"
+    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_intralayer"
+    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_tt_transaction"

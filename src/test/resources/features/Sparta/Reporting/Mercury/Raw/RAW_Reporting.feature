@@ -28,9 +28,9 @@ Feature: RAW_Mercury
       | RC.RF.Mercury-Product.total.PR.B.Completness.PT.001     | OK |
       | RC.RF.Mercury-Product.ts.PR.B.Completness.PT.001        | OK |
       | RC.RF.Mercury-Product.uid.PR.B.Completness.PT.001       | OK |
-    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp-mr-rf-product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
-    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp-mr-rf-product" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp-mr-rf-product"
-    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp-mr-rf-product"
+    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
+    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp_mr_rf_product" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp_mr_rf_product"
+    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"
 
 
   Scenario: Ejecución del workflow 'rp-mr-rf-product' para comprobar si existen ficheros nuevos no registrados o no existen/nulos.
@@ -38,9 +38,9 @@ Feature: RAW_Mercury
   El workflow comprueba al procesar los ficheros desde RAW-unformatted a RAW-formatted la presencia de nuevos ficheros o si algunos se encuentran vacios o no han sido remitidos.
 
     When Se ejecuta el workflow con Id "b3e3916d-078e-462a-9562-89b374244778"
-    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp-mr-rf-product_validation" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/validation/Json_warning"
-    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp-mr-rf-product_validation" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp-mr-rf-product_validation"
-    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp-mr-rf-product_validation"
+    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product_validation" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/validation/Json_warning"
+    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp_mr_rf_product_validation" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp_mr_rf_product_validation"
+    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product_validation"
 
 
   Scenario: Ejecución del workflow 'rp-mr-rf-product' con gobierno del dato negativo
@@ -62,9 +62,9 @@ Feature: RAW_Mercury
 
   El workflow compara los eventos ultimo y penultimo por producto procesados informando si se produce una discrepancia entre ambas medidas de volumetria RC.R.Mercury_Product.NA.PR.F.Volume.PT.001
 
-    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp-mr-rf-product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
-    Then Se ejecuta el workflow con Id "ea37cfce-67b7-415d-bc7a-745c2623bcce" seleccionando como input las tablas:
-      | GTS.QA_ACTUAL_rp-mr-rf-product |
-    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp-mr-rw-intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
-    Then Se comprueba el "valor de validacion" del ultimo resultado almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp-mr-rw-intralayer_volume"
-    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp-mr-rw-intralayer_volume"
+    When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
+    Then Se ejecuta el workflow con Id "263fe2a9-9a14-4032-ae62-99d70fa1ed50"
+    And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/qr_results/reporting/volume/volume"
+    Then Se comprueba el valor de validacion de la regla de volumetria "RC.T.Mercury_Transaction.NA.PR.F.Volume.PT.002" almacenado en la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume"
+    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rw_intralayer_volume"
+    And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"

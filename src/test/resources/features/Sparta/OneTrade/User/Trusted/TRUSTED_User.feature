@@ -19,9 +19,9 @@ Feature: TRUSTED_User
         | OT.T.User_Company.country_name.PR.B.Completeness.PT.001             | OK |
         | OT.T.User_Company.global_id.PR.B.Completeness.PT.001                | OK |
         | OT.T.User_Company.internal_represent_user.PR.B.Completeness.PT.001  | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-company" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_company"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-company" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-company"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-company"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_company" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_company"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_company" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_company"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_company"
 
 
     @Manual
@@ -49,12 +49,12 @@ Feature: TRUSTED_User
         | OT.T.User_CompanyCountry.company_country_id.PR.B.Completeness.PT.001 | OK |
         | OT.T.User_CompanyCountry.company_id.PR.B.Completeness.PT.001         | OK |
         | OT.T.User_CompanyCountry.country_id.PR.B.Completeness.PT.001         | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-company-country" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_company_country"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-company-country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-company-country"
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-company-country_company_country_currencies_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/company_country_currencies_refusals"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-company-country_company_country_currencies_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-company-country_company_country_currencies_refusals"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-company-country"
-      And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-company-country_company_country_currencies_refusals"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_company_country" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_company_country"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_company_country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_company_country"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_company_country_company_country_currencies_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/company_country_currencies_refusals"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_company_country_company_country_currencies_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_company_country_company_country_currencies_refusals"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_company_country"
+      And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_company_country_company_country_currencies_refusals"
 
     @Manual
     Scenario: Ejecución del workflow 'ot-us-tt-user-company-country' con gobierno del dato negativo
@@ -79,9 +79,9 @@ Feature: TRUSTED_User
         | OT.T.User_Contact.contact_id.PR.B.Completeness.PT.001               | OK |
         | OT.T.User_Contact.contact_type.PR.B.Completeness.PT.001             | OK |
         | OT.T.User_Contact.global_id.PR.B.Completeness.PT.001                | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-contact" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_contact"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-contact" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-contact"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-contact"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_contact" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_contact"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_contact" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_contact"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_contact"
 
 
       @Manual
@@ -106,12 +106,12 @@ Feature: TRUSTED_User
       And  Se aplican las siguientes reglas de calidad con resultado
         | OT.T.User_Country.country_id.PR.B.Completeness.PT.001                | OK |
         | OT.T.User_Country.country_name.PR.B.Completeness.PT.001              | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-country" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_country"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-country"
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-country_country_currencies_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/country_currencies_refusals"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-country_country_currencies_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-country_country_currencies_refusals"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-country"
-      And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-country_country_currencies_refusals"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_country" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_country"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_country"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_country_country_currencies_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/country_currencies_refusals"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_country_country_currencies_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_country_country_currencies_refusals"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_country"
+      And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_country_country_currencies_refusals"
 
     @Manual
     Scenario: Ejecución del workflow 'ot-us-tt-user-country' con gobierno del dato negativo
@@ -140,9 +140,9 @@ Feature: TRUSTED_User
         | OT.T.User_User.last_name.PR.B.Completeness.PT.001             | OK |
         | OT.T.User_User.relationship_type.PR.B.Completeness.PT.001     | OK |
         | OT.T.User_User.type_disposition.PR.B.Completeness.PT.001      | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot-us-tt-user-user" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_user"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot-us-tt-user-user" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot-us-tt-user-user"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot-us-tt-user-user"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_us_tt_user_user" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/user/user_user"
+      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_us_tt_user_user" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_us_tt_user_user"
+      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_us_tt_user_user"
 
 
     @Manual
