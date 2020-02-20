@@ -1,6 +1,7 @@
 package utils;
 
 import io.restassured.RestAssured;
+import static net.serenitybdd.rest.SerenityRest.rest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -9,13 +10,14 @@ import org.junit.Test;
 
 import javax.jms.*;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UtilsCommon {
 
 
-    private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
-
-    //private static String baseURI = "https://gts-kong.sgcto-int.stratio.com/onetrade";
+    //private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
+    private static RequestSpecification httpRequest = rest().given().relaxedHTTPSValidation("TLSv1.2");
 
     public static String getBaseURIEnvironment(){
         String baseURI = "";
@@ -143,8 +145,9 @@ public class UtilsCommon {
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
         setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
-
-        System.out.println("URI:" + URI);
+        if (domain.equals("enterprises")){
+            URI = getBaseURIEnvironment() + domain  + endPoint + "/" + parameters;
+        }
 
         Response response;
         switch (requestMethod) {
@@ -170,6 +173,13 @@ public class UtilsCommon {
     private static void setHttpRequestBody(String httpBodyFile) {
         File requestBody = new File("src/test/resources/json/" + httpBodyFile);
         httpRequest.body(requestBody);
+    }
+
+
+    public static boolean matchNullValues(String pathInput, String nullDescription) {
+        Pattern pattern = Pattern.compile("\\w*" + nullDescription + "\\w*.json");
+        Matcher matcher = pattern.matcher(pathInput);
+        return matcher.find();
     }
 
 }

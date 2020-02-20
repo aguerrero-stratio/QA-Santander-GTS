@@ -13,13 +13,17 @@ public enum WebServiceEndPoints {
     DOMAIN_PAYMENTS("payments"),
     DOMAIN_ACCOUNTS("accounts"),
     DOMAIN_TRANSACTION("transactions"),
+    DOMAIN_ENTERPRISE("enterprises"),
 
     GET_PAYMENTS("/payments?pageNumber=0&pageSize=1000&status=ACSP"),
     GET_PAYMENTS_BY_ID("/payments?pageNumber=0&pageSize=1000&paymentId="),
     GET_PAYMENTS_ACCOUNT_ID("/payments?account_id="),
 
+    GET_ENTERPRISES_BY_ID("/enterprises"),
+
     ACCOUNT_SEARCH("/accounts/search"),
     GET_USER("/users/1/accounts"),
+    SEARCH("/search"),
 
     //*****************************************************//
     //*** SPARTA ENDPOINTS                            **//

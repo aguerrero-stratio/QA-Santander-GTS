@@ -1,10 +1,10 @@
-@Transaction
+@Transactions
 Feature: POST_Search transactions
 
   Como usuario final quiero poder consultar las transacciones para poder conocer los movimientos realizados en mis cuentas bancarias
 
   Background:
-    Given El dominio de "transactions" esta levantado
+    Given El dominio de transactions esta levantado
 
   Scenario Outline: Casuisticas de busquedas de transacciones
 

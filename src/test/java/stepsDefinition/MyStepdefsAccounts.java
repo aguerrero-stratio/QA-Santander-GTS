@@ -1,21 +1,25 @@
 package stepsDefinition;
 
-import cucumber.api.PendingException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import utils.UtilsAccounts;
+import utils.UtilsCommon;
 
 public class MyStepdefsAccounts {
 
-
-    @When("^Se realiza un request \"([^\"]*)\" con el parametro \"([^\"]*)\"$")
-    public void seRealizaUnRequestConElParametro(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Given("^El dominio de accounts esta levantado$")
+    public void elDominioDeAccountsEstaLevantado() {
+        UtilsCommon.serviceIsUp("accounts");
     }
 
+    @When("^Se realiza una peticion \"([^\"]*)\" al endpoint Accounts con el body \"([^\"]*)\"$")
+    public void seRealizaUnaPeticionAlEndpointAccountsConElBody(String httpMethod, String httpBody) throws Throwable {
+        UtilsAccounts.searchAccounts(httpMethod, httpBody);
+    }
 
-    @When("^Se realiza un request erronea \"([^\"]*)\"$")
-    public void seRealizaUnRequestErronea(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("^El servicio nos devuelve la respuesta \"([^\"]*)\"$")
+    public void elServicioNosDevuelveLaRespuesta(String expectedResponse) throws Throwable {
+       UtilsAccounts.compareAccounts(expectedResponse, UtilsAccounts.response);
     }
 }
