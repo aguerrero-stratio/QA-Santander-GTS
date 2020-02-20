@@ -31,12 +31,14 @@ public enum WebServiceEndPoints {
     BASE_URI_DEV_SPARTA("https://gts-sparta.sgcto-int.stratio.com:443/gts-sparta"),
     BASE_URI_SPARTA_SWAGGER("https://gts-sparta.sgcto-int.stratio.com/gts-sparta"),
 
+
+    SPARTA_USER ("sparta"),
+    SPARTA_PASSWORD ("stratio"),
     SPARTA_SWAGGER_STATUS("/swagger/appStatus"),
     GET_DOWNLOAD_WORKFLOW("/workflows/download/"),
     WORKFLOW_RUN("/workflows/run/"),
     WORKFLOW_EXECUTION("/workflowExecutions/"),
     WORKFLOW_RUNWITHVARIABLES("/workflows/runWithVariables");
-
 
     private final String url;
 

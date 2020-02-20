@@ -14,7 +14,7 @@ Feature: GET_Payments
     Then El servicio nos devuelve la respuesta "/Payments/Output/GET_Payments/<jsonOutputBody>"
     Examples:
       | paymentFilter                                                | jsonOutputBody                                 |
-      | account_id,ES8500490072052610475299                          | accountId.json   |
+      | account_id=ES8500490072052610475299                          | accountId.json   |
       | paymentId,d23742b8-1741-4ee6-a6a1-4d3fe2498f59               | paymentId.json   |
       | searchText,d23742b8-1741-4ee6-a6a1-4d3fe2498f59,currency,EUR | paymentId.json   |
       | searchText, 123123123                                        | noResults.json   |

@@ -38,16 +38,16 @@ public class UtilsPayments {
         itemListsFile = json.getAccountsList();
 
 
-        for(int i = 0; i< itemLists.size(); i++){
+        for (int i = 0; i < itemLists.size(); i++) {
 
             AccountsList item = itemLists.get(i);
             AccountsList itemFile = itemListsFile.get(i);
 
-            if(item.equals(itemFile)){
+            if (item.equals(itemFile)) {
 
                 System.out.println("Cuenta Nº " + i + " es correcta");
 
-            }else{
+            } else {
                 System.out.println("Cuenta Nº " + i + " es incorrecta");
 
             }
@@ -57,9 +57,9 @@ public class UtilsPayments {
 
     public static void searchPayments(String httpMethod, String parameters, String filters) {
 
-        response = UtilsCommon.executeRequestWithParameters(httpMethod, parameters + "&pageNumber=0&pageSize=1000","", "payments");
+        response = UtilsCommon.executeRequestWithParameters(httpMethod, parameters + "&pageNumber=0&pageSize=1000", "", "payments");
 
-        assertEquals("Correct status code returned",  200, response.getStatusCode());
+        assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
 
     public static void comparePayments(String pathInput, Response jsonOutput) throws FileNotFoundException {
@@ -79,14 +79,14 @@ public class UtilsPayments {
         paymentsListsFile = json.getPaymentsList();
 
 
-        for(int i = 0; i< paymentsLists.size(); i++){
+        for (int i = 0; i < paymentsLists.size(); i++) {
 
             PaymentsList item = paymentsLists.get(i);
             PaymentsList itemFile = paymentsListsFile.get(i);
 
-            if(item.equals(itemFile)){
+            if (item.equals(itemFile)) {
                 System.out.println("Payment Nº " + i + " es correcta");
-            }else{
+            } else {
                 fail("Payment Nº " + i + " es incorrecta");
             }
 
@@ -94,9 +94,12 @@ public class UtilsPayments {
     }
 
 
+    public static void hagounapeticionGET(String arg0, String arg1) {
 
+        response = UtilsCommon.executeRequestWithParameters(arg0,"?"+arg1 +"&pageNumber=0&pageSize=1000","","payments");
 
-
+        System.out.println("RESPONSE: "+ response.asString());
+    }
 
 
 }
