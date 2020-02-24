@@ -1,4 +1,4 @@
-@Accounts
+@Accounts @All
 Feature: POST_Search accounts
 
   Como usuario quiero tener en el dominio de Accounts un endpoint para realizar distintas consultas de Cuentas mediante el par [AccountId, Pais] para poder ver el detalle de las mismas

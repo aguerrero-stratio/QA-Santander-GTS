@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.StringUtils;
-import schemas.Accounts.Accounts;
-import schemas.Accounts.AccountsList;
 import schemas.Payments.BeneficiaryData;
 import schemas.Payments.OriginatorData;
 import schemas.Payments.Payments;
@@ -14,59 +12,32 @@ import schemas.Payments.PaymentsList;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.IntStream;
 
-import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 
 
 public class UtilsPayments {
 
-    private static List<AccountsList> itemLists;
-    private static List<AccountsList> itemListsFile;
     public static Response response = null;
 
 
-    public static void compareUserAccount(String pathInput, Response jsonOutput) throws FileNotFoundException {
-
-        String path = "src/test/resources/json/" + pathInput;
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-
-        Gson gson = new Gson();
-        Accounts json = gson.fromJson(bufferedReader, Accounts.class);
-
-        Accounts accounts = jsonOutput.as(Accounts.class, ObjectMapperType.GSON);
-
-        itemLists = accounts.getAccountsList();
-        itemListsFile = json.getAccountsList();
-
-
-        for (int i = 0; i < itemLists.size(); i++) {
-
-            AccountsList item = itemLists.get(i);
-            AccountsList itemFile = itemListsFile.get(i);
-
-            if (item.equals(itemFile)) {
-
-                System.out.println("Cuenta Nº " + i + " es correcta");
-
-            } else {
-                System.out.println("Cuenta Nº " + i + " es incorrecta");
-
-            }
-
-        }
-    }
-
     public static void searchPayments(String httpMethod, String parameters, String values) throws InterruptedException {
-        String query = buildQuery(parameters, values);
-        System.out.println("query: "+ query);
-        response = UtilsCommon.executeRequestWithParameters(httpMethod, query + "&pageNumber=0&pageSize=1000",
+        String query = getQuery(parameters, values);
+        response = UtilsCommon.executeRequestWithParameters(httpMethod, query,
                 "", "payments");
         assertEquals("Correct status code returned", 200, response.getStatusCode());
+    }
+
+    private static String getQuery(String parameters, String values) {
+        String query;
+        if (parameters.equals("account_id")) {
+            query = "?" + parameters + "=" + values;
+        } else {
+            query = buildQuery(parameters, values);
+        }
+        return query + "&pageNumber=0&pageSize=1000";
     }
 
     private static String buildQuery(String parameters, String values) {
@@ -74,8 +45,8 @@ public class UtilsPayments {
         String[] valuesArray = values.split(",");
         StringBuilder query = new StringBuilder("?");
            for (int i = 0; i < parametersArray.length; i ++) {
-               query.append(parametersArray[i]).append("=").
-                       append(valuesArray[i]).append("&");
+               query.append(parametersArray[i]).append(",").
+                       append(valuesArray[i]).append(",");
         }
         return StringUtils.chop(query.toString());
     }
@@ -152,11 +123,5 @@ public class UtilsPayments {
         assertEquals("Beneficiary Agent Location", beneficiaryData.getAgentLocation(), expectedBeneficiaryData.getAgentLocation());
     }
 
-    public static void hagounapeticionGET(String arg0, String arg1) {
-
-        response = UtilsCommon.executeRequestWithParameters(arg0,"?"+arg1 +"&pageNumber=0&pageSize=1000","","payments");
-
-        System.out.println("RESPONSE: "+ response.asString());
-    }
 
 }

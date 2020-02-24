@@ -155,7 +155,6 @@ public class UtilsCommon {
                 response = httpRequest.post(URI);
                 break;
             case "GET":
-                System.out.println("URI: " + URI);
                 response = httpRequest.get(URI);
                 break;
             default:
