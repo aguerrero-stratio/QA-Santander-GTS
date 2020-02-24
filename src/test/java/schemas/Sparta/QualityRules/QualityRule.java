@@ -1,4 +1,4 @@
-package schemas.Sparta;
+package schemas.Sparta.QualityRules;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

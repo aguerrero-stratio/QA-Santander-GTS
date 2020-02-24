@@ -1,11 +1,13 @@
+@oneview
 Feature: ONEVIEW_User
 
   Como usuario quiero ejecutar los flujos de Sparta pertenecientes al dominio de User en el area de ONEVIEW pàra aplicar reglas de negocio y almacenarlos en postgres.
 
   Background:
-    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-channels' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -16,6 +18,7 @@ Feature: ONEVIEW_User
       And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_03ccr_channels_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_03ccr_channels_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-company-datas' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -26,6 +29,7 @@ Feature: ONEVIEW_User
       And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_01cap_company_datas_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_01cap_company_datas_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-dc-uc-relation' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -36,6 +40,7 @@ Feature: ONEVIEW_User
       And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_06cha_dc_uc_relationships_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_06cha_dc_uc_relationships_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-persons' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -46,6 +51,7 @@ Feature: ONEVIEW_User
       And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_03ccr_persons_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_03ccr_persons_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-persons-types' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -56,6 +62,7 @@ Feature: ONEVIEW_User
         And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_03ccr_persons_types_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_03ccr_persons_types_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-pref-channel' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre
@@ -66,6 +73,7 @@ Feature: ONEVIEW_User
         And  Se comprueba que el resultado almacenado en BBDD "onetrade.aci_03ccr_preference_channels_ot_sp4" coincide con el resultado esperado en BBDD "onetrade.expected_aci_03ccr_preference_channels_ot_sp4"
 
     #####################################################################################
+    @sparta_user_oneview
     Scenario: Ejecución del workflow 'ot-us-ov-user-roles' sin gobierno del dato
 
       El workflow recoge los datos de fuentes TRUSTED-HDFS, se aplican reglas de negocio y se selecciona la informacion necesaria para despues almacenarla en postgre

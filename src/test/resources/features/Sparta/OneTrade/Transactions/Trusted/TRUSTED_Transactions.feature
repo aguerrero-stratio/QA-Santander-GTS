@@ -4,8 +4,9 @@ Feature: TRUSTED_Transactions
   que no cumplen con los formatos establecidos.
 
   Background:
-    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
+    @sparta_transactions
     Scenario: Ejecución del workflow 'ot-tr-tt-transaction-company-account' sin gobierno del dato
 
     El workflow recoge los datos de RAW-HDFS, hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/transactions/transaction_company_account, durante el proceso se descartan los registros bic y pais que no cumplen
@@ -22,12 +23,14 @@ Feature: TRUSTED_Transactions
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_country_refusals"
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_bics_refusals"
 
-    @Manual
+    @sparta_transactions
     Scenario: Ejecución del workflow 'ot-tr-tt-transaction' sin gobierno del dato
     El workflow recoge los datos de RAW-HDFS, hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/transactions/transaction, durante el proceso se descartan los registros de balance y
     cantidad que contengan el formato de moneda incorrecto, añade el TS y vuelca los datos en la ruta de TRUSTED-HDFS hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction
 
-      When Se ejecuta el workflow con Id "b3fd3ee2-2a25-49cf-aee7-6d1f5a0ae0d5"
+      When Se ejecuta el workflow con Id y parametros
+        |id        |b3fd3ee2-2a25-49cf-aee7-6d1f5a0ae0d5|
+        |YYYY-MM-DD|2019-10-10|
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_tr_tt_transaction" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_tr_tt_transaction" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_tr_tt_transaction_transaction"
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_tr_tt_transaction_transaction_amount_currency_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction_amount_currency_refusals"

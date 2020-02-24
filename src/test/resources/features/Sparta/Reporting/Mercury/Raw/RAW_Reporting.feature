@@ -4,16 +4,15 @@ Feature: RAW_Mercury
   Como usuario quiero aplicar Gobierno del dato a los flujos de Sparta ejecutados.
 
   Background:
-    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
   Scenario: Ejecución del workflow 'rp-mr-ru-unformatted' sin gobierno del dato
 
   El workflow recoge los ficheros de un origen y los copia a una carpeta destino RAW-unformatted para su posterior formateo
 
     When Se ejecuta el workflow con Id "397c0611-f071-4198-afc7-94648d5cd092"
-    Then Se recogen los ficheros de la carpeta origen "hdfs://gts-hdfs/gts/data/sources/reporting/samples/"
-    And  Se copian a una carpeta destino "hdfs://gts-hdfs/gts/data/raw/unformatted/reporting/Mercury/"
-    Then Se comprueba que todos los ficheros de la "listadeficheros" han sido copiados en el destino "hdfs://gts-hdfs/gts/data/raw/unformatted/reporting/Mercury/"
+    Then Se comprueba que todos los ficheros de la listadeficheros han sido copiados en el destino "hdfs://gts-hdfs/gts/data/raw/unformatted/reporting/Mercury/latest_execution"
+    |listaficheros.json|
 
   Scenario: Ejecución del workflow 'rp-mr-rf-product' con gobierno del dato
 

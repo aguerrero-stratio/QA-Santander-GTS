@@ -4,7 +4,7 @@ Feature: TRUSTED_Mercury
   Como usuario quiero aplicar Gobierno del dato a los flujos de Sparta ejecutados.
 
   Background:
-    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
   Scenario: Ejecución del workflow 'rp-mr-tt-transaction' sin gobierno del dato
 
@@ -48,9 +48,7 @@ Feature: TRUSTED_Mercury
 
     When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_rf_product" con la ruta hdfs "hdfs://gts-hdfs/gts/data/raw/formatted/reporting/Mercury/Product"
     When Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_transaction" con la ruta hdfs "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/Transaction"
-    Then Se ejecuta el workflow con Id "4d0af59f-0a21-4c56-8aa0-53d7561e8c7b" seleccionando como input las tablas:
-      | GTS.QA_ACTUAL_rp_mr_rf_product |
-      | GTS.QA_ACTUAL_rp_mr_tt_transaction |
+    Then Se ejecuta el workflow con Id "4d0af59f-0a21-4c56-8aa0-53d7561e8c7b"
     And  Se crea en XDATA la tabla "GTS.QA_ACTUAL_rp_mr_tt_new_fields" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/reporting/Mercury/validation/New_fields"
     And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_rp_mr_tt_new_fields" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_rp_mr_tt_new_fields"
     Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_rp_mr_rf_product"

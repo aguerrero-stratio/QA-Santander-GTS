@@ -10,7 +10,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.Request;
 import schemas.MigracionWorkflows.MigracionWorkflow;
-import schemas.Sparta.QualityRule;
+import schemas.Sparta.QualityRules.QualityRule;
+import schemas.Sparta.Workflow.SpartaWorkflowExecution;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,6 @@ import java.util.List;
 
 import java.io.File;  // Import the File class
 import java.io.FileWriter;   // Import the FileWriter class
-
 
 import static net.serenitybdd.rest.RestRequests.given;
 
@@ -116,27 +116,120 @@ public class UtilsSparta {
 
     public static void executeWorkflow(String idWorkflow) throws InterruptedException {
 
+        //Define local variables to execute the Workflow
         boolean fin = false;
+        boolean failed = false;
+        Gson gson = new Gson();
+        String status = null;
 
+        //Launch the Workflow Execution
         response = httpRequest.post(baseURI + WebServiceEndPoints.WORKFLOW_RUN.getUrl() + idWorkflow);
 
+        //Check if the workflow ID exists.
+        Assert.assertEquals("Workflow "+idWorkflow+" not found "+ response.getBody().asString(),200, response.getStatusCode());
+
+        //Get IdExecution
         String idExecution = response.getBody().asString().replaceAll("\"","");
         setidExecutionforQR(idExecution);
-
         System.out.println("Obtener el ID de ejecucion: "+getIdExecutionforQR+" asociado al ID de workflow "+idWorkflow);
 
         while (!fin) {
 
             response = httpRequest.get(baseURI + WebServiceEndPoints.WORKFLOW_EXECUTION.getUrl() + idExecution);
+            status = response.getBody().asString();
 
-            String status = response.getBody().asString();
-
+            // Finish the execution with a valid result.
             if (status.contains("Finished")) {
                 fin = true;
+                failed = false;
+            }
+
+            // Finish the execution with a Failed result.
+            if (status.contains("Failed")) {
+                fin = true;
+                failed = true;
             }
             Thread.sleep(10000);
         }
 
+        //System.out.println("El Workflow: "+idWorkflow+" ,ha finalizado");
+        SpartaWorkflowExecution spartaWorkflowExecution = gson.fromJson(status, SpartaWorkflowExecution.class);
+        System.out.println("Workflow Name: "+spartaWorkflowExecution.getGenericDataExecution().getWorkflow().getName());
+        //System.out.println("Workflow Description: "+spartaWorkflowExecution.getGenericDataExecution().getWorkflow().getDescription());
+
+        //Check the result of the execution of the workflow.
+        Assert.assertFalse("The execution of the Workflow "+idWorkflow+" finished with an Status "
+                + spartaWorkflowExecution.getStatuses().get(0).getState() +"Info: "+ spartaWorkflowExecution.getStatuses().get(0).getStatusInfo(), failed);
+    }
+
+    public static void executeWorkflowWithParameters(DataTable idWokflowWithParameters) throws InterruptedException {
+
+        //Define local variables to execute the Workflow with parameters
+        List<List<String>> idWorkflowWithParametersFromTest = idWokflowWithParameters.asLists(String.class);
+        String idWorkflow = idWorkflowWithParametersFromTest.get(0).get(1);
+
+        boolean fin = false;
+        boolean failed = false;
+
+        Gson gsonWithParameters = new Gson();
+        String statusWithParameters = null;
+
+        //Create the Json parameters structure to add to the workflow Execution.
+        String workflowId ="{\"workflowId\":\"" + idWorkflow + "\",";
+        StringBuilder arrayOfParameters = new StringBuilder();
+
+        for(int indexParameter = 1;indexParameter < idWorkflowWithParametersFromTest.size();indexParameter++){
+
+            arrayOfParameters.append("{\"name\":\"").append(idWorkflowWithParametersFromTest.get(indexParameter).get(0)).append("\",\"value\":\"").append(idWorkflowWithParametersFromTest.get(indexParameter).get(1)).append("\"}");
+
+            if (indexParameter < idWorkflowWithParametersFromTest.size()-1){
+                arrayOfParameters.append(",");
+            }
+        }
+
+        String postAWorkflowWithParameters = workflowId+"\"variables\":["+arrayOfParameters+"]}";
+
+        System.out.println("Parametros :"+ postAWorkflowWithParameters + " asociados al workflow " + idWorkflow);
+
+        //Execute the workflowID with the parameters defined.
+        response = httpRequest.body(postAWorkflowWithParameters).post(baseURI + WebServiceEndPoints.WORKFLOW_RUNWITHVARIABLES.getUrl());
+
+        //Check if the workflow ID exists.
+        Assert.assertEquals("Workflow "+idWorkflow+" not found "+ response.getBody().asString(),200, response.getStatusCode());
+
+        //Set the ID workflow execution for check the Quality rules.
+        String idExecution = response.getBody().asString().replaceAll("\"","");
+        setidExecutionforQR(idExecution);
+        System.out.println("Obtener el ID de ejecucion: "+getIdExecutionforQR+" asociado al ID de workflow "+idWorkflow);
+
+        // Check the result of the workflow execution.
+        while (!fin) {
+
+            response = httpRequest.get(baseURI + WebServiceEndPoints.WORKFLOW_EXECUTION.getUrl() + idExecution);
+            statusWithParameters = response.getBody().asString();
+
+            // Finish the execution with a valid result.
+            if (statusWithParameters.contains("Finished")) {
+                fin = true;
+                failed = false;
+            }
+
+            // Finish the execution with a Failed result.
+            if (statusWithParameters.contains("Failed")) {
+                fin = true;
+                failed = true;
+            }
+            Thread.sleep(10000);
+        }
+
+        //System.out.println("El Workflow: "+idWorkflow+" ,ha finalizado");
+        SpartaWorkflowExecution spartaWorkflowExecution = gsonWithParameters.fromJson(statusWithParameters, SpartaWorkflowExecution.class);
+        System.out.println("Workflow Name: "+spartaWorkflowExecution.getGenericDataExecution().getWorkflow().getName());
+        //System.out.println("Workflow Description: "+spartaWorkflowExecution.getGenericDataExecution().getWorkflow().getDescription());
+
+        //Check the result of the execution of the workflow.
+        Assert.assertFalse("The execution of the Workflow "+idWorkflow+" finished with an Status "
+                + spartaWorkflowExecution.getStatuses().get(0).getState() +"Info: "+ spartaWorkflowExecution.getStatuses().get(0).getStatusInfo(), failed);
     }
 
     public static void checkWorkflowQualityrules(DataTable qualityRules) {
@@ -183,8 +276,18 @@ public class UtilsSparta {
         }
 
         // If the expected result is not equal to the execution result, the test ends and store the results.
-        Assert.assertEquals("\n QR CHECKED: " +arrayOfQualityRulestoFromTheJson.length+ "\n PASSED: " +numberOfQualityRuleChecked+ "\n NOT PASSED: "+ (arrayOfQualityRulestoFromTheJson.length-numberOfQualityRuleChecked),
-                listOfQualityRulesFromTest.size(),numberOfQualityRuleChecked);
+        Assert.assertEquals(
+                "QR Obtained from API: " +arrayOfQualityRulestoFromTheJson.length+
+                        "\n QR Passed as argument from test: " +listOfQualityRulesFromTest.size()+
+                        "\n QR Matches: " +numberOfQualityRuleChecked+
+                        "\n QR NOT Matches: "+ (arrayOfQualityRulestoFromTheJson.length-numberOfQualityRuleChecked),
+                        listOfQualityRulesFromTest.size(),numberOfQualityRuleChecked);
+
+        // If the Number of QR doesn't match from test and obtained.
+        Assert.assertEquals(
+                "The number of QR passed as argument" + listOfQualityRulesFromTest.size()
+                        + "\n aren't the same than the obtained from Sparta"+ arrayOfQualityRulestoFromTheJson.length,
+                listOfQualityRulesFromTest.size(),arrayOfQualityRulestoFromTheJson.length);
     }
 
     public static void createCrossDataTable(String tableName, String hdfsPath){
@@ -226,49 +329,8 @@ public class UtilsSparta {
         //System.out.println("RESPONSE RECEIVED "+ response.asString());
         //Check if the table is deleted correctly.
         Assert.assertEquals("Is not possible to delete the table "+tableName+" review the response received "+response.asString(),200,response.getStatusCode());
-
     }
 
-
-    public static void executeWorkflowWithParameters(String idWorkflow, String name, String value) throws InterruptedException {
-
-        boolean fin = false;
-
-        String post = "{\n" +
-                "  \"workflowId\": \"" + idWorkflow + "\",\n" +
-                "  \"variables\": [\n" +
-                "    {\n" +
-                "      \"name\": \"" + name + "\",\n" +
-                "      \"value\": \"" + value + "\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
-
-        response = given().relaxedHTTPSValidation()
-                .body(post)
-                .header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when()
-                //.param("WorkflowExecutionVariables",post)
-                .contentType("application/json")
-                .post(baseURI + WebServiceEndPoints.WORKFLOW_RUNWITHVARIABLES.getUrl());
-
-
-        String idExecution = response.getBody().asString().replaceAll("\"","");
-
-        System.out.println(idExecution);
-
-
-        while (!fin){
-
-            resQueryExecution = given().relaxedHTTPSValidation().header("Cookie",user + "; "+ mesosphere).header("Content-Type","application/json").when().get(baseURI + WebServiceEndPoints.WORKFLOW_EXECUTION.getUrl() + idExecution);
-
-            String status = resQueryExecution.getBody().asString();
-
-            if (status.contains("Finished")){
-                fin = true;
-            }
-            Thread.sleep(10000);
-        }
-    }
 
     public static void spartaServiceUp(String urlStatusSparta){
 
@@ -279,11 +341,10 @@ public class UtilsSparta {
         // Get the status code from the Response.
         // We should get a status code of 200.
         int statusCode = response.getStatusCode();
+        System.out.println("Statuscode del URL API "+urlStatusSparta+" de SPARTA: "+ response.asString());
 
-        System.out.println("Obtener el Statuscode del API de SPARTA: "+statusCode);
         // Assert that correct status code is returned.
         Assert.assertEquals("Correct status code returned",  200 /*expected value*/, statusCode /*actual value*/);
-
     }
 
 

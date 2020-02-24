@@ -15,13 +15,6 @@ import java.io.IOException;
 
 public class MyStepdefsSparta {
 
-    @Given("^Ejecutamos el workflow \"([^\"]*)\" con parametro NAME \"([^\"]*)\" y VALUE \"([^\"]*)\"$")
-    public void ejecutamosElWorkflowConParametroNAMEYVALUE(String idWorkflow, String name, String value) throws InterruptedException {
-
-        UtilsSparta.executeWorkflowWithParameters(idWorkflow,name,value);
-
-    }
-
     @Given("^Sparta operativo en la url \"([^\"]*)\"$")
     public void spartaEstaOperativo(String urlStatusSparta) {
 
@@ -39,12 +32,19 @@ public class MyStepdefsSparta {
 
     }
 
+    @When("^Se ejecuta el workflow con Id y parametros$")
+    public void seEjecutaElWorkflowConIdYParametros(@NotNull DataTable idWokflowWithParameters) throws InterruptedException {
+
+        //Execute workflow with parameters
+        System.out.println("Ejecutar el flujo en Sparta con ID: "+idWokflowWithParameters.cells(0).get(0).get(1));
+        UtilsSparta.executeWorkflowWithParameters(idWokflowWithParameters);
+
+    }
+
     @Then("^Se crea en XDATA la tabla \"([^\"]*)\" con el hdfs-output del workflow \"([^\"]*)\"$")
     public void seCreaEnXDATALaTablaConElHdfsOutputDelWorkflow(String tableName, String hdfsPath) {
 
         //Create table in XDATA
-        //System.out.println("TABLE: "+tableName);
-        //System.out.println("PATH: "+ hdfsPath);
         System.out.println("Crear la Tabla: "+tableName+" en XDATA con el hdfspath "+hdfsPath);
         UtilsSparta.createCrossDataTable(tableName,hdfsPath);
     }
@@ -56,15 +56,13 @@ public class MyStepdefsSparta {
         String actual = UtilsSparta.searchCrossDataTable(tableNameActual);
         String expected = UtilsSparta.searchCrossDataTable(tableNameExpected);
 
-        //System.out.println("tableNameActual - " + actual);
-        //System.out.println("tableNameExpected - " + expected);
-
         //Check the result of the test.
-        System.out.println("Comprobar que la Tabla: "+tableNameActual+" en XDATA coincide con la Tabla "+tableNameExpected);
+        //System.out.println("Comprobar que la Tabla: "+tableNameActual+" en XDATA coincide con la Tabla "+tableNameExpected);
+
         if (actual.equals(expected)) {
             Assert.assertEquals("The result of the "+tableNameActual+ " and the "+tableNameExpected+" are the same", actual, expected);
         }else{
-            Assert.assertFalse("The result of the "+tableNameActual+ " and the "+tableNameExpected+"aren't the same", false);
+            Assert.assertFalse("The result of the "+tableNameActual+ " and the "+tableNameExpected+" aren't the same", false);
         }
     }
 
@@ -85,29 +83,6 @@ public class MyStepdefsSparta {
         UtilsSparta.checkWorkflowQualityrules(Qrules);
     }
 
-    @Then("^Se recogen los ficheros de la carpeta origen \"([^\"]*)\"$")
-    public void seRecogenLosFicherosDeLaCarpetaOrigen(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^Se copian a una carpeta destino \"([^\"]*)\"$")
-    public void seCopianAUnaCarpetaDestino(String arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^Se comprueba que todos los ficheros de la \"([^\"]*)\" han sido copiados en el destino \"([^\"]*)\"$")
-    public void seCompruebaQueTodosLosFicherosDeLaHanSidoCopiadosEnElDestino(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^Se comprueba el \"([^\"]*)\" del ultimo resultado almacenado en la tabla de XDATA \"([^\"]*)\"$")
-    public void seCompruebaElDelUltimoResultadoAlmacenadoEnLaTablaDeXDATA(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
     @When("^Se crea en XDATA la tabla \"([^\"]*)\" con la ruta hdfs \"([^\"]*)\"$")
     public void seCreaEnXDATALaTablaConLaRutaHdfs(String tableName, String hdfsPath) {
@@ -117,11 +92,6 @@ public class MyStepdefsSparta {
         UtilsSparta.createCrossDataTable(tableName,hdfsPath);
     }
 
-    @Then("^Se ejecuta el workflow con Id \"([^\"]*)\" seleccionando como input las tablas:$")
-    public void seEjecutaElWorkflowConIdSeleccionandoComoInputLasTablas(String idWorkflow, DataTable Ltables) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
     @Then("^El resultado obtenido se guarda en la BBDD \"([^\"]*)\"$")
     public void elResultadoObtenidoSeGuardaEnLaBBDD(String arg0) throws Throwable {
@@ -147,4 +117,12 @@ public class MyStepdefsSparta {
         // Check the volumetric rules
         UtilsSparta.checkVolumetricRule(qrVolumetricName,tableName);
     }
+
+    @Then("^Se comprueba que todos los ficheros de la listadeficheros han sido copiados en el destino \"([^\"]*)\"$")
+    public void seCompruebaQueTodosLosFicherosDeLaListadeficherosHanSidoCopiadosEnElDestino(DataTable listaFicheros, String destination) {
+
+        //
+        // Write code here that turns the phrase above into concrete actions
+    }
+
 }

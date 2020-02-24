@@ -1,4 +1,4 @@
-package schemas.Sparta;
+package schemas.Sparta.QualityRules;
 
 import java.io.Serializable;
 import java.util.List;

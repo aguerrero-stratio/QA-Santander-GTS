@@ -3,9 +3,18 @@ Feature: TRUSTED_Enterprise
   Como usuario quiero ejecutar los flujos de Sparta pertenecientes al dominio de Enterprise, en el área de TRSUTED y gobernando los datos para poder promociarlos al área de ONEVIEW
 
   Background:
-    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/swagger/appStatus"
+    Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company, selecciona las columnas necesarias,
+      descarta los datos que no cumplen las reglas de validacion y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "69301367-8f13-4f2e-8366-eb6ed3e9586f"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company, selecciona las columnas necesarias,
@@ -29,8 +38,7 @@ Feature: TRUSTED_Enterprise
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_bic_refusals"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -47,8 +55,16 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompany.ind_virtual_company.PR.B.Completeness.MF.001           | KO |
         | OT.T.Enterprise_EnterpriseCompany.trade_name.PR.B.Completeness.MF.001                    | KO |
 
-
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-activity' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_activity, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "832d401b-1727-4d16-b443-8b9a6607cb73"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-activity' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_activity, selecciona las columnas necesarias,
@@ -59,13 +75,11 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyActivity.company_activity_id.PR.B.Completeness.MF.001   | OK |
         | OT.T.Enterprise_EnterpriseCompanyActivity.company_global_id.PR.B.Completeness.MF.001     | OK |
         | OT.T.Enterprise_EnterpriseCompanyActivity.isic_code.PR.B.Completeness.MF.001             | OK |
-
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_activity" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_activity"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_activity" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_activity"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_activity"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-activity' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -77,6 +91,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyActivity.isic_code.PR.B.Completeness.MF.001             | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_address, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "a8001fa1-e68f-41a8-bff6-4d544800b1d3"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_address, selecciona las columnas necesarias,
@@ -107,8 +130,7 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_address" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_address"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_address"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address' con gobierno del dato negativo
 
      Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -136,6 +158,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyAddress.town_name.PR.B.Completeness.MF.001                      | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address-type' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_address_type, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "9e04dbba-02d5-4be1-bd71-42f92ff968b3"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address-type' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_address_type, selecciona las columnas necesarias,
@@ -146,13 +177,11 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyAddressType.company_address_type_id.PR.B.Completeness.MF.001 | OK |
         | OT.T.Enterprise_EnterpriseCompanyAddressType.description.PR.B.Completeness.MF.001             | OK |
         | OT.T.Enterprise_EnterpriseCompanyAddressType.description.PR.B.Domain.MF.002                   | OK |
-
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_address_type" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_address_type"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_address_type" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_address_type"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_address_type"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-address-type' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -164,22 +193,29 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyAddressType.description.PR.B.Domain.MF.002                   | KO |
 
     #####################################################################################
-    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-cmc' con gobierno del dato
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-cmc' sin gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_cmc, selecciona las columnas necesarias,
       añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "2a91c6fd-9a81-45ca-ad96-fab42aec3f2d"
+
+    @sparta_enterprise_qrules_ok
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-cmc' con gobierno del dato
+
+    El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_cmc, selecciona las columnas necesarias,
+    añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
 
       When Se ejecuta el workflow con Id "2a91c6fd-9a81-45ca-ad96-fab42aec3f2d"
       And  Se aplican las siguientes reglas de calidad con resultado
         | OT.T.Enterprise_EnterpriseCompanyCmc.cmc.PR.B.Completeness.MF.001               | OK |
         | OT.T.Enterprise_EnterpriseCompanyCmc.company_global_id.PR.B.Completeness.MF.001 | OK |
-
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_cmc" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_cmc"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_cmc" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_cmc"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_cmc"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-cmc' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -190,38 +226,54 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyCmc.company_global_id.PR.B.Completeness.MF.001 | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-contact' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_contact, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "851d9c69-cf8b-400b-bd3b-58a71b9924fe"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-contact' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_contact, selecciona las columnas necesarias,
       añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
 
-      When Se ejecuta el workflow con Id "851d9c69-cf8b-400b-bd3b-58a71b9924fe"
-      And  Se aplican las siguientes reglas de calidad con resultado
+        When Se ejecuta el workflow con Id "851d9c69-cf8b-400b-bd3b-58a71b9924fe"
+        And  Se aplican las siguientes reglas de calidad con resultado
           | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_id.PR.B.Completeness.MF.001      | OK |
           | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_type_id.PR.B.Completeness.MF.001 | OK |
           | OT.T.Enterprise_EnterpriseCompanyContact.company_global_id.PR.B.Completeness.MF.001       | OK |
           | OT.T.Enterprise_EnterpriseCompanyContact.contact_data.PR.B.Completeness.MF.001            | OK |
           | OT.T.Enterprise_EnterpriseCompanyContact.is_preferred.PR.B.Completeness.MF.001            | OK |
+        Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_contact"
+        And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_contact"
+        Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact"
 
-    Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_contact"
-    And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_contact"
-    Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_contact"
-
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-contact' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 
-      When Se ejecuta el workflow con Id "851d9c69-cf8b-400b-bd3b-58a71b9924fe"
-      Then Se aplican las siguientes reglas de calidad con resultado
-        | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_id.PR.B.Completeness.MF.001      | KO |
-        | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_type_id.PR.B.Completeness.MF.001 | KO |
-        | OT.T.Enterprise_EnterpriseCompanyContact.company_global_id.PR.B.Completeness.MF.001       | KO |
-        | OT.T.Enterprise_EnterpriseCompanyContact.contact_data.PR.B.Completeness.MF.001            | KO |
-        | OT.T.Enterprise_EnterpriseCompanyContact.is_preferred.PR.B.Completeness.MF.001            | KO |
+        When Se ejecuta el workflow con Id "851d9c69-cf8b-400b-bd3b-58a71b9924fe"
+        Then Se aplican las siguientes reglas de calidad con resultado
+          | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_id.PR.B.Completeness.MF.001      | KO |
+          | OT.T.Enterprise_EnterpriseCompanyContact.company_contact_type_id.PR.B.Completeness.MF.001 | KO |
+          | OT.T.Enterprise_EnterpriseCompanyContact.company_global_id.PR.B.Completeness.MF.001       | KO |
+          | OT.T.Enterprise_EnterpriseCompanyContact.contact_data.PR.B.Completeness.MF.001            | KO |
+          | OT.T.Enterprise_EnterpriseCompanyContact.is_preferred.PR.B.Completeness.MF.001            | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-country' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_country, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "a4c50393-bfa3-4306-b5f6-78b3c7fcab7a"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-country' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_country, selecciona las columnas necesarias,
@@ -235,8 +287,7 @@ Feature: TRUSTED_Enterprise
         And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_country"
         Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_country"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-contact' con gobierno del dato negativo
 
       Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -247,6 +298,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyCountry.country_id.PR.B.Completeness.MF.001         | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-identification' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_identification, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "46a9ea2d-09cb-4e3d-864f-1b6df96833cf"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-identification' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_identification, selecciona las columnas necesarias,
@@ -263,8 +323,7 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_identification" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_identification"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_identification"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-identification' con gobierno del dato negativo
 
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -278,10 +337,19 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyIdentification.document_type.PR.B.Completeness.MF.002             | KO |
 
     #####################################################################################
-    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-permission' con gobierno del dato
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-permission' sin gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_permission, selecciona las columnas necesarias,
       añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "32c31964-db70-4385-a83f-ac30aa0a206e"
+
+    @sparta_enterprise_qrules_ok
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-permission' con gobierno del dato
+
+    El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_permission, selecciona las columnas necesarias,
+    añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
 
       When Se ejecuta el workflow con Id "32c31964-db70-4385-a83f-ac30aa0a206e"
       And  Se aplican las siguientes reglas de calidad con resultado
@@ -291,11 +359,10 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_permission" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_permission"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_permission"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-permission' con gobierno del dato negativo
 
-    Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
+      Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 
       When Se ejecuta el workflow con Id "32c31964-db70-4385-a83f-ac30aa0a206e"
       Then Se aplican las siguientes reglas de calidad con resultado
@@ -303,25 +370,33 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyPermission.permission_id.PR.B.Completeness.MF.001  | KO |
 
     #####################################################################################
-    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource' con gobierno del dato
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource' sin gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_resource, selecciona las columnas necesarias,
       añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
 
-      When Se ejecuta el workflow con Id "1208d215-a4d4-4767-98a1-56b078efb3a2"
-      And  Se aplican las siguientes reglas de calidad con resultado
-        | OT.T.Enterprise_EnterpriseCompanyResource.cmc.PR.B.Completeness.MF.001                      | OK |
-        | OT.T.Enterprise_EnterpriseCompanyResource.company_resource_id.PR.B.Completeness.MF.001      | OK |
-        | OT.T.Enterprise_EnterpriseCompanyResource.company_resource_type_id.PR.B.Completeness.MF.001 | OK |
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_resource"
-      And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_resource"
-      Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource"
+      Then Se ejecuta el workflow con Id "1208d215-a4d4-4767-98a1-56b078efb3a2"
 
+    @sparta_enterprise_qrules_ok
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource' con gobierno del dato
 
-    @Manual
+        El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_resource, selecciona las columnas necesarias,
+        añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+        When Se ejecuta el workflow con Id "1208d215-a4d4-4767-98a1-56b078efb3a2"
+        And  Se aplican las siguientes reglas de calidad con resultado
+          | OT.T.Enterprise_EnterpriseCompanyResource.cmc.PR.B.Completeness.MF.001                      | OK |
+          | OT.T.Enterprise_EnterpriseCompanyResource.company_resource_id.PR.B.Completeness.MF.001      | OK |
+          | OT.T.Enterprise_EnterpriseCompanyResource.company_resource_type_id.PR.B.Completeness.MF.001 | OK |
+        Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource" con el hdfs-output del workflow "hdfs://gts-hdfs//gts/data/trusted/onetrade/enterprise/enterprise_company_resource"
+        And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_resource"
+        Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource"
+
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource' con gobierno del dato negativo
 
-    Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
+      Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 
       When Se ejecuta el workflow con Id "1208d215-a4d4-4767-98a1-56b078efb3a2"
       Then Se aplican las siguientes reglas de calidad con resultado
@@ -330,6 +405,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyResource.company_resource_type_id.PR.B.Completeness.MF.001 | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource-type' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_resource_type, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "09a42e90-0a80-4bc0-9f81-dcbc02eeab8b"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource-type' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_resource_type, selecciona las columnas necesarias,
@@ -344,11 +428,10 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource_type" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_resource_type"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_resource_type"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-resource-type' con gobierno del dato negativo
 
-    Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
+      Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
 
       When Se ejecuta el workflow con Id "09a42e90-0a80-4bc0-9f81-dcbc02eeab8b"
       Then Se aplican las siguientes reglas de calidad con resultado
@@ -357,6 +440,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyResourceType.name.PR.B.Completeness.MF.001                     | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_user, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "87c8a5bb-9b01-4726-b3a1-d68793304bb7"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user' con gobierno del dato
 
     El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_user, selecciona las columnas necesarias,
@@ -372,8 +464,7 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_user" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_user"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_user"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user' con gobierno del dato negativo
 
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -386,6 +477,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyUser.internal_represent_user.PR.B.Completeness.MF.001 | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user-permission-resource' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_user_permission_resource, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "c21c47c5-1c50-4559-a222-6bf79c5d7f6b"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user-permission-resource' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_company_user_permission_resource, selecciona las columnas necesarias,
@@ -401,8 +501,7 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_user_permission_resource" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_company_user_permission_resource"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_company_user_permission_resource"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-company-user-permission-resource' con gobierno del dato negativo
 
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
@@ -415,6 +514,15 @@ Feature: TRUSTED_Enterprise
         | OT.T.Enterprise_EnterpriseCompanyUserPermissionResource.permission_id.PR.B.Completeness.MF.001                               | KO |
 
     #####################################################################################
+    @sparta_enterprise
+    Scenario: Ejecución del workflow 'ot-et-tt-enterprise-country' sin gobierno del dato
+
+      El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_country, selecciona las columnas necesarias,
+      añade el TS y vuelca los datos en el hdfs asociado al area de TRUSTED
+
+      Then Se ejecuta el workflow con Id "2f008976-0968-4cd5-9067-f01b7421ae31"
+
+    @sparta_enterprise_qrules_ok
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-country' con gobierno del dato
 
       El workflow recoge los datos de la ruta de parquet 'hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/enterprise/enterprise_country, selecciona las columnas necesarias,
@@ -428,8 +536,7 @@ Feature: TRUSTED_Enterprise
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_et_tt_enterprise_country" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_et_tt_enterprise_country"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_et_tt_enterprise_country"
 
-
-    @Manual
+    @sparta_enterprise_qrules_ko
     Scenario: Ejecución del workflow 'ot-et-tt-enterprise-country' con gobierno del dato negativo
 
     Con un juego de datos de entrada que no cumplan las Quality Rules, validar que el resultado de estas es 'KO'
