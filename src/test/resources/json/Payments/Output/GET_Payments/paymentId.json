@@ -1,7 +1,7 @@
 {
   "paymentsList": [
     {
-      "paymentId": "d23742b8-1741-4ee6-a6a1-4d3fe2498f59",
+      "paymentId": "7ec3f8b0-05fb-423c-8b6b-320918c1062b",
       "transactionStatus": {
         "status": "ACSP",
         "reason": "G000"
@@ -10,29 +10,29 @@
       "cancellationStatus": {
         "transactionCancellationStatus": null
       },
-      "issueDate": "2019-10-04T10:41",
-      "valueDate": "2019-10-04",
+      "issueDate": "2019-10-03T08:02",
+      "valueDate": "2019-10-03",
       "paymentAmount": {
-        "amount": 1500,
+        "amount": 555.46,
         "currency": "EUR"
       },
       "originatorData": {
-        "accountId": "ES8500490072052610475299",
+        "accountId": "ES8100490075473000562155",
         "agent": null,
-        "agentName": "S.E. AUTOMAZIONE S.R.L",
+        "agentName": "TACORE S.O. MODA S.N.C",
         "agentCountry": null,
-        "agentLocation": "AV ERREKALDE DE 58\n20269 ABALTZISKETA\nES S A81887507"
+        "agentLocation": "ES S   B98308174"
       },
       "beneficiaryData": {
-        "beneficiaryName": "PRUEBA",
+        "beneficiaryName": "CITICB",
         "creditorCreditAccount": {
           "idType": "001",
-          "accountId": "12345"
+          "accountId": "456134"
         },
         "agent": null,
-        "agentName": "PRUEBA",
+        "agentName": "CITICB",
         "agentCountry": null,
-        "agentLocation": "PRUB\nJKN\nFR"
+        "agentLocation": "Madrid\nMadrid,ES"
       },
       "paymentTrackerDetailResponse": null
     }

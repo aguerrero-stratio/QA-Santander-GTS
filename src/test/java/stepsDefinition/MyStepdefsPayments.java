@@ -134,4 +134,9 @@ public class MyStepdefsPayments {
 
             UtilsPayments.hagounapeticionGET(arg0,arg1);
     }
+
+    @Then("^El servicio payments nos devuelve la respuesta \"([^\"]*)\"$")
+    public void elServicioPaymentsNosDevuelveLaRespuesta(String jsonPathInput) throws Throwable {
+        UtilsPayments.comparePayments(jsonPathInput,UtilsPayments.response);
+    }
 }

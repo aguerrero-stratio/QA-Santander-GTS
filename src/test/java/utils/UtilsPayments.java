@@ -57,7 +57,8 @@ public class UtilsPayments {
 
     public static void searchPayments(String httpMethod, String parameters, String filters) {
 
-        response = UtilsCommon.executeRequestWithParameters(httpMethod, parameters + "&pageNumber=0&pageSize=1000", "", "payments");
+        response = UtilsCommon.executeRequestWithParameters(httpMethod,
+                parameters + "&pageNumber=0&pageSize=1000", "", "payments");
 
         assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
@@ -96,9 +97,11 @@ public class UtilsPayments {
 
     public static void hagounapeticionGET(String arg0, String arg1) {
 
-        response = UtilsCommon.executeRequestWithParameters(arg0,"?"+arg1 +"&pageNumber=0&pageSize=1000","","payments");
+        response = UtilsCommon.executeRequestWithParameters(arg0,
+                "?"+arg1 +"&pageNumber=0&pageSize=1000","","payments");
 
         System.out.println("RESPONSE: "+ response.asString());
+        assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
 
 
