@@ -1,7 +1,5 @@
 package utils;
 
-import io.restassured.RestAssured;
-import static net.serenitybdd.rest.SerenityRest.rest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -12,6 +10,8 @@ import javax.jms.*;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static net.serenitybdd.rest.SerenityRest.rest;
 
 public class UtilsCommon {
 
