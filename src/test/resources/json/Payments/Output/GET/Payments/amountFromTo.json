@@ -3,14 +3,14 @@
     {
       "paymentId": "7ec3f8b0-05fb-423c-8b6b-320918c1062b",
       "transactionStatus": {
-        "status": "RJCT",
+        "status": "ACSP",
         "reason": "G000"
       },
       "statusDate": null,
       "cancellationStatus": {
-        "transactionCancellationStatus": "ECOrmWKa7F"
+        "transactionCancellationStatus": null
       },
-      "issueDate": null,
+      "issueDate": "2019-10-03T08:02",
       "valueDate": "2019-10-03",
       "paymentAmount": {
         "amount": 555.46,
