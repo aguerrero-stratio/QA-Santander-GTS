@@ -74,8 +74,8 @@ public class UtilsPayments {
         String[] valuesArray = values.split(",");
         StringBuilder query = new StringBuilder("?");
            for (int i = 0; i < parametersArray.length; i ++) {
-               query.append(parametersArray[i]).append(",").
-                       append(valuesArray[i]).append(",");
+               query.append(parametersArray[i]).append("=").
+                       append(valuesArray[i]).append("&");
         }
         return StringUtils.chop(query.toString());
     }
