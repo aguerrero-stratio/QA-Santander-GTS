@@ -1,4 +1,4 @@
-@Max
+
 Feature: GET_Payments MT103
 
   Como usuario quiero tener en el dominio de Payments un endpoint para realizar la consulta de los mensajes MT103 ingestados a través del PaymentID para poder ver el detalle de los mismos
