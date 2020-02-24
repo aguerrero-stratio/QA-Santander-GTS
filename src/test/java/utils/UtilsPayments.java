@@ -3,6 +3,7 @@ package utils;
 import com.google.gson.Gson;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
+import org.apache.commons.lang3.StringUtils;
 import schemas.Accounts.Accounts;
 import schemas.Accounts.AccountsList;
 import schemas.Payments.BeneficiaryData;
@@ -63,7 +64,7 @@ public class UtilsPayments {
     public static void searchPayments(String httpMethod, String parameters, String values) throws InterruptedException {
         String query = buildQuery(parameters, values);
         System.out.println("query: "+ query);
-        response = UtilsCommon.executeRequestWithParameters(httpMethod, query,
+        response = UtilsCommon.executeRequestWithParameters(httpMethod, query + "&pageNumber=0&pageSize=1000",
                 "", "payments");
         assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
@@ -73,10 +74,10 @@ public class UtilsPayments {
         String[] valuesArray = values.split(",");
         StringBuilder query = new StringBuilder("?");
            for (int i = 0; i < parametersArray.length; i ++) {
-               query.append(parametersArray[i]).append("=").
-                       append(valuesArray[i]).append("&");
+               query.append(parametersArray[i]).append(",").
+                       append(valuesArray[i]).append(",");
         }
-        return query.toString();
+        return StringUtils.chop(query.toString());
     }
 
     public static void comparePayments(String pathInput, Response jsonOutput) throws FileNotFoundException {

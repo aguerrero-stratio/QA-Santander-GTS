@@ -1,0 +1,3557 @@
+{
+  "onboardingsList": [
+    {
+      "traceId": "trace-brasil",
+      "processTimestamp": "20200206T124742335+0000",
+      "fileName": "onboardingBR20200201.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "1111",
+      "companyGlobalId": "111",
+      "companyName": "COMPAÑIA BRASIL",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "103",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200207T125051786+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "3af8b841414d3bae40d5009cf5a9679b86f005cd61767b730de12d5d11127c2c",
+      "processTimestamp": "20200207T105051786+0000",
+      "fileName": "onboardingES20200201.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "0011",
+      "companyGlobalId": "-1801598002",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "001510321000000001",
+      "internalRepresentUser": "X000010",
+      "onboardingProcessLogList": [
+        {
+          "id": "3",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200206T114742335+0000"
+        },
+        {
+          "id": "5",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200206T010446205+0000"
+        },
+        {
+          "id": "52",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200207T104435349+0000"
+        },
+        {
+          "id": "102",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200207T105051786+0000"
+        },
+        {
+          "id": "104",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20200207T105051786+0000"
+        },
+        {
+          "id": "106",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20200207T105051786+0000"
+        },
+        {
+          "id": "108",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20200207T105051786+0000"
+        },
+        {
+          "id": "257",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "KO",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20200207T105051786+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "6e264f0a6034a8a16d6036e959448e738b8ea1c369a0069edc8c5cfdf536fd5a",
+      "processTimestamp": "20200210T101424310+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1935724497",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "110",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200210T101424310+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "e016552cebe3af3059de3c6bc6070d6c9a1c9952b0241ece35c34d56efb035e4",
+      "processTimestamp": "20200211T023534272+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1935724497",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "111",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200211T023534272+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "trace-id",
+      "processTimestamp": "20111203T091530000+0000",
+      "fileName": "file-name",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": null,
+      "globalId": "YYY",
+      "companyGlobalId": "XXX",
+      "companyName": "COCA COLA ESPAÑA",
+      "cmc": "004910321020000001",
+      "internalRepresentUser": "XI56897",
+      "onboardingProcessLogList": [
+        {
+          "id": "1",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        },
+        {
+          "id": "2",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        },
+        {
+          "id": "105",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        },
+        {
+          "id": "107",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        },
+        {
+          "id": "109",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        },
+        {
+          "id": "152",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "OK",
+            "description": ""
+          },
+          "mainError": {
+            "id": "OK",
+            "description": ""
+          },
+          "levelLogId": "",
+          "errorId": "",
+          "description": "",
+          "stepTimestamp": "20130803T083821000+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "00991e0917f1fb237666ee5f83f0f21283e3f9980722720a71cc4deb617a3758",
+      "processTimestamp": "20200212T032328463+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1935724497",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "153",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T032328463+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "7b5147c7a8be93651b35de508f53a799bc175b64556763fde0ec73f007174e15",
+      "processTimestamp": "20200212T051804170+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "1178466440",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "154",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": null,
+          "description": null,
+          "stepTimestamp": "20200212T051804170+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "3d9b6f4fde266147c2ed1e43def1c5ad162038b0e41f3ba0cdb18e7cb3c1b9c7",
+      "processTimestamp": "20200212T052544437+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "1178466440",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "155",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052544437+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "e1eb119439fad1ab174b91826a27105b40b5f910c8a35480b2140436e72a5f8e",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "001510321000000001",
+      "internalRepresentUser": "X000001",
+      "onboardingProcessLogList": [
+        {
+          "id": "156",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "b3b0817f761a0cdcbf783125ed567fb705774ad9290ce3d322e6f67f14790d37",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "SPAIN",
+      "globalId": "",
+      "companyGlobalId": "158607681",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000016",
+      "internalRepresentUser": "X000008",
+      "onboardingProcessLogList": [
+        {
+          "id": "157",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "9844d4e10f00c4c9a862c8d2d0596811f0d4a8157c2fcd63ac7ae80281f9c591",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000005",
+      "internalRepresentUser": "X000005",
+      "onboardingProcessLogList": [
+        {
+          "id": "158",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "b421a29149467c54af8fb6e68a9291979aa283d177b617f6712c6140fd6378f8",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "969717439",
+      "companyName": "COMPAÑIA PRUEBA 2",
+      "cmc": "000000000000000005",
+      "internalRepresentUser": "X000006",
+      "onboardingProcessLogList": [
+        {
+          "id": "159",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "9fc9fa885e3d57218276be86ce9e224fcf1f5c982ec42dac05f7b7c10e0ba82f",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "969717439",
+      "companyName": "COMPAÑIA PRUEBA 2",
+      "cmc": "000000000000000011",
+      "internalRepresentUser": "X000002",
+      "onboardingProcessLogList": [
+        {
+          "id": "160",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "0b8ce9c23040c1452f9dc7642f4f0b1c413d407e274baa646f238369d6724f8b",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "969717439",
+      "companyName": "COMPAÑIA PRUEBA 2",
+      "cmc": "000000000000000013",
+      "internalRepresentUser": "X000004",
+      "onboardingProcessLogList": [
+        {
+          "id": "161",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "a2766379be92fb2d88f7354929cd7b5b65d221c196c9ade3f9dbadcd8c181166",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000015",
+      "internalRepresentUser": "X000007",
+      "onboardingProcessLogList": [
+        {
+          "id": "162",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        },
+        {
+          "id": "163",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "686baa92f1c86fe26ec9986cd6c51b833bf445faa9490174365396f29c6cf9b1",
+      "processTimestamp": "20200212T052949618+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000012",
+      "internalRepresentUser": "X000003",
+      "onboardingProcessLogList": [
+        {
+          "id": "164",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T052949618+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "18eb481908b711b097c39b750cef94788dd7fddeaef49334150f420145ce0468",
+      "processTimestamp": "20200212T055342445+0000",
+      "fileName": "onboardingES20200131.json",
+      "type": {
+        "id": "Batch_companies_users",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "",
+      "companyGlobalId": "969717439",
+      "companyName": "COMPAÑIA PRUEBA 2",
+      "cmc": "000000000000000011",
+      "internalRepresentUser": "X000002",
+      "onboardingProcessLogList": [
+        {
+          "id": "165",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200212T055342445+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "d42b6f8392b08fc843cae61ef396983579fb625d8d0a202c0a2170aabe71818e",
+      "processTimestamp": "20200214T123829001+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "1178466440",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "166",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200214T123829001+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "e9a3bb75cfaf24bc624cf02781162020d9b4a0171f8d294983f36ab7ce5b4d4f",
+      "processTimestamp": "20200214T013636029+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "1178466440",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "167",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200214T013636029+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "1db5b4f73e81ad8cb7d86df04d057355b77aba95d5437edd5bf34d1d19fa304b",
+      "processTimestamp": "20200217T015712345+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "1457642449",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "202",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200217T015712345+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "268d5f8d6ee01cc5d6c04cd59aa19995b11bd16e5336f95f38aa8b579dd1446d",
+      "processTimestamp": "20200217T022040918+0000",
+      "fileName": "onboardingBR20200202.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "1457642449",
+      "companyName": "COMPAÑIA PRUEBA BRASIL",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "205",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200217T022040918+0000"
+        },
+        {
+          "id": "208",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Format_companyStartDate",
+          "description": null,
+          "stepTimestamp": "20200217T024938880+0000"
+        },
+        {
+          "id": "209",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Null_documentList",
+          "description": null,
+          "stepTimestamp": "20200217T024938880+0000"
+        },
+        {
+          "id": "210",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Format_companyEndDate",
+          "description": null,
+          "stepTimestamp": "20200217T024938880+0000"
+        },
+        {
+          "id": "211",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Format_companyEndDate",
+          "description": null,
+          "stepTimestamp": "20200217T054851917+0000"
+        },
+        {
+          "id": "212",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Null_documentList",
+          "description": null,
+          "stepTimestamp": "20200217T054851917+0000"
+        },
+        {
+          "id": "213",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Format_companyStartDate",
+          "description": null,
+          "stepTimestamp": "20200217T054851917+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "d334658ce31d4627090b59f4c793bdac8dd331572951c6589fcc63779dc3608d",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "214",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "cc48b685a1488b6d42792d0110abc88d47bef1e9d956d932277b987a18fb35d0",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_nexus",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "215",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "035b317a8a2d49e3c2f9fc193573f60c858f96f0465a7ea74b695ea2e4f01618",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "216",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "d66f2712a9c851130997d276cce4a34050dde2d18487ff0220559827c2bec4a8",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "217",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "acb5636da9e2e5cc76235574791e23650f025ec82a81e0c5104fb43dd82540cd",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_nexus",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "218",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "cdbb5088adb15799c7a27b006da539775a1ab6dedf175372c70e884e78bb614d",
+      "processTimestamp": "20200218T121103074+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "219",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T121103074+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "36f7493d9e36609d57006b76a7c894d388f76e314e4d09d56203ff5d56c2bc7d",
+      "processTimestamp": "20200218T023645988+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_nexus",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "220",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T023645988+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "a1045a26c2645075d63b63536123a2d698237fe68e6fbfff3c006d047edcf73c",
+      "processTimestamp": "20200218T023645988+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "221",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T023645988+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "10a109cadf7f70e91ca127f0288b23079f0395a12181f2bf7b2ab4c5b93f5348",
+      "processTimestamp": "20200218T023645988+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": null,
+      "internalRepresentUser": null,
+      "onboardingProcessLogList": [
+        {
+          "id": "222",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T023645988+0000"
+        },
+        {
+          "id": "223",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T023645988+0000"
+        },
+        {
+          "id": "224",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T023645988+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "30044c1d405a7fb8fb9b2482de3f9828355b69ae4c69ad3ec49414da355f7d29",
+      "processTimestamp": "20200218T042616923+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-912064706",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "79ac201caabb5aedde38667c3bc76da75e022bb6cd211277688a7152d268a931",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "225",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "231",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Domain_account_status",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        },
+        {
+          "id": "232",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Domain_account_accountType",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        },
+        {
+          "id": "233",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Domain_agent",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "0455b8f767a932edb819ad310e1701a941d393dd279db1ed3116bf22c22a4f2e",
+      "processTimestamp": "20200218T042616923+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "226",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "227",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "228",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "234",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Duplicated_companyId_Country",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        },
+        {
+          "id": "235",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Duplicated_companyId_Country",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        },
+        {
+          "id": "236",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Duplicated_companyId_Country",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "1a4661e5dd89876dbe2be04f4a66fe7a22cae52e0d621ddd5a82d951d5959681",
+      "processTimestamp": "20200218T042616923+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "",
+      "globalId": null,
+      "companyGlobalId": "",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "229",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "237",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "Null_country",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "ef42db357066fb619e7fc136edc5ea303581b32ef78608ceaa73cabd5d5f6f2f",
+      "processTimestamp": "20200218T042616923+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "230",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "",
+          "errorId": "NA",
+          "description": "",
+          "stepTimestamp": "20200218T042616923+0000"
+        },
+        {
+          "id": "238",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": null,
+          "stepTimestamp": "20200218T053951349+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "b1b7c0adeac940d9e333c4fc63b9e233af8172048060675aea6e2a74bb39dede",
+      "processTimestamp": "20200130T034358258+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": "1",
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000013",
+      "internalRepresentUser": "XI00004",
+      "onboardingProcessLogList": [
+        {
+          "id": "239",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "Front",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "242",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "Front",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "245",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "Front",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "248",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "Front",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "323",
+          "step": {
+            "id": "Front",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "Front",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "1853dc229933f9762233582d2a5e243ea1d446095401a6387f4142daf8908b77",
+      "processTimestamp": "20200130T034358258+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": null,
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000010",
+      "internalRepresentUser": "XI00001",
+      "onboardingProcessLogList": [
+        {
+          "id": "240",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "243",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "246",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "249",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "324",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "f5d52e5aa268acb6e3a5901eacfad2ff86120feb747317e7271fea278ae85d2f",
+      "processTimestamp": "20200130T034358258+0000",
+      "fileName": "onboardingES20200130.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "ES",
+      "globalId": null,
+      "companyGlobalId": "-238829138",
+      "companyName": "COMPAÑIA PRUEBA",
+      "cmc": "000000000000000011",
+      "internalRepresentUser": "XI00002",
+      "onboardingProcessLogList": [
+        {
+          "id": "241",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "244",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "247",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "250",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        },
+        {
+          "id": "325",
+          "step": {
+            "id": "Data2",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": null,
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200130T043051786+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "a630244eebe0dad1b271863187fc123d9f05beb362349f9b9eac20a48f8f16f8",
+      "processTimestamp": "20200219T015638834+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "251",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        },
+        {
+          "id": "252",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        },
+        {
+          "id": "253",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "302c63d1325725c0c5b7c8e0fc0e573376b8a66025611a3b2e16bd8613e70d96",
+      "processTimestamp": "20200219T015638834+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "",
+      "globalId": "",
+      "companyGlobalId": "191905853",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "254",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "27bde1a17f44e31e80e3c7dddbdff6ee12863e5d240c35ff49bd186a62dddfdd",
+      "processTimestamp": "20200219T015638834+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_nexus",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "f5b1006fb3fc2bf704c5b6c2a1c8375dedde651b1821b52b59f71354e5315c70",
+      "internalRepresentUser": "x1",
+      "onboardingProcessLogList": [
+        {
+          "id": "255",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "5be8a0aff4b4ae095a576cfb13fb7bd014e77d4323854de1a5607a94ddb08b82",
+      "processTimestamp": "20200219T015638834+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "256",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T015638834+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "3baa7ed4bc8846f31f4487120fd769a8a6c2a7d963195b221b23598171d5b757",
+      "processTimestamp": "20200219T030103055+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "f5b1006fb3fc2bf704c5b6c2a1c8375dedde651b1821b52b59f71354e5315c70",
+      "internalRepresentUser": "x1",
+      "onboardingProcessLogList": [
+        {
+          "id": "258",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "264",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_agent",
+          "description": "NA",
+          "stepTimestamp": "20200219T030853399+0000"
+        },
+        {
+          "id": "287",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_accountType",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "288",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_status",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "289",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "295",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_accountType",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        },
+        {
+          "id": "296",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_status",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "69ccb395efd0c1bbfbddb02e629815420594d38945446f7062fde38157642c95",
+      "processTimestamp": "20200219T030103055+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "",
+      "globalId": null,
+      "companyGlobalId": "191905853",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "259",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "290",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_documentList",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "291",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_country",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "292",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "297",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_country",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        },
+        {
+          "id": "298",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_documentList",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "e25baa8e1b668586fdeb519dc06c16a15392e4fcc402c8702269cef6b5d6f289",
+      "processTimestamp": "20200219T030103055+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "260",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "261",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "262",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "293",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Duplicated_companyId_Country",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "294",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T045654703+0000"
+        },
+        {
+          "id": "299",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Duplicated_companyId_Country",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "0ae635ac0da6b148b33a0f9d6d6b9042acbcea404aad732084f0ff39a8544c10",
+      "processTimestamp": "20200219T030103055+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "263",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T030103055+0000"
+        },
+        {
+          "id": "286",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T044501025+0000"
+        },
+        {
+          "id": "300",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T050844821+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "1237bf62290dd0d4dabdabf384f079f200bbb695bb896ae68af6766947453989",
+      "processTimestamp": "20200219T054932063+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "301",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        },
+        {
+          "id": "302",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        },
+        {
+          "id": "303",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "766d886a5ea2b2002f17970ed56d94af0d4487417cf9beb8f17ffe87e1c1cec9",
+      "processTimestamp": "20200219T054932063+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "304",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "2a40f5d8807a574c908db4aeab6801e45cfa619581acbb23760fea3e484dd3eb",
+      "processTimestamp": "20200219T054932063+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_companies",
+        "description": null
+      },
+      "country": "",
+      "globalId": "",
+      "companyGlobalId": "191905853",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "305",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "74f0121685ed31c362172fb44a6be88d155e617deb69c3f26a4c0ef0d8379a94",
+      "processTimestamp": "20200219T054932063+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch_nexus",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": "",
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "f5b1006fb3fc2bf704c5b6c2a1c8375dedde651b1821b52b59f71354e5315c70",
+      "internalRepresentUser": "x1",
+      "onboardingProcessLogList": [
+        {
+          "id": "306",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T054932063+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "6a8e1a2a145986cf46fa68ded2a7a8470ecc26c7b60f8cf185c8fa320990efcc",
+      "processTimestamp": "20200219T055936688+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "307",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "308",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "309",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "313",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Duplicated_companyId_Country",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "8cb269314e141950febf0d9fd44f2af25a9420c1afed5821f69d19c21e0eee9e",
+      "processTimestamp": "20200219T055936688+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "f5b1006fb3fc2bf704c5b6c2a1c8375dedde651b1821b52b59f71354e5315c70",
+      "internalRepresentUser": "x1",
+      "onboardingProcessLogList": [
+        {
+          "id": "310",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "314",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_status",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        },
+        {
+          "id": "315",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_accountType",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "cc29244a64def8178ba6409b8960f3129a80c29ff8fbe16da86678ce50f0e58c",
+      "processTimestamp": "20200219T055936688+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "",
+      "globalId": null,
+      "companyGlobalId": "191905853",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "311",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "316",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_documentList",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        },
+        {
+          "id": "317",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_country",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "6ef35f3ddcb132ae92f75309436f423fbdf1d1cd1ab15d331b3d54eba272d975",
+      "processTimestamp": "20200219T055936688+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "312",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T055936688+0000"
+        },
+        {
+          "id": "318",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T060410928+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "ab37f90780da11ce581bcbceac438f4371837f0c2504f61c14ebabbbfc8d8cd7",
+      "processTimestamp": "20200219T060501068+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-1089566797",
+      "companyName": "COMPAÑIA PRUEBA BRASIL DUPLICADA",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "319",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T060501068+0000"
+        },
+        {
+          "id": "326",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Duplicated_companyId_Country",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "ad936611b760b44946569c50c3f5a3911739975039492ba707ce63341d99cd25",
+      "processTimestamp": "20200219T060501068+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-345530399",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK  USUARIO",
+      "cmc": "f5b1006fb3fc2bf704c5b6c2a1c8375dedde651b1821b52b59f71354e5315c70",
+      "internalRepresentUser": "x1",
+      "onboardingProcessLogList": [
+        {
+          "id": "320",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T060501068+0000"
+        },
+        {
+          "id": "327",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_status",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        },
+        {
+          "id": "328",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Domain_account_accountType",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "7174eb009f0e6141dee6a29400dbbff5fb1a1f3bce96c437752ff70b032574e1",
+      "processTimestamp": "20200219T060501068+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "BR",
+      "globalId": null,
+      "companyGlobalId": "-342740379",
+      "companyName": "COMPAÑIA PRUEBA BRASIL OK",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "321",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T060501068+0000"
+        },
+        {
+          "id": "329",
+          "step": {
+            "id": "Global_ID",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        }
+      ]
+    },
+    {
+      "traceId": "2bffa342403de3cbb71a7be47e38c9171375f9ae40802de2678def1a2b438aff",
+      "processTimestamp": "20200219T060501068+0000",
+      "fileName": "onboardingBR20200218.json",
+      "type": {
+        "id": "Batch",
+        "description": null
+      },
+      "country": "",
+      "globalId": null,
+      "companyGlobalId": "191905853",
+      "companyName": "COMPAÑIA PRUEBA BRASIL KO",
+      "cmc": "",
+      "internalRepresentUser": "",
+      "onboardingProcessLogList": [
+        {
+          "id": "322",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "In_progress",
+            "description": null
+          },
+          "mainError": {
+            "id": "NA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "NA",
+          "description": "NA",
+          "stepTimestamp": "20200219T060501068+0000"
+        },
+        {
+          "id": "330",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_country",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        },
+        {
+          "id": "331",
+          "step": {
+            "id": "Data",
+            "description": null
+          },
+          "status": {
+            "id": "KO",
+            "description": null
+          },
+          "mainError": {
+            "id": "QA",
+            "description": null
+          },
+          "levelLogId": "NA",
+          "errorId": "Null_documentList",
+          "description": "NA",
+          "stepTimestamp": "20200220T084420174+0000"
+        }
+      ]
+    }
+  ]
+}
