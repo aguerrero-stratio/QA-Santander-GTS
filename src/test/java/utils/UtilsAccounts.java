@@ -46,6 +46,7 @@ public class UtilsAccounts {
         }
         expectedAccountsResponse.sort(Comparator.comparing(AccountsList::getAccountId));
         accountsResponse.sort(Comparator.comparing(AccountsList::getAccountId));
+
         for (int i=0; i < accountsResponse.size(); i++) {
             assertEquals("Accounts AccountId", accountsResponse.get(i).getAccountId(),
                     expectedAccountsResponse.get(i).getAccountId());

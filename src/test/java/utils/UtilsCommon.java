@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
 public class UtilsCommon {
 
 
-    //private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
     private static RequestSpecification httpRequest = rest().given().relaxedHTTPSValidation("TLSv1.2");
 
     public static String getBaseURIEnvironment(){
@@ -142,7 +141,8 @@ public class UtilsCommon {
         return response;
     }
 
-    public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
+    public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint,
+                                                        String domain) {
         setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
         if (domain.equals("enterprises")){

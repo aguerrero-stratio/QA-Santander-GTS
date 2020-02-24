@@ -10,8 +10,8 @@ Feature: POST_Search accounts
 
       Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
-      When Se realiza una peticion "POST" al endpoint Accounts con el body "Accounts/Input/POST_Search_accounts/<jsonInputBody>"
-      Then El servicio nos devuelve la respuesta "Accounts/Output/POST_Search_accounts/<jsonOutputBody>"
+      When Se realiza una peticion "POST" al endpoint accounts con el body "Accounts/Input/POST_Search_accounts/<jsonInputBody>"
+      Then El servicio de accounts nos devuelve la respuesta "Accounts/Output/POST_Search_accounts/<jsonOutputBody>"
       Examples:
         | jsonInputBody               | jsonOutputBody              |
         | oneExistingAccount.json     | oneExistingAccount.json     |
