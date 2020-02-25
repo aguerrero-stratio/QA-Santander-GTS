@@ -1,7 +1,5 @@
 package utils;
 
-import io.restassured.RestAssured;
-import static net.serenitybdd.rest.SerenityRest.rest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -13,10 +11,11 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static net.serenitybdd.rest.SerenityRest.rest;
+
 public class UtilsCommon {
 
 
-    //private static RequestSpecification httpRequest = RestAssured.given().relaxedHTTPSValidation("TLSv1.2");
     private static RequestSpecification httpRequest = rest().given().relaxedHTTPSValidation("TLSv1.2");
 
     public static String getBaseURIEnvironment(){
@@ -142,7 +141,8 @@ public class UtilsCommon {
         return response;
     }
 
-    public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint, String domain) {
+    public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint,
+                                                        String domain) {
         setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
         if (domain.equals("enterprises")){

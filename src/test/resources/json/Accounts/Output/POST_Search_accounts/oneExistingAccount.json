@@ -1,20 +1,20 @@
 {
   "accountsList": [
     {
-      "accountId": "ES47001234567890123",
-      "displayNumber": "display number",
-      "alias": "alias",
-      "type": "type",
-      "description": "description",
+      "accountId": "ES8500490072052610475299",
+      "displayNumber": null,
+      "alias": null,
+      "type": null,
+      "description": null,
       "status": "Active",
       "country": "ES",
-      "agent": "bic",
-      "agentDescription": "bic description",
-      "corporateName": "corporate name",
-      "subsidiaryName": "subsidiary name",
-      "lastTransactionDate": "20130101T074500000+0000",
-      "amountMainBalance": 100000.000000000000000000,
-      "currencyCodeMainBalance": "EUR",
+      "agent": "BSCHESMMXXX",
+      "agentDescription": null,
+      "corporateName": null,
+      "subsidiaryName": null,
+      "lastTransactionDate": null,
+      "amountMainBalance": null,
+      "currencyCodeMainBalance": null,
       "lastUpdateMainBalance": null,
       "amountAvailableBalance": null,
       "currencyCodeAvailableBalance": null,
@@ -29,7 +29,8 @@
       "currencyCodeOverdraftLimit": null,
       "lastUpdateOverdraftLimit": null,
       "lastUpdateSwiftPayment": null,
-      "hasSwiftPayments": false
+      "hasSwiftPayments": false,
+      "pain002Active": null
     }
   ]
 }

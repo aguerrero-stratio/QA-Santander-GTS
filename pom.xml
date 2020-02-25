@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <serenity-bdd.version>2.0.86</serenity-bdd.version>
+        <serenity-bdd.version>2.1.6</serenity-bdd.version>
         <serenity-cucumber.version>1.9.48</serenity-cucumber.version>
-        <serenity.maven.version>2.0.86</serenity.maven.version>
+        <serenity.maven.version>2.1.6</serenity.maven.version>
         <tags></tags>
     </properties>
 

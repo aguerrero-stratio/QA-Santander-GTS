@@ -1,0 +1,44 @@
+{
+  "paymentsList": [
+    {
+      "paymentId": "7ec3f8b0-05fb-423c-8b6b-320918c1062b",
+      "transactionStatus": {
+        "status": "RJCT",
+        "reason": "G000"
+      },
+      "statusDate": null,
+      "cancellationStatus": {
+        "transactionCancellationStatus": "ECOrmWKa7F"
+      },
+      "issueDate": null,
+      "valueDate": "2019-10-03",
+      "paymentAmount": {
+        "amount": 555.46,
+        "currency": "EUR"
+      },
+      "originatorData": {
+        "accountId": "ES8100490075473000562155",
+        "agent": null,
+        "agentName": "TACORE S.O. MODA S.N.C",
+        "agentCountry": null,
+        "agentLocation": "ES S   B98308174"
+      },
+      "beneficiaryData": {
+        "beneficiaryName": "CITICB",
+        "creditorCreditAccount": {
+          "idType": "001",
+          "accountId": "456134"
+        },
+        "agent": null,
+        "agentName": "CITICB",
+        "agentCountry": null,
+        "agentLocation": "Madrid\nMadrid,ES"
+      },
+      "paymentTrackerDetailResponse": null
+    }
+  ],
+  "documents": {
+    "totalRegistersFound": "1",
+    "retrieved": "1"
+  }
+}

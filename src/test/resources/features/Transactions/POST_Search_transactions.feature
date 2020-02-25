@@ -1,4 +1,4 @@
-@Transactions
+@Transactions @All
 Feature: POST_Search transactions
 
   Como usuario final quiero poder consultar las transacciones para poder conocer los movimientos realizados en mis cuentas bancarias
