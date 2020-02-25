@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import schemas.Payments.BeneficiaryData;
 import schemas.Payments.OriginatorData;
 import schemas.Payments.Payments;
+import schemas.Payments.MT103;
 import schemas.Payments.PaymentsList;
 
 import java.io.BufferedReader;
@@ -16,12 +17,29 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class UtilsPayments {
 
     public static Response response = null;
 
+    public static void comparaRespuestaMT103(String pathInput, Response jsonOutput) throws Exception {
+        String path = "src/test/resources/json/" + pathInput;
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        Gson gson = new Gson();
+        MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
+        MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
+
+        assertTrue(expectedMT103Response.getMt103CopyFile().equals(mt103Response.getMt103CopyFile()));
+        /*
+        if (UtilsCommon.matchNullValues(pathInput, "NoExisting")) {
+            compareNoExistingAccounts(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
+        } else {
+            assertAllAccountsFields(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
+        }*/
+
+    }
 
     public static void searchPayments(String httpMethod, String parameters, String values) throws InterruptedException {
         String query = getQuery(parameters, values);
@@ -122,6 +140,11 @@ public class UtilsPayments {
         assertEquals("Beneficiary Agent Country", beneficiaryData.getAgentCountry(), expectedBeneficiaryData.getAgentCountry());
         assertEquals("Beneficiary Agent Location", beneficiaryData.getAgentLocation(), expectedBeneficiaryData.getAgentLocation());
     }
+
+    public static void peticionPaymentsMt103(String petition, String parameter){
+        response = UtilsCommon.executeRequestWithParametersMt103(petition, parameter,"","payments", "mt103");
+    }
+
 
 
 }
