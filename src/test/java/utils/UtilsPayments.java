@@ -20,20 +20,14 @@ public class UtilsPayments {
 
     public static Response response = null;
 
-    public static void comparaRespuestaMT103(String pathInput, Response jsonOutput) throws Exception {
-        String path = "src/test/resources/json/" + pathInput;
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        Gson gson = new Gson();
-        MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
-        MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
-
-        assertEquals(expectedMT103Response.getMt103CopyFile(), mt103Response.getMt103CopyFile());
-
-    }
-
     public static void searchPayments(String httpMethod, String parameters, String values) {
         String query = getQuery(parameters, values);
         response = UtilsCommon.executeRequestWithParameters(httpMethod, query, "", "payments");
+        assertEquals("Correct status code returned", 200, response.getStatusCode());
+    }
+
+    public static void peticionPaymentsMt103(String httpMethod, String path) {
+        response = UtilsCommon.executeRequestWithPath(httpMethod, path, "events", "mt103");
         assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
 
@@ -145,9 +139,15 @@ public class UtilsPayments {
                 actualBeneficiaryData.getAgentLocation());
     }
 
-    public static void peticionPaymentsMt103(String httpMethod, String path) {
-        response = UtilsCommon.executeRequestWithPath(httpMethod, path, "events", "mt103");
-        assertEquals("Correct status code returned", 200, response.getStatusCode());
+    public static void comparaRespuestaMT103(String pathInput, Response jsonOutput) throws Exception {
+        String path = "src/test/resources/json/" + pathInput;
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        Gson gson = new Gson();
+        MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
+        MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
+
+        assertEquals(expectedMT103Response.getMt103CopyFile(), mt103Response.getMt103CopyFile());
+
     }
 
     public static void comparePaymentsEvents(String localJsonFilePath, Response httpResponse) throws FileNotFoundException {
