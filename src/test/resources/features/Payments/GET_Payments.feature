@@ -17,6 +17,6 @@ Feature: GET_Payments
       | account_id                         | ES8100490075473000562155              | accountId.json          |
       | paymentId                          | 7ec3f8b0-05fb-423c-8b6b-320918c1062b  | paymentId.json          |
       | amountFrom,amountTo                | 100,2000                              | amountFromTo.json       |
-      | account_id,status                  | ES8100490075473000562155,ACSP         | accountIdAndStatus.json |
-      | currency,idType,reason,status      | EUR,001,G000,ACSP                     | severalFilters.json      |
+      | account_id,status                  | ES8100490075473000562155,RCJT         | accountIdAndStatus.json |
+      | currency,idType,reason,status      | EUR,001,G000,RCJT                     | severalFilters.json     |
       | searchText                         | 423c                                  | searchText.json         |

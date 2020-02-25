@@ -4,11 +4,7 @@ import com.google.gson.Gson;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.StringUtils;
-import schemas.Payments.BeneficiaryData;
-import schemas.Payments.OriginatorData;
-import schemas.Payments.Payments;
-import schemas.Payments.MT103;
-import schemas.Payments.PaymentsList;
+import schemas.Payments.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,7 +13,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class UtilsPayments {
@@ -31,13 +26,7 @@ public class UtilsPayments {
         MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
         MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
 
-        assertTrue(expectedMT103Response.getMt103CopyFile().equals(mt103Response.getMt103CopyFile()));
-        /*
-        if (UtilsCommon.matchNullValues(pathInput, "NoExisting")) {
-            compareNoExistingAccounts(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
-        } else {
-            assertAllAccountsFields(accountsResponse.getAccountsList(), expectedAccountsResponse.getAccountsList());
-        }*/
+        assertEquals(expectedMT103Response.getMt103CopyFile(), mt103Response.getMt103CopyFile());
 
     }
 
@@ -78,67 +67,71 @@ public class UtilsPayments {
         Payments expectedPaymentsResponse = gson.fromJson(bufferedReader, Payments.class);
         Payments paymentsResponse = jsonOutput.as(Payments.class, ObjectMapperType.GSON);
 
-        assertEquals("Payment Documents Found", paymentsResponse.getDocuments().getTotalRegistersFound(),
-                expectedPaymentsResponse.getDocuments().getTotalRegistersFound());
-        assertEquals("Payment Documents Retrieved", paymentsResponse.getDocuments().getRetrieved(),
-                expectedPaymentsResponse.getDocuments().getRetrieved());
+        assertEquals("Payment Documents Found", expectedPaymentsResponse.getDocuments().getTotalRegistersFound(),
+                paymentsResponse.getDocuments().getTotalRegistersFound());
+        assertEquals("Payment Documents Retrieved", expectedPaymentsResponse.getDocuments().getRetrieved(),
+                paymentsResponse.getDocuments().getRetrieved());
         assertAllPaymentsFields(paymentsResponse.getPaymentsList(), expectedPaymentsResponse.getPaymentsList());
     }
 
 
-    private static void assertAllPaymentsFields(List<PaymentsList> paymentsList, List<PaymentsList> expectedPaymentList) {
+    private static void assertAllPaymentsFields(List<PaymentsList> expectedPaymentsList, List<PaymentsList> paymentsList) {
 
         paymentsList.sort(Comparator.comparing(PaymentsList::getPaymentId));
-        expectedPaymentList.sort(Comparator.comparing(PaymentsList::getPaymentId));
+        expectedPaymentsList.sort(Comparator.comparing(PaymentsList::getPaymentId));
 
         for (int i=0; i < paymentsList.size(); i++) {
-            assertEquals("Payment Id", paymentsList.get(i).getPaymentId(), expectedPaymentList.get(i).getPaymentId());
-            assertEquals("Payment Transaction Status", paymentsList.get(i).getTransactionStatus().getStatus(),
-                    expectedPaymentList.get(i).getTransactionStatus().getStatus());
-            assertEquals("Payment Transaction Reason", paymentsList.get(i).getTransactionStatus().getReason(),
-                    expectedPaymentList.get(i).getTransactionStatus().getReason());
-            assertEquals("Payment Transaction Status Date", paymentsList.get(i).getStatusDate(),
-                    expectedPaymentList.get(i).getStatusDate());
+            assertEquals("Payment Id", expectedPaymentsList.get(i).getPaymentId(), paymentsList.get(i).getPaymentId());
+            assertEquals("Payment Transaction Status", expectedPaymentsList.get(i).getTransactionStatus().getStatus(),
+                    paymentsList.get(i).getTransactionStatus().getStatus());
+            assertEquals("Payment Transaction Reason", expectedPaymentsList.get(i).getTransactionStatus().getReason(),
+                    paymentsList.get(i).getTransactionStatus().getReason());
+            assertEquals("Payment Transaction Status Date", expectedPaymentsList.get(i).getStatusDate(),
+                    paymentsList.get(i).getStatusDate());
             assertEquals("Payment Transaction Cancellation Status",
-                    paymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus(),
-                    expectedPaymentList.get(i).getCancellationStatus().getTransactionCancellationStatus());
-            assertEquals("Payment Issue Date", paymentsList.get(i).getIssueDate(),
-                    expectedPaymentList.get(i).getIssueDate());
-            assertEquals("Payment Value Date", paymentsList.get(i).getValueDate(),
-                    expectedPaymentList.get(i).getValueDate());
-            assertEquals("Payment Amount", paymentsList.get(i).getPaymentAmount().getAmount(),
-                    expectedPaymentList.get(i).getPaymentAmount().getAmount());
-            assertEquals("Payment Currency", paymentsList.get(i).getPaymentAmount().getCurrency(),
-                    expectedPaymentList.get(i).getPaymentAmount().getCurrency());
-            assertPaymentOriginatorData(paymentsList.get(i).getOriginatorData(),
-                    expectedPaymentList.get(i).getOriginatorData());
-            assertPaymentBeneficiaryData(paymentsList.get(i).getBeneficiaryData(),
-                    expectedPaymentList.get(i).getBeneficiaryData());
-            assertEquals("Payment Tracker Detail", paymentsList.get(i).getPaymentTrackerDetailResponse(),
-                    expectedPaymentList.get(i).getPaymentTrackerDetailResponse());
+                    expectedPaymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus(),
+                    paymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus());
+            assertEquals("Payment Issue Date", expectedPaymentsList.get(i).getIssueDate(),
+                    paymentsList.get(i).getIssueDate());
+            assertEquals("Payment Value Date", expectedPaymentsList.get(i).getValueDate(),
+                    paymentsList.get(i).getValueDate());
+            assertEquals("Payment Amount", expectedPaymentsList.get(i).getPaymentAmount().getAmount(),
+                    paymentsList.get(i).getPaymentAmount().getAmount());
+            assertEquals("Payment Currency", expectedPaymentsList.get(i).getPaymentAmount().getCurrency(),
+                    paymentsList.get(i).getPaymentAmount().getCurrency());
+            assertPaymentOriginatorData(expectedPaymentsList.get(i).getOriginatorData(),
+                    paymentsList.get(i).getOriginatorData());
+            assertPaymentBeneficiaryData(expectedPaymentsList.get(i).getBeneficiaryData(),
+                    paymentsList.get(i).getBeneficiaryData());
+            assertEquals("Payment Tracker Detail", expectedPaymentsList.get(i).getPaymentTrackerDetailResponse(),
+                    paymentsList.get(i).getPaymentTrackerDetailResponse());
         }
 
     }
 
-    private static void assertPaymentOriginatorData(OriginatorData originatorData, OriginatorData expectedOriginatorData) {
-        assertEquals("Originator Account Id", originatorData.getAccountId(), expectedOriginatorData.getAccountId());
-        assertEquals("Originator Agent", originatorData.getAgent(), expectedOriginatorData.getAgent());
-        assertEquals("Originator Agent Name", originatorData.getAgentName(), expectedOriginatorData.getAgentName());
-        assertEquals("Originator Agent Country", originatorData.getAgentCountry(), expectedOriginatorData.getAgentCountry());
-        assertEquals("Originator Agent Location", originatorData.getAgentLocation(), expectedOriginatorData.getAgentLocation());
+    private static void assertPaymentOriginatorData(OriginatorData expectedOriginatorData, OriginatorData originatorData) {
+        assertEquals("Originator Account Id", expectedOriginatorData.getAccountId(), originatorData.getAccountId());
+        assertEquals("Originator Agent", expectedOriginatorData.getAgent(), originatorData.getAgent());
+        assertEquals("Originator Agent Name", expectedOriginatorData.getAgentName(), originatorData.getAgentName());
+        assertEquals("Originator Agent Country", expectedOriginatorData.getAgentCountry(), originatorData.getAgentCountry());
+        assertEquals("Originator Agent Location", expectedOriginatorData.getAgentLocation(), originatorData.getAgentLocation());
     }
 
-    private static void assertPaymentBeneficiaryData(BeneficiaryData beneficiaryData,
-                                                     BeneficiaryData expectedBeneficiaryData) {
-        assertEquals("Beneficiary Name", beneficiaryData.getBeneficiaryName(), expectedBeneficiaryData.getBeneficiaryName());
-        assertEquals("Beneficiary Credit Account Type", beneficiaryData.getCreditorCreditAccount().getIdType(),
-                expectedBeneficiaryData.getCreditorCreditAccount().getIdType());
-        assertEquals("Beneficiary Credit Account Id", beneficiaryData.getCreditorCreditAccount().getAccountId(),
-                expectedBeneficiaryData.getCreditorCreditAccount().getAccountId());
-        assertEquals("Beneficiary Agent", beneficiaryData.getAgent(), expectedBeneficiaryData.getAgent());
-        assertEquals("Beneficiary Agent Name", beneficiaryData.getAgentName(), expectedBeneficiaryData.getAgentName());
-        assertEquals("Beneficiary Agent Country", beneficiaryData.getAgentCountry(), expectedBeneficiaryData.getAgentCountry());
-        assertEquals("Beneficiary Agent Location", beneficiaryData.getAgentLocation(), expectedBeneficiaryData.getAgentLocation());
+    private static void assertPaymentBeneficiaryData(BeneficiaryData expectedBeneficiaryData,
+                                                     BeneficiaryData beneficiaryData) {
+        assertEquals("Beneficiary Name", expectedBeneficiaryData.getBeneficiaryName(),
+                beneficiaryData.getBeneficiaryName());
+        assertEquals("Beneficiary Credit Account Type", expectedBeneficiaryData.getCreditorCreditAccount().getIdType(),
+                beneficiaryData.getCreditorCreditAccount().getIdType());
+        assertEquals("Beneficiary Credit Account Id", expectedBeneficiaryData.getCreditorCreditAccount().getAccountId(),
+                beneficiaryData.getCreditorCreditAccount().getAccountId());
+        assertEquals("Beneficiary Agent", expectedBeneficiaryData.getAgent(), beneficiaryData.getAgent());
+        assertEquals("Beneficiary Agent Name", expectedBeneficiaryData.getAgentName(),
+                beneficiaryData.getAgentName());
+        assertEquals("Beneficiary Agent Country", expectedBeneficiaryData.getAgentCountry(),
+                beneficiaryData.getAgentCountry());
+        assertEquals("Beneficiary Agent Location", expectedBeneficiaryData.getAgentLocation(),
+                beneficiaryData.getAgentLocation());
     }
 
     public static void peticionPaymentsMt103(String petition, String parameter){
