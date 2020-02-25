@@ -12,6 +12,7 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import schemas.Payments.Payments;
 import schemas.Payments.PaymentsList;
+import utils.UtilsAccounts;
 import utils.UtilsCommon;
 import utils.UtilsPayments;
 import utils.WebServiceEndPoints;
@@ -94,6 +95,11 @@ public class MyStepdefsPayments {
 
     }
 
+    @Then("^El servicio de payments MT103 nos devuelve la respuesta \"([^\"]*)\"$")
+    public void elServicioPaymentsMT103NosDevuelveLaRespuesta(String expectedResponse) throws Throwable {
+        UtilsPayments.comparaRespuestaMT103(expectedResponse, UtilsPayments.response);
+    }
+
     @When("^Realizamos una petición al endpoint con el criterio de busqueda User account_id \"([^\"]*)\"$")
     public void realizamosUnaPeticiónAlEndpointConElCriterioDeBusquedaUserAccount_id(String arg0) throws Throwable {
 
@@ -133,5 +139,10 @@ public class MyStepdefsPayments {
     public void seRealizaUnRequestAlEndpointPaymentsConElParametro(String arg0, String arg1){
 
             UtilsPayments.hagounapeticionGET(arg0,arg1);
+    }
+
+    @When("^Se realiza un request \"([^\"]*)\" al endpoint payments MT103 con el parametro \"([^\"]*)\"$")
+    public void seRealizaUnRequestEndpointPaymentsMt103ConParametro(String request, String parameter){
+        UtilsPayments.peticionPaymentsMt103(request, parameter);
     }
 }
