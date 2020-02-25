@@ -143,12 +143,21 @@ public class UtilsCommon {
 
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint,
                                                         String domain) {
-        setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
         if (domain.equals("enterprises")){
             URI = getBaseURIEnvironment() + domain  + endPoint + "/" + parameters;
         }
 
+        return executeRequest(requestMethod, URI);
+    }
+
+    public static Response executeRequestWithPath(String requestMethod, String path, String endPoint, String domain) {
+        String URI = getBaseURIEnvironment() + domain + "/" + domain + "/" + path + "/" + endPoint;
+        return executeRequest(requestMethod, URI);
+    }
+
+    private static Response executeRequest(String requestMethod, String URI) {
+        setHttpRequestHeaders();
         Response response;
         switch (requestMethod) {
             case "POST":
