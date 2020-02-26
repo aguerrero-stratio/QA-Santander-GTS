@@ -1,0 +1,88 @@
+{
+  "transactionStatus": {
+    "status": "RJCT",
+    "reason": "G000"
+  },
+  "cancellationStatus": {
+    "transactionCancellationStatus": "ECOrmWKa7F"
+  },
+  "initiationTime": "2017-07-03T17:05:29.771Z",
+  "completionTime": "2017-07-03T17:05:29.771Z",
+  "lastUpdateTime": "2017-07-03T17:05:29.771Z",
+  "PaymentEventsResponse": [
+    {
+      "networkReference": "networkreference",
+      "messageNameIdentification": "messagenameidentification",
+      "businessService": "businessservice",
+      "trackerEventType": "CTPT",
+      "valid": true,
+      "invalidityReason": "invalidityreason",
+      "invalidityDescription": "invaliditydescription",
+      "instructionIdentification": "instructionidentification",
+      "releatedReference": null,
+      "caseIdentification": "caseidentification",
+      "originalInstructionIdentification": "originalinstructionidentification",
+      "assignmentIdentification": "assignmentidentification",
+      "resolvedCaseIdentification": "resolvedcaseidentification",
+      "underlyingCancellationDetails": {
+        "cancellationRequestDetails": {
+          "cancellationReasonInformation": "G004",
+          "indemnityAgreement": "INDM"
+        },
+        "cancellationResponseDetails": {
+          "investigationExecutionStatus": "RJCR",
+          "investigationExecutionStatusReason": {
+            "rejected": "ARDT",
+            "pending": "INDM"
+          }
+        },
+        "cancellationRequestTrackingStatus": "pPkooBTu6K"
+      },
+      "forwardedToAgent": "forwardedtoagent",
+      "fundsAvailableDate": null,
+      "fromAgent": null,
+      "toAgent": null,
+      "originatorAgent": null,
+      "serialParties": {
+        "debtorAgent": "debtoragent",
+        "instructingReimbursementAgent": "agent",
+        "creditorAgent": "creditor_Agent"
+      },
+      "coverParties": {
+        "debtor": "debtor",
+        "debtorAgent": "debtor_agent",
+        "intermediaryAgent1": "inter",
+        "creditorAgent": "creditor_agent",
+        "creditor": "creditor"
+      },
+      "senderAcknowledgementReceipt": "2017-07-03T17:05:29.771Z",
+      "receivedDate": "2017-07-03T17:05:29.771Z",
+      "instructedAmount": {
+        "currency": "USD",
+        "amount": 4000.0
+      },
+      "confirmedAmount": {
+        "currency": "USD",
+        "amount": 3000.0
+      },
+      "interbankSettlementAmount": {
+        "currency": "USD",
+        "amount": 2000.0
+      },
+      "interbankSettlementDate": "2017-07-03T17:05:29.771Z",
+      "chargerBearer": null,
+      "chargeAmount": {
+        "currency": "USD",
+        "amount": 1000.0
+      },
+      "foreignExchangeDetails": {
+        "sourceCurrency": "USD",
+        "targetCurrency": "USD",
+        "exchangeRate": "INDM"
+      },
+      "updatePayment": "R6u16Q3HIM",
+      "duplicateMessageReference": "1ESw803hbq",
+      "copiedBusinessService": "BiuVMTeftV"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.StringUtils;
 import schemas.Payments.*;
+import schemas.Payments.Events.PaymentEvents;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,21 +20,19 @@ public class UtilsPayments {
 
     public static Response response = null;
 
-    public static void comparaRespuestaMT103(String pathInput, Response jsonOutput) throws Exception {
-        String path = "src/test/resources/json/" + pathInput;
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        Gson gson = new Gson();
-        MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
-        MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
-
-        assertEquals(expectedMT103Response.getMt103CopyFile(), mt103Response.getMt103CopyFile());
-
+    public static void searchPayments(String httpMethod, String parameters, String values) {
+        String query = getQuery(parameters, values);
+        response = UtilsCommon.executeRequestWithParameters(httpMethod, query, "", "payments");
+        assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
 
-    public static void searchPayments(String httpMethod, String parameters, String values) throws InterruptedException {
-        String query = getQuery(parameters, values);
-        response = UtilsCommon.executeRequestWithParameters(httpMethod, query,
-                "", "payments");
+    public static void peticionPaymentsMt103(String httpMethod, String path) {
+        response = UtilsCommon.executeRequestWithPath(httpMethod, path, "events", "mt103");
+        assertEquals("Correct status code returned", 200, response.getStatusCode());
+    }
+
+    public static void searchEventsPayments(String httpMethod, String path) {
+        response = UtilsCommon.executeRequestWithPath(httpMethod, path, "events", "payments");
         assertEquals("Correct status code returned", 200, response.getStatusCode());
     }
 
@@ -58,86 +57,109 @@ public class UtilsPayments {
         return StringUtils.chop(query.toString());
     }
 
-    public static void comparePayments(String pathInput, Response jsonOutput) throws FileNotFoundException {
+    public static void comparePayments(String localJsonFilePath, Response httpResponse) throws FileNotFoundException {
 
-        String path = "src/test/resources/json/" + pathInput;
+        String path = "src/test/resources/json/" + localJsonFilePath;
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
 
         Gson gson = new Gson();
         Payments expectedPaymentsResponse = gson.fromJson(bufferedReader, Payments.class);
-        Payments paymentsResponse = jsonOutput.as(Payments.class, ObjectMapperType.GSON);
+        Payments actualPaymentsResponse = httpResponse.as(Payments.class, ObjectMapperType.GSON);
 
         assertEquals("Payment Documents Found", expectedPaymentsResponse.getDocuments().getTotalRegistersFound(),
-                paymentsResponse.getDocuments().getTotalRegistersFound());
+                actualPaymentsResponse.getDocuments().getTotalRegistersFound());
         assertEquals("Payment Documents Retrieved", expectedPaymentsResponse.getDocuments().getRetrieved(),
-                paymentsResponse.getDocuments().getRetrieved());
-        assertAllPaymentsFields(paymentsResponse.getPaymentsList(), expectedPaymentsResponse.getPaymentsList());
+                actualPaymentsResponse.getDocuments().getRetrieved());
+        assertAllPaymentsFields(actualPaymentsResponse.getPaymentsList(), expectedPaymentsResponse.getPaymentsList());
     }
 
+    private static void assertAllPaymentsFields(List<PaymentsList> expectedPaymentsList,
+                                                List<PaymentsList> actualPaymentsList) {
 
-    private static void assertAllPaymentsFields(List<PaymentsList> expectedPaymentsList, List<PaymentsList> paymentsList) {
-
-        paymentsList.sort(Comparator.comparing(PaymentsList::getPaymentId));
+        actualPaymentsList.sort(Comparator.comparing(PaymentsList::getPaymentId));
         expectedPaymentsList.sort(Comparator.comparing(PaymentsList::getPaymentId));
 
-        for (int i=0; i < paymentsList.size(); i++) {
-            assertEquals("Payment Id", expectedPaymentsList.get(i).getPaymentId(), paymentsList.get(i).getPaymentId());
+        for (int i=0; i < actualPaymentsList.size(); i++) {
+            assertEquals("Payment Id", expectedPaymentsList.get(i).getPaymentId(), actualPaymentsList.get(i).getPaymentId());
             assertEquals("Payment Transaction Status", expectedPaymentsList.get(i).getTransactionStatus().getStatus(),
-                    paymentsList.get(i).getTransactionStatus().getStatus());
+                    actualPaymentsList.get(i).getTransactionStatus().getStatus());
             assertEquals("Payment Transaction Reason", expectedPaymentsList.get(i).getTransactionStatus().getReason(),
-                    paymentsList.get(i).getTransactionStatus().getReason());
+                    actualPaymentsList.get(i).getTransactionStatus().getReason());
             assertEquals("Payment Transaction Status Date", expectedPaymentsList.get(i).getStatusDate(),
-                    paymentsList.get(i).getStatusDate());
+                    actualPaymentsList.get(i).getStatusDate());
             assertEquals("Payment Transaction Cancellation Status",
                     expectedPaymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus(),
-                    paymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus());
+                    actualPaymentsList.get(i).getCancellationStatus().getTransactionCancellationStatus());
             assertEquals("Payment Issue Date", expectedPaymentsList.get(i).getIssueDate(),
-                    paymentsList.get(i).getIssueDate());
+                    actualPaymentsList.get(i).getIssueDate());
             assertEquals("Payment Value Date", expectedPaymentsList.get(i).getValueDate(),
-                    paymentsList.get(i).getValueDate());
+                    actualPaymentsList.get(i).getValueDate());
             assertEquals("Payment Amount", expectedPaymentsList.get(i).getPaymentAmount().getAmount(),
-                    paymentsList.get(i).getPaymentAmount().getAmount());
+                    actualPaymentsList.get(i).getPaymentAmount().getAmount());
             assertEquals("Payment Currency", expectedPaymentsList.get(i).getPaymentAmount().getCurrency(),
-                    paymentsList.get(i).getPaymentAmount().getCurrency());
+                    actualPaymentsList.get(i).getPaymentAmount().getCurrency());
             assertPaymentOriginatorData(expectedPaymentsList.get(i).getOriginatorData(),
-                    paymentsList.get(i).getOriginatorData());
+                    actualPaymentsList.get(i).getOriginatorData());
             assertPaymentBeneficiaryData(expectedPaymentsList.get(i).getBeneficiaryData(),
-                    paymentsList.get(i).getBeneficiaryData());
+                    actualPaymentsList.get(i).getBeneficiaryData());
             assertEquals("Payment Tracker Detail", expectedPaymentsList.get(i).getPaymentTrackerDetailResponse(),
-                    paymentsList.get(i).getPaymentTrackerDetailResponse());
+                    actualPaymentsList.get(i).getPaymentTrackerDetailResponse());
         }
 
     }
 
-    private static void assertPaymentOriginatorData(OriginatorData expectedOriginatorData, OriginatorData originatorData) {
-        assertEquals("Originator Account Id", expectedOriginatorData.getAccountId(), originatorData.getAccountId());
-        assertEquals("Originator Agent", expectedOriginatorData.getAgent(), originatorData.getAgent());
-        assertEquals("Originator Agent Name", expectedOriginatorData.getAgentName(), originatorData.getAgentName());
-        assertEquals("Originator Agent Country", expectedOriginatorData.getAgentCountry(), originatorData.getAgentCountry());
-        assertEquals("Originator Agent Location", expectedOriginatorData.getAgentLocation(), originatorData.getAgentLocation());
+    private static void assertPaymentOriginatorData(OriginatorData expectedOriginatorData,
+                                                    OriginatorData actualOriginatorData) {
+        assertEquals("Originator Account Id", expectedOriginatorData.getAccountId(),
+                actualOriginatorData.getAccountId());
+        assertEquals("Originator Agent", expectedOriginatorData.getAgent(),
+                actualOriginatorData.getAgent());
+        assertEquals("Originator Agent Name", expectedOriginatorData.getAgentName(),
+                actualOriginatorData.getAgentName());
+        assertEquals("Originator Agent Country", expectedOriginatorData.getAgentCountry(),
+                actualOriginatorData.getAgentCountry());
+        assertEquals("Originator Agent Location", expectedOriginatorData.getAgentLocation(),
+                actualOriginatorData.getAgentLocation());
     }
 
     private static void assertPaymentBeneficiaryData(BeneficiaryData expectedBeneficiaryData,
-                                                     BeneficiaryData beneficiaryData) {
+                                                     BeneficiaryData actualBeneficiaryData) {
         assertEquals("Beneficiary Name", expectedBeneficiaryData.getBeneficiaryName(),
-                beneficiaryData.getBeneficiaryName());
+                actualBeneficiaryData.getBeneficiaryName());
         assertEquals("Beneficiary Credit Account Type", expectedBeneficiaryData.getCreditorCreditAccount().getIdType(),
-                beneficiaryData.getCreditorCreditAccount().getIdType());
+                actualBeneficiaryData.getCreditorCreditAccount().getIdType());
         assertEquals("Beneficiary Credit Account Id", expectedBeneficiaryData.getCreditorCreditAccount().getAccountId(),
-                beneficiaryData.getCreditorCreditAccount().getAccountId());
-        assertEquals("Beneficiary Agent", expectedBeneficiaryData.getAgent(), beneficiaryData.getAgent());
+                actualBeneficiaryData.getCreditorCreditAccount().getAccountId());
+        assertEquals("Beneficiary Agent", expectedBeneficiaryData.getAgent(), actualBeneficiaryData.getAgent());
         assertEquals("Beneficiary Agent Name", expectedBeneficiaryData.getAgentName(),
-                beneficiaryData.getAgentName());
+                actualBeneficiaryData.getAgentName());
         assertEquals("Beneficiary Agent Country", expectedBeneficiaryData.getAgentCountry(),
-                beneficiaryData.getAgentCountry());
+                actualBeneficiaryData.getAgentCountry());
         assertEquals("Beneficiary Agent Location", expectedBeneficiaryData.getAgentLocation(),
-                beneficiaryData.getAgentLocation());
+                actualBeneficiaryData.getAgentLocation());
     }
 
-    public static void peticionPaymentsMt103(String petition, String parameter){
-        response = UtilsCommon.executeRequestWithParametersMt103(petition, parameter,"","payments", "mt103");
+    public static void comparaRespuestaMT103(String pathInput, Response jsonOutput) throws Exception {
+        String path = "src/test/resources/json/" + pathInput;
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        Gson gson = new Gson();
+        MT103 expectedMT103Response = gson.fromJson(bufferedReader, MT103.class);
+        MT103 mt103Response = jsonOutput.as(MT103.class, ObjectMapperType.GSON);
+
+        assertEquals(expectedMT103Response.getMt103CopyFile(), mt103Response.getMt103CopyFile());
+
     }
 
+    public static void comparePaymentsEvents(String localJsonFilePath, Response httpResponse) throws FileNotFoundException {
+        String path = "src/test/resources/json/" + localJsonFilePath;
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
 
+        Gson gson = new Gson();
+        PaymentEvents expectedPaymentsResponse = gson.fromJson(bufferedReader, PaymentEvents.class);
+        PaymentEvents actualPaymentsResponse = httpResponse.as(PaymentEvents.class, ObjectMapperType.GSON);
+
+        assertEquals(expectedPaymentsResponse, actualPaymentsResponse);
+
+    }
 
 }

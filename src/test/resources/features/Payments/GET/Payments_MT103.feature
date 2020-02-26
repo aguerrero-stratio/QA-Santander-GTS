@@ -1,5 +1,5 @@
-
-Feature: GET_Payments MT103
+@Payments @All
+Feature: GET_Payments_MT103
 
   Como usuario quiero tener en el dominio de Payments un endpoint para realizar la consulta de los mensajes MT103 ingestados a través del PaymentID para poder ver el detalle de los mismos
 
@@ -10,14 +10,14 @@ Feature: GET_Payments MT103
 
   Como usuario quiero realizar satisfactoriamente distintas casuísticas de búsqueda para validar que la respuesta es correcta
 
-    When Se realiza un request "GET" al endpoint payments MT103 con el parametro "<paymentId>"
-    Then El servicio de payments MT103 nos devuelve la respuesta "/Payments/Output/GET_Payments_MT103/<jsonOutputBody>"
+    When Se realiza un request "GET" al dominio payments MT103 con el path "<paymentId>"
+    Then El servicio de payments MT103 nos devuelve la respuesta "/Payments/Output/GET/MT103/<jsonOutputBody>"
     Examples:
       | paymentId                               | jsonOutputBody        |
       | 00L1DjW4-ac3c-462a-bd47-8a7ec5194b62    | paymentIdValid.json   |
       | 12300L1DjW4-ac3c-462a-bd47-8a7ec5194b62 | paymentIdInvalid.json |
 
-
+  @Ignore
   Scenario: Ingesta de MT103 y validacion posterior
 
   Como usuario quiero ingestar un mensaje MT103 a través de la cola MQ y validar que se ha persistido correctamente en nuestro dominio

@@ -143,30 +143,21 @@ public class UtilsCommon {
 
     public static Response executeRequestWithParameters(String requestMethod, String parameters, String endPoint,
                                                         String domain) {
-        setHttpRequestHeaders();
         String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + parameters;
         if (domain.equals("enterprises")){
             URI = getBaseURIEnvironment() + domain  + endPoint + "/" + parameters;
         }
 
-        Response response;
-        switch (requestMethod) {
-            case "POST":
-                response = httpRequest.post(URI);
-                break;
-            case "GET":
-                response = httpRequest.get(URI);
-                break;
-            default:
-                throw new RuntimeException("Invalid request method " + requestMethod);
-        }
-        return response;
+        return executeRequest(requestMethod, URI);
     }
 
-    public static Response executeRequestWithParametersMt103(String requestMethod, String parameters, String endPoint, String domain, String urlAfterParaemter) {
+    public static Response executeRequestWithPath(String requestMethod, String path, String endPoint, String domain) {
+        String URI = getBaseURIEnvironment() + domain + "/" + domain + "/" + path + "/" + endPoint;
+        return executeRequest(requestMethod, URI);
+    }
+
+    private static Response executeRequest(String requestMethod, String URI) {
         setHttpRequestHeaders();
-        String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + "/"+parameters+"/"+urlAfterParaemter;
-
         Response response;
         switch (requestMethod) {
             case "POST":
@@ -180,7 +171,6 @@ public class UtilsCommon {
         }
         return response;
     }
-
 
     private static void setHttpRequestHeaders() {
         httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
