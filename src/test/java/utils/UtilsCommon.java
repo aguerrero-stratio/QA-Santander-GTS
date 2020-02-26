@@ -172,25 +172,6 @@ public class UtilsCommon {
         return response;
     }
 
-    public static Response executeRequestWithParametersMt103(String requestMethod, String parameters, String endPoint, String domain, String urlAfterParaemter) {
-        setHttpRequestHeaders();
-        String URI = getBaseURIEnvironment() + domain + "/" + domain + endPoint + "/"+parameters+"/"+urlAfterParaemter;
-
-        Response response;
-        switch (requestMethod) {
-            case "POST":
-                response = httpRequest.post(URI);
-                break;
-            case "GET":
-                response = httpRequest.get(URI);
-                break;
-            default:
-                throw new RuntimeException("Invalid request method " + requestMethod);
-        }
-        return response;
-    }
-
-
     private static void setHttpRequestHeaders() {
         httpRequest.headers("X-B3-ParentSpanId","123","X-B3-Sampled","123",
                 "X-B3-SpanId","123","X-B3-TraceId","123",
