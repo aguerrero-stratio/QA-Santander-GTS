@@ -6,7 +6,7 @@ Feature: TRUSTED_Transactions
   Background:
     Given Sparta operativo en la url "https://gts-sparta.sgcto-int.stratio.com/gts-sparta/appStatus"
 
-    @sparta_transactions
+    @sparta_transactions_trusted
     Scenario: Ejecución del workflow 'ot-tr-tt-transaction-company-account' sin gobierno del dato
 
     El workflow recoge los datos de RAW-HDFS, hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/transactions/transaction_company_account, durante el proceso se descartan los registros bic y pais que no cumplen
@@ -17,13 +17,13 @@ Feature: TRUSTED_Transactions
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_tr_tt_transaction_company_account"
       Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_country_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction_country_refusals"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_country_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_tr_tt_transaction_company_account_transaction_country_refusals"
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_bics_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction_bic_refusals"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_bics_refusals" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction_bic_refusals"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_bics_refusals" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_tr_tt_transaction_company_account_transaction_bics_refusals"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account"
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_country_refusals"
       And  Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_tr_tt_transaction_company_account_transaction_bics_refusals"
 
-    @sparta_transactions
+    @sparta_transactions_trusted
     Scenario: Ejecución del workflow 'ot-tr-tt-transaction' sin gobierno del dato
     El workflow recoge los datos de RAW-HDFS, hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/transactions/transaction, durante el proceso se descartan los registros de balance y
     cantidad que contengan el formato de moneda incorrecto, añade el TS y vuelca los datos en la ruta de TRUSTED-HDFS hdfs://gts-hdfs/gts/data/trusted/onetrade/transactions/transaction

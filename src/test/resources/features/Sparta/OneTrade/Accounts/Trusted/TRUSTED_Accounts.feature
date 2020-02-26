@@ -40,9 +40,9 @@ Feature: TRUSTED_Accounts
     Scenario: Ejecución del workflow 'ot-ac-tt-company-member-account' sin gobierno del dato
 
       El workflow recoge los datos de RAW-HDFS, hdfs://gts-hdfs/gts/data/raw/formatted/onetrade/accounts_company_member_accounts, durante el proceso castea correctamente los datos,
-      añade el TS y vuelca los datos en la ruta de TRUSTED-HDFS 'hdfs://gts-hdfs/gts/data/trusted/onetrade/accounts/accounts_company_member_accounts'
+      añade el TS y vuelca los datos en la ruta de TRUSTED-HDFS 'hdfs://gts-hdfs/gts/data/trusted/onetrade/accounts_company_member_accounts'
 
       When Se ejecuta el workflow con Id "c28e00de-48ff-47b0-a62a-0cb7d7f57c45"
-      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_ac_tt_company_member_account" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/accounts/accounts_company_member_account"
+      Then Se crea en XDATA la tabla "GTS.QA_ACTUAL_ot_ac_tt_company_member_account" con el hdfs-output del workflow "hdfs://gts-hdfs/gts/data/trusted/onetrade/accounts_company_member_account"
       And  Se comprueba que el resultado obtenido "GTS.QA_ACTUAL_ot_ac_tt_company_member_account" coincide con el resultado esperado en XDATA "GTS.QA_EXPECTED_ot_ac_tt_company_member_account"
       Then Se borra la tabla de XDATA "GTS.QA_ACTUAL_ot_ac_tt_company_member_account"

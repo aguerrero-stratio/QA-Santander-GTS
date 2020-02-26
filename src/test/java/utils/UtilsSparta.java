@@ -243,7 +243,7 @@ public class UtilsSparta {
         String idWorkflowExecution = getidExecutionforQR();
 
         // Only for Testing purposes
-        //String idWorkflowExecution = "f915ee73-64a3-4da6-bc7e-d1289662002f"; // Mix KO + OK
+        //String idWorkflowExecution = "d48bf4f2-eb15-4af5-87fc-013bcaa0330c"; // Mix KO + OK
         //String idWorkflowExecution = "99a92b7f-645d-4258-8fb3-5396d59e873e"; // all KO
         //String idWorkflowExecution = "48dfd9c1-5df6-4fec-8f96-f1154b2ab1da"; // all OK
 
